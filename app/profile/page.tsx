@@ -1,0 +1,207 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { QuestionCard } from "@/components/feature/question-card"
+import { supabase } from "@/lib/supabase"
+import { useAuth } from "@/lib/auth-context"
+import { ChevronDown, ChevronUp, MessageSquare, Eye } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { ProfileListSkeleton } from "@/components/ui/loading-skeletons"
+
+export default function ProfilePage() {
+    const { user, signOut } = useAuth()
+    const router = useRouter()
+    const [votedQuestions, setVotedQuestions] = useState<any[]>([])
+    const [authoredQuestions, setAuthoredQuestions] = useState<any[]>([])
+    const [expandedVotes, setExpandedVotes] = useState<Set<number>>(new Set())
+    const [expandedAuthored, setExpandedAuthored] = useState<Set<number>>(new Set())
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        if (!user) {
+            router.push('/login')
+            return
+        }
+
+        async function fetchUserData() {
+            setLoading(true)
+
+            // Fetch user's votes with question details
+            const { data: votes } = await supabase
+                .from('votes')
+                .select(`
+                    *,
+                    questions (*)
+                `)
+                .eq('user_id', user.id)
+                .order('updated_at', { ascending: false })
+
+            if (votes) {
+                setVotedQuestions(votes.filter(v => v.questions).map(v => v.questions))
+            }
+
+            // Fetch user's authored questions
+            const { data: authored } = await supabase
+                .from('questions')
+                .select('*')
+                .eq('author_id', user.id)
+                .order('created_at', { ascending: false })
+
+            if (authored) {
+                setAuthoredQuestions(authored)
+            }
+
+            setLoading(false)
+        }
+
+        fetchUserData()
+    }, [user, router])
+
+    const toggleVoteExpand = (id: number) => {
+        const newExpanded = new Set(expandedVotes)
+        if (newExpanded.has(id)) {
+            newExpanded.delete(id)
+        } else {
+            newExpanded.add(id)
+        }
+        setExpandedVotes(newExpanded)
+    }
+
+    const toggleAuthoredExpand = (id: number) => {
+        const newExpanded = new Set(expandedAuthored)
+        if (newExpanded.has(id)) {
+            newExpanded.delete(id)
+        } else {
+            newExpanded.add(id)
+        }
+        setExpandedAuthored(newExpanded)
+    }
+
+    const getCategoryIcon = (category: string) => {
+        if (category.toLowerCase() === 'linguistic') return <MessageSquare className="w-4 h-4 text-blue-600" />
+        if (category.toLowerCase() === 'multimodal') return <Eye className="w-4 h-4 text-purple-600" />
+        return null
+    }
+
+    const getCategoryColor = (category: string) => {
+        if (category.toLowerCase() === 'linguistic') return "bg-blue-100 text-blue-800 border-blue-200"
+        if (category.toLowerCase() === 'multimodal') return "bg-purple-100 text-purple-800 border-purple-200"
+        return "bg-secondary text-secondary-foreground"
+    }
+
+    if (!user) {
+        return null
+    }
+
+    return (
+        <div className="container py-8 max-w-4xl">
+            <div className="flex justify-between items-center mb-8">
+                <div>
+                    <h1 className="text-3xl font-bold tracking-tight">My Profile</h1>
+                    <p className="text-muted-foreground">{user.email}</p>
+                </div>
+                <Button variant="outline" onClick={() => signOut()}>Sign Out</Button>
+            </div>
+
+            <Tabs defaultValue="votes">
+                <TabsList className="mb-4">
+                    <TabsTrigger value="votes">My Votes ({votedQuestions.length})</TabsTrigger>
+                    <TabsTrigger value="questions">My Questions ({authoredQuestions.length})</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="votes" className="space-y-2">
+                    {loading ? (
+                        <ProfileListSkeleton />
+                    ) : votedQuestions.length > 0 ? (
+                        <div className="space-y-2">
+                            {votedQuestions.map((question) => (
+                                <div key={question.id} className="border rounded-lg overflow-hidden">
+                                    <button
+                                        onClick={() => toggleVoteExpand(question.id)}
+                                        className="w-full px-4 py-3 flex items-center justify-between hover:bg-secondary/50 transition-colors text-left"
+                                    >
+                                        <div className="flex items-center gap-3 flex-1 min-w-0">
+                                            {getCategoryIcon(question.category)}
+                                            <span className="font-medium truncate">{question.content}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 flex-shrink-0">
+                                            <Badge variant="outline" className={getCategoryColor(question.category)}>
+                                                {question.category}
+                                            </Badge>
+                                            {expandedVotes.has(question.id) ?
+                                                <ChevronUp className="w-5 h-5" /> :
+                                                <ChevronDown className="w-5 h-5" />
+                                            }
+                                        </div>
+                                    </button>
+                                    {expandedVotes.has(question.id) && (
+                                        <div className="border-t p-4 bg-secondary/20">
+                                            <QuestionCard
+                                                question={question}
+                                                isEditMode={true}
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="border border-dashed rounded-lg p-8 text-center">
+                            <p className="text-muted-foreground mb-4">You haven't voted on any questions yet.</p>
+                            <Button asChild>
+                                <Link href="/questions">Browse Questions</Link>
+                            </Button>
+                        </div>
+                    )}
+                </TabsContent>
+
+                <TabsContent value="questions" className="space-y-2">
+                    {loading ? (
+                        <ProfileListSkeleton />
+                    ) : authoredQuestions.length > 0 ? (
+                        <div className="space-y-2">
+                            {authoredQuestions.map((question) => (
+                                <div key={question.id} className="border rounded-lg overflow-hidden">
+                                    <button
+                                        onClick={() => toggleAuthoredExpand(question.id)}
+                                        className="w-full px-4 py-3 flex items-center justify-between hover:bg-secondary/50 transition-colors text-left"
+                                    >
+                                        <div className="flex items-center gap-3 flex-1 min-w-0">
+                                            {getCategoryIcon(question.category)}
+                                            <span className="font-medium truncate">{question.content}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 flex-shrink-0">
+                                            <Badge variant="outline" className={getCategoryColor(question.category)}>
+                                                {question.category}
+                                            </Badge>
+                                            {expandedAuthored.has(question.id) ?
+                                                <ChevronUp className="w-5 h-5" /> :
+                                                <ChevronDown className="w-5 h-5" />
+                                            }
+                                        </div>
+                                    </button>
+                                    {expandedAuthored.has(question.id) && (
+                                        <div className="border-t p-4 bg-secondary/20">
+                                            <QuestionCard question={question} />
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="border border-dashed rounded-lg p-8 text-center">
+                            <p className="text-muted-foreground mb-4">You haven't submitted any questions yet.</p>
+                            <Button asChild>
+                                <Link href="/suggest">Suggest a Question</Link>
+                            </Button>
+                        </div>
+                    )}
+                </TabsContent>
+            </Tabs>
+        </div>
+    )
+}
