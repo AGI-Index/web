@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label"
 import { supabase } from "@/lib/supabase"
 import { useAuth } from "@/lib/auth-context"
 import { isIndexQuestion } from "@/lib/utils"
+import { useI18n } from "@/lib/i18n-context"
 
 type Question = Database['public']['Tables']['questions']['Row'] & {
     achieved_count?: number
@@ -27,6 +28,7 @@ interface QuestionCardProps {
 
 export function QuestionCard({ question, isEditMode = false }: QuestionCardProps) {
     const { user } = useAuth()
+    const { t } = useI18n()
     const router = useRouter()
     const [showDetails, setShowDetails] = useState(false)
     const [isEditing, setIsEditing] = useState(isEditMode)
@@ -152,7 +154,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 className="w-full flex justify-between text-xs text-muted-foreground h-8"
                 onClick={() => setShowDetails(!showDetails)}
             >
-                <span>Advanced Options</span>
+                <span>{t('question_card.advanced_options')}</span>
                 {showDetails ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
             </Button>
 
@@ -160,7 +162,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 <div className="pt-3 space-y-4 animate-in fade-in slide-in-from-top-1">
                     <div className="space-y-2">
                         <div className="flex justify-between">
-                            <Label className="text-xs">Importance Weight</Label>
+                            <Label className="text-xs">{t('question_card.importance_weight')}</Label>
                         </div>
                         <div className="flex gap-2">
                             {[1, 2, 3].map((w) => (
@@ -174,7 +176,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                     )}
                                     onClick={() => toggleWeight(w)}
                                 >
-                                    {w === 1 ? "Low" : w === 2 ? "Med" : "High"}
+                                    {w === 1 ? t('question_card.weight.low') : w === 2 ? t('question_card.weight.med') : t('question_card.weight.high')}
                                 </Button>
                             ))}
                         </div>
@@ -194,7 +196,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                         </Badge>
                         {isIndex && (
                             <Badge variant="outline" className="text-xs border-primary/50 text-primary bg-primary/5">
-                                Index Question
+                                {t('question_card.index_badge')}
                             </Badge>
                         )}
                     </div>
@@ -213,8 +215,8 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
             <CardContent className="pb-3 flex-grow">
                 <div className="space-y-2">
                     <div className="flex justify-between text-xs text-muted-foreground">
-                        <span>Consensus</span>
-                        <span>{achievedPercentage}% Achieved</span>
+                        <span>{t('question_card.consensus')}</span>
+                        <span>{achievedPercentage}% {t('question_card.achieved')}</span>
                     </div>
                     <Progress value={achievedPercentage} className="h-2" indicatorClassName={cn(achievedPercentage >= 50 ? "bg-green-500" : "bg-blue-500")} />
                 </div>
@@ -224,17 +226,17 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 {userVote && !isEditing ? (
                     <div className="w-full flex items-center justify-between text-sm text-muted-foreground bg-secondary/30 p-3 rounded-md">
                         <span className="flex items-center gap-2">
-                            You voted:
+                            {t('question_card.you_voted')}
                             {userVote.is_suitable ? (
                                 <span className="font-medium text-primary flex items-center gap-1">
                                     <CheckCircle className="w-4 h-4" />
-                                    {userVote.is_achieved ? "Achieved" : "Not Yet"}
+                                    {userVote.is_achieved ? t('question_card.achieved') : t('question_card.not_yet')}
                                 </span>
                             ) : (
-                                <span className="font-medium text-destructive flex items-center gap-1"><XCircle className="w-4 h-4" /> Unsuitable</span>
+                                <span className="font-medium text-destructive flex items-center gap-1"><XCircle className="w-4 h-4" /> {t('question_card.unsuitable')}</span>
                             )}
                         </span>
-                        <Button variant="ghost" size="sm" className="h-auto p-0 text-xs underline" onClick={() => setIsEditing(true)}>Edit</Button>
+                        <Button variant="ghost" size="sm" className="h-auto p-0 text-xs underline" onClick={() => setIsEditing(true)}>{t('question_card.edit')}</Button>
                     </div>
                 ) : (
                     <div className="w-full space-y-4">
@@ -250,7 +252,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                         )}
                                         onClick={() => setSelectedAchieved(true)}
                                     >
-                                        <CheckCircle className="w-4 h-4" /> Achieved
+                                        <CheckCircle className="w-4 h-4" /> {t('question_card.achieved')}
                                     </Button>
                                     <Button
                                         variant={selectedAchieved === false ? "default" : "outline"}
@@ -260,7 +262,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                         )}
                                         onClick={() => setSelectedAchieved(false)}
                                     >
-                                        <div className="w-4 h-4 rounded-full border-2 border-current" /> Not Yet
+                                        <div className="w-4 h-4 rounded-full border-2 border-current" /> {t('question_card.not_yet')}
                                     </Button>
                                 </div>
 
@@ -268,7 +270,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
 
                                 {selectedAchieved !== null && (
                                     <Button className="w-full animate-in fade-in slide-in-from-top-1" onClick={handleVoteSubmit}>
-                                        Submit Vote
+                                        {t('question_card.submit_vote')}
                                     </Button>
                                 )}
                             </div>
@@ -281,14 +283,14 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                         className={cn("w-full gap-2", selectedSuitable === true && "bg-primary text-primary-foreground")}
                                         onClick={() => { setSelectedSuitable(true); setUnsuitableReason(null); }}
                                     >
-                                        <Check className="w-4 h-4" /> Suitable
+                                        <Check className="w-4 h-4" /> {t('question_card.suitable')}
                                     </Button>
                                     <Button
                                         variant={selectedSuitable === false ? "destructive" : "outline"}
                                         className={cn("w-full gap-2", selectedSuitable === false && "bg-destructive text-destructive-foreground")}
                                         onClick={() => { setSelectedSuitable(false); setSelectedAchieved(null); }}
                                     >
-                                        <XCircle className="w-4 h-4" /> Unsuitable
+                                        <XCircle className="w-4 h-4" /> {t('question_card.unsuitable')}
                                     </Button>
                                 </div>
 
@@ -300,14 +302,14 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                                 className={cn("w-full gap-2", selectedAchieved === true && "bg-green-600 hover:bg-green-700 text-white")}
                                                 onClick={() => setSelectedAchieved(true)}
                                             >
-                                                Achieved
+                                                {t('question_card.achieved')}
                                             </Button>
                                             <Button
                                                 variant={selectedAchieved === false ? "default" : "secondary"}
                                                 className={cn("w-full gap-2", selectedAchieved === false && "bg-blue-600 hover:bg-blue-700 text-white")}
                                                 onClick={() => setSelectedAchieved(false)}
                                             >
-                                                Not Yet
+                                                {t('question_card.not_yet')}
                                             </Button>
                                         </div>
 
@@ -315,7 +317,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
 
                                         {selectedAchieved !== null && (
                                             <Button className="w-full" onClick={handleVoteSubmit}>
-                                                Submit Vote
+                                                {t('question_card.submit_vote')}
                                             </Button>
                                         )}
                                     </div>
@@ -323,7 +325,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
 
                                 {selectedSuitable === false && (
                                     <div className="space-y-3 animate-in fade-in slide-in-from-top-2">
-                                        <Label className="text-xs">Why is it unsuitable?</Label>
+                                        <Label className="text-xs">{t('question_card.why_unsuitable')}</Label>
                                         <div className="flex flex-wrap gap-2">
                                             {["too_broad", "too_narrow", "duplicate", "other"].map((reason) => (
                                                 <Button
@@ -333,9 +335,9 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                                     size="sm"
                                                     onClick={() => setUnsuitableReason(reason)}
                                                 >
-                                                    {reason === "too_broad" ? "Too Broad" :
-                                                        reason === "too_narrow" ? "Too Narrow" :
-                                                            reason === "duplicate" ? "Duplicate" : "Other"}
+                                                    {reason === "too_broad" ? t('question_card.reasons.too_broad') :
+                                                        reason === "too_narrow" ? t('question_card.reasons.too_narrow') :
+                                                            reason === "duplicate" ? t('question_card.reasons.duplicate') : t('question_card.reasons.other')}
                                                 </Button>
                                             ))}
                                         </div>
@@ -344,7 +346,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                             <input
                                                 type="text"
                                                 className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                                                placeholder="Please specify..."
+                                                placeholder={t('question_card.specify_placeholder')}
                                                 value={customReason}
                                                 onChange={(e) => setCustomReason(e.target.value)}
                                             />
@@ -352,7 +354,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
 
                                         {unsuitableReason && (unsuitableReason !== "Other" || customReason.length > 0) && (
                                             <Button className="w-full" onClick={handleVoteSubmit}>
-                                                Submit Vote
+                                                {t('question_card.submit_vote')}
                                             </Button>
                                         )}
                                     </div>

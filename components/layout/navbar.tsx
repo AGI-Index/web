@@ -7,9 +7,11 @@ import { Button } from "@/components/ui/button"
 import { User, LogOut, Menu, X } from "lucide-react"
 import { useAuth } from "@/lib/auth-context"
 import { cn } from "@/lib/utils"
+import { useI18n } from "@/lib/i18n-context"
 
 export function Navbar() {
     const { user, signOut, loading } = useAuth()
+    const { t } = useI18n()
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
@@ -23,13 +25,13 @@ export function Navbar() {
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center space-x-6 text-sm font-medium flex-1">
                     <Link href="/manifesto" className="transition-colors hover:text-foreground/80 text-foreground/60">
-                        Manifesto
+                        {t('nav.manifesto')}
                     </Link>
                     <Link href="/questions" className="transition-colors hover:text-foreground/80 text-foreground/60">
-                        Questions
+                        {t('nav.questions')}
                     </Link>
                     <Link href="/history" className="transition-colors hover:text-foreground/80 text-foreground/60">
-                        History
+                        {t('nav.history')}
                     </Link>
                 </nav>
 
@@ -45,18 +47,18 @@ export function Navbar() {
                             <Button variant="ghost" size="sm" asChild>
                                 <Link href="/profile">
                                     <User className="mr-2 h-4 w-4" />
-                                    Profile
+                                    {t('nav.profile')}
                                 </Link>
                             </Button>
                             <Button variant="ghost" size="sm" onClick={() => signOut()}>
                                 <LogOut className="mr-2 h-4 w-4" />
-                                Sign Out
+                                {t('nav.logout')}
                             </Button>
                         </>
                     ) : (
                         <Button size="sm" asChild>
                             <Link href="/login">
-                                Sign In
+                                {t('nav.login')}
                             </Link>
                         </Button>
                     )}
@@ -74,7 +76,7 @@ export function Navbar() {
                         ) : (
                             <Button size="sm" asChild>
                                 <Link href="/login">
-                                    Sign In
+                                    {t('nav.login')}
                                 </Link>
                             </Button>
                         )
@@ -99,21 +101,21 @@ export function Navbar() {
                             className="text-sm font-medium transition-colors hover:text-foreground/80 text-foreground/60 py-2"
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            Manifesto
+                            {t('nav.manifesto')}
                         </Link>
                         <Link
                             href="/questions"
                             className="text-sm font-medium transition-colors hover:text-foreground/80 text-foreground/60 py-2"
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            Questions
+                            {t('nav.questions')}
                         </Link>
                         <Link
                             href="/history"
                             className="text-sm font-medium transition-colors hover:text-foreground/80 text-foreground/60 py-2"
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            History
+                            {t('nav.history')}
                         </Link>
                         {user && (
                             <>
@@ -123,7 +125,7 @@ export function Navbar() {
                                     className="text-sm font-medium transition-colors hover:text-foreground/80 text-foreground/60 py-2"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    Profile
+                                    {t('nav.profile')}
                                 </Link>
                                 <button
                                     onClick={() => {
@@ -132,7 +134,7 @@ export function Navbar() {
                                     }}
                                     className="text-sm font-medium transition-colors hover:text-foreground/80 text-foreground/60 py-2 text-left"
                                 >
-                                    Sign Out
+                                    {t('nav.logout')}
                                 </button>
                             </>
                         )}

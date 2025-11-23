@@ -1,0 +1,170 @@
+{
+    "nav": {
+        "manifesto": "선언문",
+        "questions": "질문들",
+        "history": "히스토리",
+        "suggest": "질문 제안",
+        "login": "로그인",
+        "profile": "프로필",
+        "logout": "로그아웃"
+    },
+    "footer": {
+        "built_by": "제작:",
+        "community": "AGI 인덱스 커뮤니티",
+        "source_code": "소스 코드는 여기에 있습니다:",
+        "language": "언어"
+    },
+    "common": {
+        "loading": "로딩 중...",
+        "error": "오류",
+        "submit": "제출",
+        "cancel": "취소",
+        "save": "저장",
+        "delete": "삭제",
+        "edit": "수정"
+    },
+    "home": {
+        "hero": {
+            "title": "<highlight>인공일반지능 (AGI)</highlight>의 <br/> 도래를 추적합니다",
+            "subtitle": "집단 지성을 통해 AGI 마일스톤을 정의하고 추적하는 커뮤니티 주도 플랫폼입니다.",
+            "agi_level": "AGI 레벨",
+            "linguistic": "언어 지능",
+            "multimodal": "멀티모달",
+            "view_milestones": "모든 마일스톤 보기",
+            "how_it_works": "동작 원리"
+        },
+        "quick_vote": {
+            "title": "빠른 투표",
+            "description": "무작위 질문에 투표하여 AGI의 경계를 정의하는 데 도움을 주세요.",
+            "refresh": "질문 새로고침"
+        },
+        "index_questions": {
+            "title": "인덱스 질문",
+            "badge": "AGI 마일스톤",
+            "empty": "아직 인덱스 질문이 없습니다. 투표를 시작하여 만들어보세요!"
+        },
+        "candidate_questions": {
+            "title": "후보 질문",
+            "badge": "검토 중",
+            "empty": "아직 후보 질문이 없습니다."
+        },
+        "contribute_more": "더 많은 투표하기"
+    },
+    "manifesto": {
+        "title": "선언문: 우리 자신을 비추는 거울",
+        "p1": "<strong>\"AGI란 무엇인가?\"</strong> 이것은 아마도 인류가 던진 가장 복잡한 질문일 것입니다. 하지만 역설적이게도, 이 질문은 우리에게 훨씬 더 깊은 질문을 던집니다: <strong>\"인간이란 무엇인가?\"</strong>",
+        "quote": "\"나에게 문제 해결을 위해 1시간이 주어진다면, 나는 55분을 문제 정의에 쓰고 나머지 5분을 해결하는 데 쓰겠다.\"",
+        "quote_author": "— 알버트 아인슈타인",
+        "p2": "수십 년 동안 컴퓨터 과학자들은 더 빠른 칩과 더 큰 모델을 만들며 마지막 <strong>5분</strong>을 향해 달려왔습니다. 그들은 지능을 해결해야 할 계산 문제로만 취급합니다.",
+        "p3": "<strong>하지만 지능은 단순한 코드가 아닙니다.</strong> 우는 아이를 달래는 어머니의 직관입니다. 은유를 만들어내는 작가의 재치입니다. 어려운 선택 앞에서 느끼는 망설임입니다.",
+        "p4": "<strong>이것이 AGI의 정의를 연구실의 엔지니어들에게만 맡길 수 없는 이유입니다.</strong> AGI가 인간 지능을 반영하려면, 그 반영은 선택된 소수가 아닌 전 인류로부터 나와야 합니다.",
+        "list": {
+            "item1": "박사 학위가 필요하지 않습니다.",
+            "item2": "코딩을 알 필요도 없습니다.",
+            "item3": "오직 살아 숨 쉬고 생각하는 인간으로서의 경험만 있으면 됩니다."
+        },
+        "p5": "<strong>AGI INDEX는 우리가 잃어버린 \"55분\"을 되찾는 곳입니다.</strong> 예술가, 교사, 부모, 철학자가 엔지니어와 나란히 서는 곳입니다. 우리는 기계를 측정하는 것이 아니라, 우리 인간성의 경계를 지도로 그리고 있습니다.",
+        "closing": "오세요, 우리 자신을 정의해 봅시다.",
+        "how_it_works": {
+            "title": "동작 원리",
+            "step1": {
+                "title": "커뮤니티 질문",
+                "desc": "누구나 AI가 특정 영역에서 인간 수준의 지능을 달성했는지 테스트하는 질문을 제안할 수 있습니다."
+            },
+            "step2": {
+                "title": "집단 투표",
+                "desc": "커뮤니티는 질문이 적절한 마일스톤인지, 그리고 현재 AI가 이를 달성했는지 투표합니다."
+            },
+            "step3": {
+                "title": "인덱스 형성",
+                "desc": "강력한 합의를 얻은 질문은 AGI 인덱스의 일부가 되어, 진보의 살아있는 벤치마크가 됩니다."
+            },
+            "step4": {
+                "title": "진보 추적",
+                "desc": "AI 역량이 진화하는 것을 지켜보고 진정한 인공일반지능에 얼마나 가까워졌는지 확인하세요."
+            }
+        }
+    },
+    "login": {
+        "title_signup": "계정 생성",
+        "title_signin": "환영합니다",
+        "desc_signup": "이메일을 입력하여 계정을 생성하세요",
+        "desc_signin": "이메일을 입력하여 로그인하세요",
+        "or_continue": "또는 다음으로 계속",
+        "email": "이메일",
+        "password": "비밀번호",
+        "submit_signup": "가입하기",
+        "submit_signin": "로그인",
+        "toggle_signup": "계정이 없으신가요? 가입하기",
+        "toggle_signin": "이미 계정이 있으신가요? 로그인",
+        "check_email": "확인 링크가 전송되었습니다. 이메일을 확인해주세요!"
+    },
+    "questions": {
+        "title": "질문 인덱스",
+        "description": "AGI 마일스톤을 탐색하고 투표하세요.",
+        "suggest_button": "질문 제안",
+        "tabs": {
+            "index": "인덱스 질문",
+            "candidate": "후보 질문"
+        },
+        "filter": {
+            "unvoted": "투표 안 한 질문만 보기"
+        },
+        "sort": {
+            "newest": "최신순",
+            "oldest": "오래된순",
+            "most_voted": "최다 투표순",
+            "least_voted": "최소 투표순"
+        },
+        "category": {
+            "all": "모든 카테고리",
+            "linguistic": "언어 지능",
+            "multimodal": "멀티모달"
+        },
+        "search_placeholder": "질문 검색...",
+        "empty": {
+            "index": "조건에 맞는 인덱스 질문이 없습니다.",
+            "candidate": "조건에 맞는 후보 질문이 없습니다."
+        }
+    },
+    "profile": {
+        "title": "내 프로필",
+        "sign_out": "로그아웃",
+        "tabs": {
+            "votes": "내 투표",
+            "questions": "내 질문"
+        },
+        "empty": {
+            "votes": "아직 투표한 질문이 없습니다.",
+            "browse": "질문 둘러보기",
+            "questions": "아직 제안한 질문이 없습니다.",
+            "suggest": "질문 제안하기"
+        }
+    },
+    "question_card": {
+        "index_badge": "인덱스 질문",
+        "consensus": "합의",
+        "achieved": "달성됨",
+        "not_yet": "미달성",
+        "suitable": "적절함",
+        "unsuitable": "부적절함",
+        "you_voted": "내 투표:",
+        "edit": "수정",
+        "advanced_options": "고급 옵션",
+        "importance_weight": "중요도 가중치",
+        "weight": {
+            "low": "낮음",
+            "med": "중간",
+            "high": "높음"
+        },
+        "why_unsuitable": "왜 부적절한가요?",
+        "reasons": {
+            "too_broad": "너무 광범위함",
+            "too_narrow": "너무 지엽적임",
+            "duplicate": "중복됨",
+            "other": "기타"
+        },
+        "specify_placeholder": "구체적으로 적어주세요...",
+        "submit_vote": "투표 제출"
+    }
+}

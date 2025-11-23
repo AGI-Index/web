@@ -11,9 +11,11 @@ import { useAuth } from "@/lib/auth-context"
 import { ChevronDown, ChevronUp, MessageSquare, Eye } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { ProfileListSkeleton } from "@/components/ui/loading-skeletons"
+import { useI18n } from "@/lib/i18n-context"
 
 export default function ProfilePage() {
     const { user, signOut } = useAuth()
+    const { t } = useI18n()
     const router = useRouter()
     const [votedQuestions, setVotedQuestions] = useState<any[]>([])
     const [authoredQuestions, setAuthoredQuestions] = useState<any[]>([])
@@ -101,16 +103,16 @@ export default function ProfilePage() {
         <div className="container py-8 max-w-4xl">
             <div className="flex justify-between items-center mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">My Profile</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">{t('profile.title')}</h1>
                     <p className="text-muted-foreground">{user.email}</p>
                 </div>
-                <Button variant="outline" onClick={() => signOut()}>Sign Out</Button>
+                <Button variant="outline" onClick={() => signOut()}>{t('profile.sign_out')}</Button>
             </div>
 
             <Tabs defaultValue="votes">
                 <TabsList className="mb-4">
-                    <TabsTrigger value="votes">My Votes ({votedQuestions.length})</TabsTrigger>
-                    <TabsTrigger value="questions">My Questions ({authoredQuestions.length})</TabsTrigger>
+                    <TabsTrigger value="votes">{t('profile.tabs.votes')} ({votedQuestions.length})</TabsTrigger>
+                    <TabsTrigger value="questions">{t('profile.tabs.questions')} ({authoredQuestions.length})</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="votes" className="space-y-2">
@@ -151,9 +153,9 @@ export default function ProfilePage() {
                         </div>
                     ) : (
                         <div className="border border-dashed rounded-lg p-8 text-center">
-                            <p className="text-muted-foreground mb-4">You haven't voted on any questions yet.</p>
+                            <p className="text-muted-foreground mb-4">{t('profile.empty.votes')}</p>
                             <Button asChild>
-                                <Link href="/questions">Browse Questions</Link>
+                                <Link href="/questions">{t('profile.empty.browse')}</Link>
                             </Button>
                         </div>
                     )}
@@ -194,9 +196,9 @@ export default function ProfilePage() {
                         </div>
                     ) : (
                         <div className="border border-dashed rounded-lg p-8 text-center">
-                            <p className="text-muted-foreground mb-4">You haven't submitted any questions yet.</p>
+                            <p className="text-muted-foreground mb-4">{t('profile.empty.questions')}</p>
                             <Button asChild>
-                                <Link href="/suggest">Suggest a Question</Link>
+                                <Link href="/suggest">{t('profile.empty.suggest')}</Link>
                             </Button>
                         </div>
                     )}

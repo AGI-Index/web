@@ -9,7 +9,7 @@ type AuthContextType = {
     loading: boolean
     signIn: (email: string, password: string) => Promise<{ error: any }>
     signUp: (email: string, password: string) => Promise<{ error: any }>
-    signInWithOAuth: (provider: 'google' | 'apple' | 'facebook' | 'github') => Promise<void>
+    signInWithOAuth: (provider: 'google' | 'apple' | 'discord' | 'github') => Promise<void>
     signOut: () => Promise<void>
 }
 
@@ -54,7 +54,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return { error }
     }
 
-    const signInWithOAuth = async (provider: 'google' | 'apple' | 'facebook' | 'github') => {
+    const signInWithOAuth = async (provider: 'google' | 'apple' | 'discord' | 'github') => {
         await supabase.auth.signInWithOAuth({
             provider,
             options: {

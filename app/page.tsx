@@ -9,9 +9,12 @@ import { Badge } from "@/components/ui/badge"
 import { supabase } from "@/lib/supabase"
 import { useAuth } from "@/lib/auth-context"
 import { QuestionListSkeleton } from "@/components/ui/loading-skeletons"
+import { useI18n } from "@/lib/i18n-context"
+import { Trans } from "@/components/ui/trans"
 
 export default function Home() {
   const { user } = useAuth()
+  const { t } = useI18n()
   const [indexQuestions, setIndexQuestions] = useState<any[]>([])
   const [candidateQuestions, setCandidateQuestions] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -29,7 +32,7 @@ export default function Home() {
           .eq('user_id', user.id)
 
         if (votes) {
-          userVotedIds = votes.map(v => v.question_id)
+          userVotedIds = votes.map((v: any) => v.question_id)
         }
       }
 
@@ -47,16 +50,16 @@ export default function Home() {
 
       // Filter and randomize
       if (allIndexQuestions) {
-        const unvoted = allIndexQuestions.filter(q => !userVotedIds.includes(q.id))
+        const unvoted = (allIndexQuestions as any[]).filter((q: any) => !userVotedIds.includes(q.id))
         const toShow = unvoted.length >= 3 ? unvoted : allIndexQuestions
-        const shuffled = toShow.sort(() => Math.random() - 0.5)
+        const shuffled = (toShow as any[]).sort(() => Math.random() - 0.5)
         setIndexQuestions(shuffled.slice(0, 3))
       }
 
       if (allCandidateQuestions) {
-        const unvoted = allCandidateQuestions.filter(q => !userVotedIds.includes(q.id))
+        const unvoted = (allCandidateQuestions as any[]).filter((q: any) => !userVotedIds.includes(q.id))
         const toShow = unvoted.length >= 3 ? unvoted : allCandidateQuestions
-        const shuffled = toShow.sort(() => Math.random() - 0.5)
+        const shuffled = (toShow as any[]).sort(() => Math.random() - 0.5)
         setCandidateQuestions(shuffled.slice(0, 3))
       }
 
@@ -75,11 +78,16 @@ export default function Home() {
             AGI Index Beta
           </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
-            Tracking the Arrival of <br className="hidden md:block" />
-            <span className="text-primary">Artificial General Intelligence</span>
+            <Trans
+              i18nKey="home.hero.title"
+              components={{
+                br: <br className="hidden md:block" />,
+                highlight: <span className="text-primary" />
+              }}
+            />
           </h1>
           <p className="text-muted-foreground max-w-[700px] text-lg md:text-xl mb-10">
-            A community-driven platform defining and tracking AGI milestones through collective intelligence.
+            {t('home.hero.subtitle')}
           </p>
 
           {/* AGI Progress Display */}
@@ -88,7 +96,7 @@ export default function Home() {
               <div className="relative flex items-center justify-center w-40 h-40 md:w-48 md:h-48 rounded-full border-8 border-primary/20">
                 <div className="absolute inset-0 flex items-center justify-center flex-col">
                   <span className="text-4xl md:text-5xl font-bold">34%</span>
-                  <span className="text-sm text-muted-foreground uppercase tracking-wider mt-1">AGI Level</span>
+                  <span className="text-sm text-muted-foreground uppercase tracking-wider mt-1">{t('home.hero.agi_level')}</span>
                 </div>
                 {/* Simple SVG Circle for progress visualization (static for now) */}
                 <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
@@ -101,7 +109,7 @@ export default function Home() {
               <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <MessageSquare className="w-4 h-4" />
-                  <span className="text-sm font-medium">Linguistic</span>
+                  <span className="text-sm font-medium">{t('home.hero.linguistic')}</span>
                 </div>
                 <span className="text-2xl font-bold">68%</span>
                 <div className="h-1.5 w-24 bg-secondary rounded-full overflow-hidden">
@@ -111,7 +119,7 @@ export default function Home() {
               <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Eye className="w-4 h-4" />
-                  <span className="text-sm font-medium">Multimodal</span>
+                  <span className="text-sm font-medium">{t('home.hero.multimodal')}</span>
                 </div>
                 <span className="text-2xl font-bold">42%</span>
                 <div className="h-1.5 w-24 bg-secondary rounded-full overflow-hidden">
@@ -125,11 +133,11 @@ export default function Home() {
           <div className="flex gap-4">
             <Button size="lg" asChild>
               <Link href="/questions">
-                View All Milestones <ArrowRight className="ml-2 w-4 h-4" />
+                {t('home.hero.view_milestones')} <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
             <Button variant="outline" size="lg">
-              How it Works
+              {t('home.hero.how_it_works')}
             </Button>
           </div>
         </div>
@@ -140,18 +148,18 @@ export default function Home() {
         <div className="container px-4 mx-auto">
           <div className="flex justify-between items-end mb-8">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight mb-2">Quick Vote</h2>
-              <p className="text-muted-foreground">Help define the boundary of AGI by voting on these random questions.</p>
+              <h2 className="text-3xl font-bold tracking-tight mb-2">{t('home.quick_vote.title')}</h2>
+              <p className="text-muted-foreground">{t('home.quick_vote.description')}</p>
             </div>
-            <Button variant="ghost" className="hidden md:flex">Refresh Questions</Button>
+            <Button variant="ghost" className="hidden md:flex">{t('home.quick_vote.refresh')}</Button>
           </div>
 
           <div className="space-y-12">
             {/* Index Questions */}
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-xl font-semibold">Index Questions</h3>
-                <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20">AGI Milestones</Badge>
+                <h3 className="text-xl font-semibold">{t('home.index_questions.title')}</h3>
+                <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20">{t('home.index_questions.badge')}</Badge>
               </div>
               {loading ? (
                 <QuestionListSkeleton />
@@ -162,7 +170,7 @@ export default function Home() {
                       <QuestionCard key={q.id} question={q} />
                     ))
                   ) : (
-                    <p className="col-span-3 text-center text-muted-foreground">No index questions yet. Start voting to create them!</p>
+                    <p className="col-span-3 text-center text-muted-foreground">{t('home.index_questions.empty')}</p>
                   )}
                 </div>
               )}
@@ -171,8 +179,8 @@ export default function Home() {
             {/* Candidate Questions */}
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-xl font-semibold">Candidate Questions</h3>
-                <Badge variant="outline" className="bg-secondary text-secondary-foreground">Under Review</Badge>
+                <h3 className="text-xl font-semibold">{t('home.candidate_questions.title')}</h3>
+                <Badge variant="outline" className="bg-secondary text-secondary-foreground">{t('home.candidate_questions.badge')}</Badge>
               </div>
               {loading ? (
                 <QuestionListSkeleton />
@@ -183,7 +191,7 @@ export default function Home() {
                       <QuestionCard key={q.id} question={q} />
                     ))
                   ) : (
-                    <p className="col-span-3 text-center text-muted-foreground">No candidate questions yet.</p>
+                    <p className="col-span-3 text-center text-muted-foreground">{t('home.candidate_questions.empty')}</p>
                   )}
                 </div>
               )}
@@ -193,7 +201,7 @@ export default function Home() {
           <div className="mt-10 text-center">
             <Button variant="secondary" size="lg" asChild>
               <Link href="/questions">
-                Contribute More Votes
+                {t('home.contribute_more')}
               </Link>
             </Button>
           </div>

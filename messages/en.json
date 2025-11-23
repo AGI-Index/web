@@ -1,0 +1,170 @@
+{
+    "nav": {
+        "manifesto": "Manifesto",
+        "questions": "Questions",
+        "history": "History",
+        "suggest": "Suggest Question",
+        "login": "Login",
+        "profile": "Profile",
+        "logout": "Logout"
+    },
+    "footer": {
+        "built_by": "Built by the",
+        "community": "AGI Index Community",
+        "source_code": "The source code is available on",
+        "language": "Language"
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Error",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "save": "Save",
+        "delete": "Delete",
+        "edit": "Edit"
+    },
+    "home": {
+        "hero": {
+            "title": "Tracking the Arrival of <br/> <highlight>Artificial General Intelligence</highlight>",
+            "subtitle": "A community-driven platform defining and tracking AGI milestones through collective intelligence.",
+            "agi_level": "AGI Level",
+            "linguistic": "Linguistic",
+            "multimodal": "Multimodal",
+            "view_milestones": "View All Milestones",
+            "how_it_works": "How it Works"
+        },
+        "quick_vote": {
+            "title": "Quick Vote",
+            "description": "Help define the boundary of AGI by voting on these random questions.",
+            "refresh": "Refresh Questions"
+        },
+        "index_questions": {
+            "title": "Index Questions",
+            "badge": "AGI Milestones",
+            "empty": "No index questions yet. Start voting to create them!"
+        },
+        "candidate_questions": {
+            "title": "Candidate Questions",
+            "badge": "Under Review",
+            "empty": "No candidate questions yet."
+        },
+        "contribute_more": "Contribute More Votes"
+    },
+    "manifesto": {
+        "title": "The Manifesto: A Mirror to Ourselves",
+        "p1": "<strong>\"What is AGI?\"</strong> It is perhaps the most complex question humanity has ever asked. But paradoxically, asking it forces us to answer a much deeper question: <strong>\"What does it mean to be human?\"</strong>",
+        "quote": "\"If I had an hour to solve a problem, I'd spend 55 minutes thinking about the problem and 5 minutes solving it.\"",
+        "quote_author": "— Albert Einstein",
+        "p2": "For decades, computer scientists have raced through the final <strong>5 minutes</strong>, building faster chips and larger models. They treat intelligence as a computational problem to be solved.",
+        "p3": "<strong>But intelligence is not just code.</strong> It is the intuition of a mother understanding her crying child. It is the wit of a writer crafting a metaphor. It is the hesitation we feel before making a difficult choice.",
+        "p4": "<strong>This is why the definition of AGI cannot be left solely to engineers in a lab.</strong> If AGI is to mirror human intelligence, the reflection must come from all of humanity, not just a select few.",
+        "list": {
+            "item1": "You don't need a PhD to participate here.",
+            "item2": "You don't need to know how to code.",
+            "item3": "You only need your experience as a living, thinking human being."
+        },
+        "p5": "<strong>The AGI INDEX is where we reclaim our \"55 minutes.\"</strong> It is a place for the artist, the teacher, the parent, and the philosopher to stand alongside the engineer. Together, we are not just measuring a machine; we are mapping the boundaries of our own humanity.",
+        "closing": "Come, let's define ourselves.",
+        "how_it_works": {
+            "title": "How It Works",
+            "step1": {
+                "title": "Community Questions",
+                "desc": "Anyone can suggest questions that test whether AI has achieved human-level intelligence in specific areas."
+            },
+            "step2": {
+                "title": "Collective Voting",
+                "desc": "The community votes on whether questions are suitable milestones and whether current AI has achieved them."
+            },
+            "step3": {
+                "title": "Index Formation",
+                "desc": "Questions with strong consensus become part of the AGI Index, creating a living benchmark of progress."
+            },
+            "step4": {
+                "title": "Track Progress",
+                "desc": "Watch as AI capabilities evolve and see how close we are to achieving true artificial general intelligence."
+            }
+        }
+    },
+    "login": {
+        "title_signup": "Create an account",
+        "title_signin": "Welcome back",
+        "desc_signup": "Enter your email to create your account",
+        "desc_signin": "Enter your email to sign in to your account",
+        "or_continue": "Or continue with",
+        "email": "Email",
+        "password": "Password",
+        "submit_signup": "Sign Up",
+        "submit_signin": "Sign In",
+        "toggle_signup": "Don't have an account? Sign up",
+        "toggle_signin": "Already have an account? Sign in",
+        "check_email": "Check your email for the confirmation link!"
+    },
+    "questions": {
+        "title": "Questions Index",
+        "description": "Browse and vote on AGI milestones.",
+        "suggest_button": "Suggest Question",
+        "tabs": {
+            "index": "Index Questions",
+            "candidate": "Candidate Questions"
+        },
+        "filter": {
+            "unvoted": "Show only unvoted"
+        },
+        "sort": {
+            "newest": "Newest",
+            "oldest": "Oldest",
+            "most_voted": "Most Voted",
+            "least_voted": "Least Voted"
+        },
+        "category": {
+            "all": "All Categories",
+            "linguistic": "Linguistic",
+            "multimodal": "Multimodal"
+        },
+        "search_placeholder": "Search questions...",
+        "empty": {
+            "index": "No index questions found matching your criteria.",
+            "candidate": "No candidate questions found matching your criteria."
+        }
+    },
+    "profile": {
+        "title": "My Profile",
+        "sign_out": "Sign Out",
+        "tabs": {
+            "votes": "My Votes",
+            "questions": "My Questions"
+        },
+        "empty": {
+            "votes": "You haven't voted on any questions yet.",
+            "browse": "Browse Questions",
+            "questions": "You haven't submitted any questions yet.",
+            "suggest": "Suggest a Question"
+        }
+    },
+    "question_card": {
+        "index_badge": "Index Question",
+        "consensus": "Consensus",
+        "achieved": "Achieved",
+        "not_yet": "Not Yet",
+        "suitable": "Suitable",
+        "unsuitable": "Unsuitable",
+        "you_voted": "You voted:",
+        "edit": "Edit",
+        "advanced_options": "Advanced Options",
+        "importance_weight": "Importance Weight",
+        "weight": {
+            "low": "Low",
+            "med": "Med",
+            "high": "High"
+        },
+        "why_unsuitable": "Why is it unsuitable?",
+        "reasons": {
+            "too_broad": "Too Broad",
+            "too_narrow": "Too Narrow",
+            "duplicate": "Duplicate",
+            "other": "Other"
+        },
+        "specify_placeholder": "Please specify...",
+        "submit_vote": "Submit Vote"
+    }
+}

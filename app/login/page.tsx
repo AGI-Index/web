@@ -8,7 +8,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { Chrome, Github, Facebook, Apple } from "lucide-react"
+import { Chrome, Github, Apple, Disc } from "lucide-react"
+import { useI18n } from "@/lib/i18n-context"
 
 export default function LoginPage() {
     const [isSignUp, setIsSignUp] = useState(false)
@@ -19,6 +20,7 @@ export default function LoginPage() {
     const [message, setMessage] = useState("")
 
     const { signIn, signUp, signInWithOAuth } = useAuth()
+    const { t } = useI18n()
     const router = useRouter()
 
     const handleEmailAuth = async (e: React.FormEvent) => {
@@ -35,7 +37,7 @@ export default function LoginPage() {
             setError(error.message)
         } else {
             if (isSignUp) {
-                setMessage("Check your email for the confirmation link!")
+                setMessage(t('login.check_email'))
             } else {
                 router.push("/")
             }
@@ -43,7 +45,7 @@ export default function LoginPage() {
         setLoading(false)
     }
 
-    const handleOAuthSignIn = async (provider: 'google' | 'apple' | 'facebook' | 'github') => {
+    const handleOAuthSignIn = async (provider: 'google' | 'apple' | 'discord' | 'github') => {
         setLoading(true)
         await signInWithOAuth(provider)
         setLoading(false)
@@ -54,12 +56,12 @@ export default function LoginPage() {
             <Card className="w-full max-w-md">
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl font-bold text-center">
-                        {isSignUp ? "Create an account" : "Welcome back"}
+                        {isSignUp ? t('login.title_signup') : t('login.title_signin')}
                     </CardTitle>
                     <CardDescription className="text-center">
                         {isSignUp
-                            ? "Enter your email to create your account"
-                            : "Enter your email to sign in to your account"}
+                            ? t('login.desc_signup')
+                            : t('login.desc_signin')}
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -81,13 +83,14 @@ export default function LoginPage() {
                             <Github className="mr-2 h-4 w-4" />
                             GitHub
                         </Button>
+
                         <Button
                             variant="outline"
-                            onClick={() => handleOAuthSignIn('facebook')}
+                            onClick={() => handleOAuthSignIn('discord')}
                             disabled={loading}
                         >
-                            <Facebook className="mr-2 h-4 w-4" />
-                            Facebook
+                            <Disc className="mr-2 h-4 w-4" />
+                            Discord
                         </Button>
                         <Button
                             variant="outline"
@@ -105,7 +108,7 @@ export default function LoginPage() {
                         </div>
                         <div className="relative flex justify-center text-xs uppercase">
                             <span className="bg-background px-2 text-muted-foreground">
-                                Or continue with
+                                {t('login.or_continue')}
                             </span>
                         </div>
                     </div>
@@ -113,7 +116,7 @@ export default function LoginPage() {
                     {/* Email/Password Form */}
                     <form onSubmit={handleEmailAuth} className="space-y-4">
                         <div className="space-y-2">
-                            <Label htmlFor="email">Email</Label>
+                            <Label htmlFor="email">{t('login.email')}</Label>
                             <Input
                                 id="email"
                                 type="email"
@@ -125,7 +128,7 @@ export default function LoginPage() {
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="password">Password</Label>
+                            <Label htmlFor="password">{t('login.password')}</Label>
                             <Input
                                 id="password"
                                 type="password"
@@ -151,7 +154,7 @@ export default function LoginPage() {
                         )}
 
                         <Button type="submit" className="w-full" disabled={loading}>
-                            {loading ? "Loading..." : isSignUp ? "Sign Up" : "Sign In"}
+                            {loading ? t('common.loading') : isSignUp ? t('login.submit_signup') : t('login.submit_signin')}
                         </Button>
                     </form>
 
@@ -167,8 +170,8 @@ export default function LoginPage() {
                             disabled={loading}
                         >
                             {isSignUp
-                                ? "Already have an account? Sign in"
-                                : "Don't have an account? Sign up"}
+                                ? t('login.toggle_signin')
+                                : t('login.toggle_signup')}
                         </button>
                     </div>
                 </CardContent>
