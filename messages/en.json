@@ -12,7 +12,15 @@
         "built_by": "Built by the",
         "community": "AGI Index Community",
         "source_code": "The source code is available on",
-        "language": "Language"
+        "language": "Language",
+        "menu": "Menu",
+        "legal": "Legal",
+        "social": "Social",
+        "terms": "Terms of Service",
+        "privacy": "Privacy Policy",
+        "twitter": "X (Twitter)",
+        "discord": "Discord",
+        "github": "GitHub"
     },
     "common": {
         "loading": "Loading...",
@@ -25,7 +33,7 @@
     },
     "home": {
         "hero": {
-            "title": "Tracking the Arrival of <br/> <highlight>Artificial General Intelligence</highlight>",
+            "title": "The definition of Intelligence begins <br/> with the right Question.",
             "subtitle": "A community-driven platform defining and tracking AGI milestones through collective intelligence.",
             "agi_level": "AGI Level",
             "linguistic": "Linguistic",

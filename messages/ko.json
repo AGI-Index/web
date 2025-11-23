@@ -12,7 +12,15 @@
         "built_by": "제작:",
         "community": "AGI 인덱스 커뮤니티",
         "source_code": "소스 코드는 여기에 있습니다:",
-        "language": "언어"
+        "language": "언어",
+        "menu": "메뉴",
+        "legal": "법적 고지",
+        "social": "소셜",
+        "terms": "이용약관",
+        "privacy": "개인정보처리방침",
+        "twitter": "X (트위터)",
+        "discord": "디스코드",
+        "github": "깃허브"
     },
     "common": {
         "loading": "로딩 중...",
@@ -25,7 +33,7 @@
     },
     "home": {
         "hero": {
-            "title": "<highlight>인공일반지능 (AGI)</highlight>의 <br/> 도래를 추적합니다",
+            "title": "지능의 정의는 올바른 질문에서 시작됩니다.",
             "subtitle": "집단 지성을 통해 AGI 마일스톤을 정의하고 추적하는 커뮤니티 주도 플랫폼입니다.",
             "agi_level": "AGI 레벨",
             "linguistic": "언어 지능",
