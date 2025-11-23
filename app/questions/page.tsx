@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -13,16 +13,18 @@ import { QuestionListSkeleton } from "@/components/ui/loading-skeletons"
 import { useI18n } from "@/lib/i18n-context"
 
 type SortOption = 'newest' | 'oldest' | 'most-voted' | 'least-voted'
+type Translation = { question_id: number; lang_code: string; content: string }
 
 export default function QuestionsPage() {
     const { user } = useAuth()
-    const { t } = useI18n()
+    const { t, language } = useI18n()
     const [searchQuery, setSearchQuery] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("all")
     const [activeTab, setActiveTab] = useState("index")
     const [sortBy, setSortBy] = useState<SortOption>("newest")
     const [showOnlyUnvoted, setShowOnlyUnvoted] = useState(false)
     const [questions, setQuestions] = useState<any[]>([])
+    const [translations, setTranslations] = useState<Translation[]>([])
     const [userVotes, setUserVotes] = useState<Set<number>>(new Set())
     const [loading, setLoading] = useState(true)
 
@@ -81,14 +83,43 @@ export default function QuestionsPage() {
 
             if (!error && data) {
                 setQuestions(data)
+
+                // Fetch translations for current language (skip if English)
+                if (language !== 'en') {
+                    const { data: transData } = await supabase
+                        .from('question_translations')
+                        .select('question_id, lang_code, content')
+                        .eq('lang_code', language)
+
+                    if (transData) {
+                        setTranslations(transData)
+                    }
+                } else {
+                    setTranslations([])
+                }
             }
             setLoading(false)
         }
 
         fetchQuestions()
-    }, [sortBy])
+    }, [sortBy, language])
 
-    const filteredQuestions = questions.filter(q => {
+    // Create a map of translations for quick lookup
+    const translationMap = useMemo(() => {
+        const map = new Map<number, string>()
+        translations.forEach(t => map.set(t.question_id, t.content))
+        return map
+    }, [translations])
+
+    // Apply translations to questions
+    const translatedQuestions = useMemo(() => {
+        return questions.map(q => ({
+            ...q,
+            content: translationMap.get(q.id) || q.content
+        }))
+    }, [questions, translationMap])
+
+    const filteredQuestions = translatedQuestions.filter(q => {
         const matchesTab = activeTab === "index" ? q.is_indexed : !q.is_indexed
         const matchesCategory = selectedCategory === "all" || q.category.toLowerCase() === selectedCategory.toLowerCase()
         const matchesSearch = q.content.toLowerCase().includes(searchQuery.toLowerCase())

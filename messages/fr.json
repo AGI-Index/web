@@ -1,0 +1,228 @@
+{
+    "nav": {
+        "manifesto": "Manifeste",
+        "questions": "Questions",
+        "history": "Historique",
+        "suggest": "Proposer une question",
+        "login": "Connexion",
+        "profile": "Profil",
+        "logout": "Déconnexion"
+    },
+    "footer": {
+        "built_by": "Créé par",
+        "community": "Communauté AGI Index",
+        "source_code": "Code source :",
+        "language": "Langue",
+        "menu": "Menu",
+        "legal": "Mentions légales",
+        "social": "Réseaux sociaux",
+        "terms": "Conditions d'utilisation",
+        "privacy": "Politique de confidentialité",
+        "twitter": "X (Twitter)",
+        "discord": "Discord",
+        "github": "GitHub",
+        "become_partner": "Devenir partenaire"
+    },
+    "common": {
+        "loading": "Chargement...",
+        "error": "Erreur",
+        "submit": "Envoyer",
+        "cancel": "Annuler",
+        "save": "Enregistrer",
+        "delete": "Supprimer",
+        "edit": "Modifier"
+    },
+    "home": {
+        "hero": {
+            "title": "La définition de l'intelligence commence par la bonne question.",
+            "subtitle": "Une plateforme communautaire pour définir et suivre les critères de l'AGI grâce à l'intelligence collective",
+            "agi_level": "Niveau AGI",
+            "linguistic": "Linguistique",
+            "multimodal": "Multimodal",
+            "view_milestones": "Voir toutes les questions",
+            "how_it_works": "Comment participer"
+        },
+        "quick_vote": {
+            "title": "Vote rapide",
+            "description": "Aidez à définir les critères de l'AGI en votant sur ces questions.",
+            "refresh": "Nouvelles questions"
+        },
+        "index_questions": {
+            "title": "Questions de l'index",
+            "badge": "Critères AGI",
+            "empty": "Pas encore de questions dans l'index. Participez en votant !"
+        },
+        "candidate_questions": {
+            "title": "Questions candidates",
+            "badge": "En cours d'examen",
+            "empty": "Pas encore de questions candidates."
+        },
+        "contribute_more": "Voter davantage"
+    },
+    "manifesto": {
+        "title": "Le Manifeste : Un miroir de nous-mêmes",
+        "p1": "<strong>« Qu'est-ce que l'AGI ? »</strong> C'est peut-être la question la plus complexe que l'humanité ait jamais posée. Mais paradoxalement, cette question nous oblige à en répondre une plus profonde : <strong>« Qu'est-ce qu'être humain ? »</strong>",
+        "quote": "« Si j'avais une heure pour résoudre un problème, je passerais 55 minutes à le définir et 5 minutes à le résoudre. »",
+        "quote_author": "— Albert Einstein",
+        "p2": "Depuis des décennies, les informaticiens construisent des puces plus rapides et des modèles plus grands, ne se concentrant que sur les dernières <strong>5 minutes</strong>. Ils traitent l'intelligence comme un simple problème de calcul.",
+        "p3": "<strong>Mais l'intelligence n'est pas du code.</strong> C'est l'intuition d'une mère qui console son enfant en pleurs. C'est l'esprit d'un écrivain qui crée une métaphore. C'est l'hésitation que nous ressentons face à un choix difficile.",
+        "p4": "<strong>C'est pourquoi la définition de l'AGI ne peut être laissée aux seuls ingénieurs en laboratoire.</strong> Si l'AGI doit refléter l'intelligence humaine, cette réflexion doit venir de toute l'humanité, pas seulement de quelques-uns.",
+        "list": {
+            "item1": "Pas besoin de doctorat.",
+            "item2": "Pas besoin de savoir coder.",
+            "item3": "Juste votre expérience en tant qu'être humain."
+        },
+        "p5": "<strong>AGI INDEX est l'endroit où nous récupérons nos « 55 minutes ».</strong> Un lieu où artistes, enseignants, parents et philosophes se tiennent aux côtés des ingénieurs. Nous ne mesurons pas une machine ; nous cartographions les frontières de notre humanité.",
+        "closing": "Venez, définissons ensemble qui nous sommes.",
+        "how_it_works": {
+            "title": "Comment participer",
+            "step1": {
+                "title": "Proposer des questions",
+                "desc": "Tout le monde peut proposer des questions pour évaluer si l'IA a atteint un niveau d'intelligence humain dans des domaines spécifiques."
+            },
+            "step2": {
+                "title": "Vote communautaire",
+                "desc": "La communauté vote sur la pertinence des questions et si l'IA actuelle les a atteintes."
+            },
+            "step3": {
+                "title": "Inclusion dans l'index",
+                "desc": "Les questions ayant obtenu un consensus suffisant sont incluses dans l'AGI Index, devenant une référence vivante."
+            },
+            "step4": {
+                "title": "Suivre les progrès",
+                "desc": "Observez l'évolution des capacités de l'IA et découvrez à quel point nous sommes proches d'une véritable AGI."
+            }
+        },
+        "transparency": {
+            "title": "Note de transparence",
+            "content": "Ce projet est initié et financé par H1R.ai comme contribution à la communauté de recherche ouverte. Nous garantissons que l'AGI Index restera sans publicité, indépendant, et que ses données seront toujours publiques."
+        },
+        "coalition": {
+            "title": "Appel a la coalition",
+            "p1": "Definir l'AGI est une tache trop grande pour une seule entite. Nous invitons explicitement d'autres laboratoires d'IA, entreprises technologiques et fondations de recherche a rejoindre cette initiative.",
+            "p2": "Que ce soit par contribution de donnees, parrainage de calcul ou evaluation academique, votre participation renforce ce benchmark.",
+            "closing": "L'AGI Index est, et restera toujours, un terrain neutre.",
+            "cta": "Devenir partenaire"
+        }
+    },
+    "login": {
+        "title_signup": "Créer un compte",
+        "title_signin": "Connexion",
+        "desc_signup": "Entrez votre e-mail pour créer un compte",
+        "desc_signin": "Entrez votre e-mail pour vous connecter",
+        "or_continue": "Ou continuer avec",
+        "email": "E-mail",
+        "password": "Mot de passe",
+        "submit_signup": "S'inscrire",
+        "submit_signin": "Se connecter",
+        "toggle_signup": "Pas de compte ? Inscrivez-vous",
+        "toggle_signin": "Déjà un compte ? Connectez-vous",
+        "check_email": "Un lien de confirmation vous a été envoyé par e-mail !"
+    },
+    "questions": {
+        "title": "Liste des questions",
+        "description": "Parcourez les questions sur les critères AGI et votez.",
+        "suggest_button": "Proposer une question",
+        "tabs": {
+            "index": "Questions de l'index",
+            "candidate": "Questions candidates"
+        },
+        "filter": {
+            "unvoted": "Non votées uniquement"
+        },
+        "sort": {
+            "newest": "Plus récentes",
+            "oldest": "Plus anciennes",
+            "most_voted": "Plus votées",
+            "least_voted": "Moins votées"
+        },
+        "category": {
+            "all": "Toutes",
+            "linguistic": "Linguistique",
+            "multimodal": "Multimodal"
+        },
+        "search_placeholder": "Rechercher des questions...",
+        "empty": {
+            "index": "Aucune question de l'index ne correspond à ces critères.",
+            "candidate": "Aucune question candidate ne correspond à ces critères."
+        }
+    },
+    "profile": {
+        "title": "Mon profil",
+        "sign_out": "Déconnexion",
+        "tabs": {
+            "votes": "Mes votes",
+            "questions": "Mes questions"
+        },
+        "empty": {
+            "votes": "Vous n'avez pas encore voté sur des questions.",
+            "browse": "Parcourir les questions",
+            "questions": "Vous n'avez pas encore proposé de questions.",
+            "suggest": "Proposer une question"
+        }
+    },
+    "question_card": {
+        "index_badge": "Question de l'index",
+        "consensus": "Consensus",
+        "achieved": "Atteint",
+        "not_yet": "Pas encore",
+        "suitable": "Appropriée",
+        "unsuitable": "Inappropriée",
+        "you_voted": "Votre vote :",
+        "edit": "Modifier",
+        "advanced_options": "Plus d'options",
+        "importance_weight": "Importance",
+        "weight": {
+            "low": "Faible",
+            "med": "Moyenne",
+            "high": "Élevée"
+        },
+        "why_unsuitable": "Pourquoi inappropriée ?",
+        "reasons": {
+            "too_broad": "Trop large",
+            "too_narrow": "Trop spécifique",
+            "duplicate": "Doublon",
+            "other": "Autre"
+        },
+        "specify_placeholder": "Veuillez préciser...",
+        "submit_vote": "Voter"
+    },
+    "suggest": {
+        "title": "Proposer une question",
+        "description": "Aidez-nous à construire de meilleurs benchmarks pour l'AGI en proposant des questions significatives.",
+        "guide": {
+            "title": "Comment écrire une bonne question",
+            "description": "Pas besoin de théories complexes. Pensez aux moments où vous vous êtes dit « Si l'IA ne peut pas faire ça, peut-on l'appeler intelligente ? »",
+            "good_title": "Bonne question",
+            "good_example": "« Peut-elle expliquer des directions en dessinant une carte ? »",
+            "bad_title": "Question difficile",
+            "bad_example": "« Le taux d'erreur est-il inférieur à 5% ? »",
+            "key_check_title": "Vérification clé",
+            "key_check_question": "« Si l'IA manque cette capacité... pourrais-je travailler avec elle ? Pourrais-je passer ma vie avec elle ? »",
+            "key_check_tip1": "Si « ce serait difficile », c'est une excellente question !",
+            "key_check_tip2": "Mieux si on peut répondre par « Oui » ou « Non » !"
+        },
+        "categories": {
+            "title": "Catégories",
+            "linguistic_title": "Linguistique",
+            "linguistic_desc": "Capacités qui peuvent être jugées uniquement par la conversation textuelle",
+            "multimodal_title": "Multimodal",
+            "multimodal_desc": "Toutes les capacités nécessitant son, expressions, images, actions, etc. au-delà du texte"
+        },
+        "form": {
+            "title": "Soumettre votre question",
+            "description": "Votre question sera examinée et ajoutée au vote public.",
+            "category_label": "Catégorie",
+            "linguistic_label": "Linguistique",
+            "linguistic_desc": "Capacités basées sur le texte uniquement",
+            "multimodal_label": "Multimodal",
+            "multimodal_desc": "Nécessite images, son, actions, etc.",
+            "question_label": "Votre question",
+            "question_placeholder": "Une IA peut-elle...?",
+            "question_hint": "Essayez de la formuler comme une question oui/non commençant par « Une IA peut-elle... »",
+            "submit_button": "Soumettre la question",
+            "submitted_button": "Question soumise !",
+            "success_message": "Merci ! Votre question sera examinée par la communauté."
+        }
+    }
+}

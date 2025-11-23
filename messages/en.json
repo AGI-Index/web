@@ -20,7 +20,8 @@
         "privacy": "Privacy Policy",
         "twitter": "X (Twitter)",
         "discord": "Discord",
-        "github": "GitHub"
+        "github": "GitHub",
+        "become_partner": "Become a Partner"
     },
     "common": {
         "loading": "Loading...",
@@ -33,7 +34,7 @@
     },
     "home": {
         "hero": {
-            "title": "The definition of Intelligence begins <br/> with the right Question.",
+            "title": "The definition of Intelligence begins with the right Question.",
             "subtitle": "A community-driven platform defining and tracking AGI milestones through collective intelligence.",
             "agi_level": "AGI Level",
             "linguistic": "Linguistic",
@@ -91,6 +92,17 @@
                 "title": "Track Progress",
                 "desc": "Watch as AI capabilities evolve and see how close we are to achieving true artificial general intelligence."
             }
+        },
+        "transparency": {
+            "title": "Transparency Note",
+            "content": "This project is initiated and funded by H1R.ai as a contribution to the open research community. We guarantee that the AGI Index will remain ad-free, independent, and its data will always be open to the public."
+        },
+        "coalition": {
+            "title": "A Call for Coalition",
+            "p1": "Defining AGI is a task too great for any single entity. We explicitly invite other AI labs, tech companies, and research foundations to join this initiative.",
+            "p2": "Whether through data contribution, computing sponsorship, or academic review—your participation makes this benchmark stronger.",
+            "closing": "The AGI Index is, and always will be, neutral ground.",
+            "cta": "Become a Partner"
         }
     },
     "login": {
@@ -174,5 +186,43 @@
         },
         "specify_placeholder": "Please specify...",
         "submit_vote": "Submit Vote"
+    },
+    "suggest": {
+        "title": "Suggest a Question",
+        "description": "Help us build better benchmarks for AGI by proposing meaningful questions.",
+        "guide": {
+            "title": "How to Write a Good Question",
+            "description": "We don't need complex theories. Think of moments when you thought \"If AI can't do this, can we call it intelligent?\"",
+            "good_title": "Good Question",
+            "good_example": "\"Can it explain directions by drawing on a map?\"",
+            "bad_title": "Difficult Question",
+            "bad_example": "\"Is the error rate below 5%?\"",
+            "key_check_title": "Key Check",
+            "key_check_question": "\"If AI lacks this ability... could I work with it? Could I spend my life with it?\"",
+            "key_check_tip1": "If \"it would be difficult\", that's a great question!",
+            "key_check_tip2": "Best if answerable with \"Yes\" or \"No\"!"
+        },
+        "categories": {
+            "title": "Categories",
+            "linguistic_title": "Linguistic",
+            "linguistic_desc": "Abilities that can be judged through text conversation only",
+            "multimodal_title": "Multimodal",
+            "multimodal_desc": "All abilities requiring sound, expressions, images, actions, etc. beyond text"
+        },
+        "form": {
+            "title": "Submit Your Question",
+            "description": "Your question will be reviewed and added to the public vote.",
+            "category_label": "Category",
+            "linguistic_label": "Linguistic",
+            "linguistic_desc": "Text-based abilities only",
+            "multimodal_label": "Multimodal",
+            "multimodal_desc": "Requires images, sound, actions, etc.",
+            "question_label": "Your Question",
+            "question_placeholder": "Can an AI...?",
+            "question_hint": "Try to phrase it as a yes/no question starting with \"Can an AI...\"",
+            "submit_button": "Submit Question",
+            "submitted_button": "Question Submitted!",
+            "success_message": "Thank you! Your question will be reviewed by the community."
+        }
     }
 }

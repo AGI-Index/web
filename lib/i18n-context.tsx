@@ -3,9 +3,16 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import en from '@/messages/en.json'
 import ko from '@/messages/ko.json'
+import ja from '@/messages/ja.json'
+import zh from '@/messages/zh.json'
+import es from '@/messages/es.json'
+import de from '@/messages/de.json'
+import fr from '@/messages/fr.json'
 
-type Language = 'en' | 'ko'
+type Language = 'en' | 'ko' | 'ja' | 'zh' | 'es' | 'de' | 'fr'
 type Translations = typeof en
+
+const SUPPORTED_LANGUAGES: Language[] = ['en', 'ko', 'ja', 'zh', 'es', 'de', 'fr']
 
 interface I18nContextType {
     language: Language
@@ -17,7 +24,12 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined)
 
 const translations: Record<Language, Translations> = {
     en,
-    ko
+    ko,
+    ja,
+    zh,
+    es,
+    de,
+    fr
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
@@ -25,7 +37,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
     useEffect(() => {
         const savedLang = localStorage.getItem('language') as Language
-        if (savedLang && (savedLang === 'en' || savedLang === 'ko')) {
+        if (savedLang && SUPPORTED_LANGUAGES.includes(savedLang)) {
             setLanguage(savedLang)
         }
     }, [])

@@ -1,0 +1,228 @@
+{
+    "nav": {
+        "manifesto": "宣言",
+        "questions": "问题",
+        "history": "历史",
+        "suggest": "提议问题",
+        "login": "登录",
+        "profile": "个人中心",
+        "logout": "退出"
+    },
+    "footer": {
+        "built_by": "制作",
+        "community": "AGI Index 社区",
+        "source_code": "源代码：",
+        "language": "语言",
+        "menu": "菜单",
+        "legal": "法律信息",
+        "social": "社交",
+        "terms": "服务条款",
+        "privacy": "隐私政策",
+        "twitter": "X (Twitter)",
+        "discord": "Discord",
+        "github": "GitHub",
+        "become_partner": "成为合作伙伴"
+    },
+    "common": {
+        "loading": "加载中...",
+        "error": "错误",
+        "submit": "提交",
+        "cancel": "取消",
+        "save": "保存",
+        "delete": "删除",
+        "edit": "编辑"
+    },
+    "home": {
+        "hero": {
+            "title": "智能的定义，始于正确的问题。",
+            "subtitle": "通过集体智慧定义和追踪AGI标准的社区平台",
+            "agi_level": "AGI 水平",
+            "linguistic": "语言",
+            "multimodal": "多模态",
+            "view_milestones": "查看全部问题",
+            "how_it_works": "参与方式"
+        },
+        "quick_vote": {
+            "title": "快速投票",
+            "description": "通过投票帮助我们共同定义AGI的标准。",
+            "refresh": "换一批问题"
+        },
+        "index_questions": {
+            "title": "指数问题",
+            "badge": "AGI 标准",
+            "empty": "暂无指数问题，快来参与投票吧！"
+        },
+        "candidate_questions": {
+            "title": "候选问题",
+            "badge": "审核中",
+            "empty": "暂无候选问题。"
+        },
+        "contribute_more": "参与更多投票"
+    },
+    "manifesto": {
+        "title": "宣言：照见自我的镜子",
+        "p1": "<strong>「什么是AGI？」</strong> 这可能是人类提出过的最复杂的问题。但矛盾的是，这个问题迫使我们回答一个更深刻的问题：<strong>「什么是人类？」</strong>",
+        "quote": "「如果给我一小时解决问题，我会用55分钟定义问题，5分钟解决它。」",
+        "quote_author": "— 阿尔伯特·爱因斯坦",
+        "p2": "几十年来，计算机科学家们一直在制造更快的芯片和更大的模型，只顾着最后的<strong>5分钟</strong>。他们把智能当作一个需要解决的计算问题。",
+        "p3": "<strong>但智能不是代码。</strong> 它是母亲安抚哭泣孩子的直觉，是作家创造比喻的机智，是我们在艰难抉择前的犹豫。",
+        "p4": "<strong>这就是为什么AGI的定义不能只交给实验室的工程师。</strong> 如果AGI要反映人类的智能，那么它的标准必须来自所有人，而不是少数人。",
+        "list": {
+            "item1": "不需要博士学位。",
+            "item2": "不需要会编程。",
+            "item3": "只需要作为一个活生生的人的经验。"
+        },
+        "p5": "<strong>AGI INDEX是我们找回「55分钟」的地方。</strong> 艺术家、教师、父母、哲学家与工程师并肩站立的地方。我们不是在测量机器，而是在描绘人性的边界。",
+        "closing": "来吧，让我们一起定义自己。",
+        "how_it_works": {
+            "title": "参与方式",
+            "step1": {
+                "title": "提议问题",
+                "desc": "任何人都可以提议用于判断AI是否在特定领域达到人类水平智能的问题。"
+            },
+            "step2": {
+                "title": "社区投票",
+                "desc": "社区投票决定问题的适当性以及当前AI是否已达成。"
+            },
+            "step3": {
+                "title": "收录指数",
+                "desc": "获得足够共识的问题将被收录到AGI Index，成为活的基准。"
+            },
+            "step4": {
+                "title": "追踪进展",
+                "desc": "关注AI能力的发展，了解我们距离真正的AGI还有多远。"
+            }
+        },
+        "transparency": {
+            "title": "透明声明",
+            "content": "本项目由H1R.ai发起并资助，旨在为开放研究社区做出贡献。我们承诺AGI Index将保持无广告、独立运营，所有数据始终公开。"
+        },
+        "coalition": {
+            "title": "联盟邀请",
+            "p1": "定义AGI是任何单一实体都无法独自完成的任务。我们正式邀请其他AI实验室、科技公司和研究基金会加入这一倡议。",
+            "p2": "无论是数据贡献、算力赞助还是学术评审，您的参与都将使这一基准更加强大。",
+            "closing": "AGI Index将永远是中立的平台。",
+            "cta": "成为合作伙伴"
+        }
+    },
+    "login": {
+        "title_signup": "创建账户",
+        "title_signin": "登录",
+        "desc_signup": "输入邮箱创建账户",
+        "desc_signin": "输入邮箱登录",
+        "or_continue": "或者",
+        "email": "邮箱",
+        "password": "密码",
+        "submit_signup": "注册",
+        "submit_signin": "登录",
+        "toggle_signup": "没有账户？注册",
+        "toggle_signin": "已有账户？登录",
+        "check_email": "确认链接已发送到您的邮箱！"
+    },
+    "questions": {
+        "title": "问题列表",
+        "description": "浏览AGI标准问题并参与投票。",
+        "suggest_button": "提议问题",
+        "tabs": {
+            "index": "指数问题",
+            "candidate": "候选问题"
+        },
+        "filter": {
+            "unvoted": "仅显示未投票"
+        },
+        "sort": {
+            "newest": "最新",
+            "oldest": "最早",
+            "most_voted": "投票最多",
+            "least_voted": "投票最少"
+        },
+        "category": {
+            "all": "全部",
+            "linguistic": "语言",
+            "multimodal": "多模态"
+        },
+        "search_placeholder": "搜索问题...",
+        "empty": {
+            "index": "没有找到符合条件的指数问题。",
+            "candidate": "没有找到符合条件的候选问题。"
+        }
+    },
+    "profile": {
+        "title": "我的主页",
+        "sign_out": "退出登录",
+        "tabs": {
+            "votes": "我的投票",
+            "questions": "我的问题"
+        },
+        "empty": {
+            "votes": "您还没有投票过任何问题。",
+            "browse": "浏览问题",
+            "questions": "您还没有提议过问题。",
+            "suggest": "提议问题"
+        }
+    },
+    "question_card": {
+        "index_badge": "指数问题",
+        "consensus": "共识",
+        "achieved": "已达成",
+        "not_yet": "未达成",
+        "suitable": "适合",
+        "unsuitable": "不适合",
+        "you_voted": "我的投票：",
+        "edit": "编辑",
+        "advanced_options": "更多选项",
+        "importance_weight": "重要程度",
+        "weight": {
+            "low": "低",
+            "med": "中",
+            "high": "高"
+        },
+        "why_unsuitable": "不适合的原因",
+        "reasons": {
+            "too_broad": "范围太广",
+            "too_narrow": "范围太窄",
+            "duplicate": "重复",
+            "other": "其他"
+        },
+        "specify_placeholder": "请说明原因...",
+        "submit_vote": "提交投票"
+    },
+    "suggest": {
+        "title": "提出问题",
+        "description": "提出有意义的问题，帮助我们构建更好的AGI基准。",
+        "guide": {
+            "title": "如何写出好问题",
+            "description": "不需要复杂的理论。想想那些让你觉得「如果AI连这个都做不到，能叫智能吗？」的时刻。",
+            "good_title": "好问题",
+            "good_example": "「它能通过画地图来解释方向吗？」",
+            "bad_title": "困难的问题",
+            "bad_example": "「错误率低于5%吗？」",
+            "key_check_title": "关键检查",
+            "key_check_question": "「如果AI缺少这种能力...我能和它一起工作吗？能和它共度一生吗？」",
+            "key_check_tip1": "如果「会很困难」，那就是一个很好的问题！",
+            "key_check_tip2": "如果能用「是」或「否」回答就更好！"
+        },
+        "categories": {
+            "title": "类别",
+            "linguistic_title": "语言",
+            "linguistic_desc": "仅通过文字对话就能判断的能力",
+            "multimodal_title": "多模态",
+            "multimodal_desc": "需要文字以外的声音、表情、图像、动作等的所有能力"
+        },
+        "form": {
+            "title": "提交您的问题",
+            "description": "您的问题将经过审核后添加到公开投票中。",
+            "category_label": "类别",
+            "linguistic_label": "语言",
+            "linguistic_desc": "仅基于文本的能力",
+            "multimodal_label": "多模态",
+            "multimodal_desc": "需要图像、声音、动作等",
+            "question_label": "您的问题",
+            "question_placeholder": "AI能否...？",
+            "question_hint": "尝试使用「AI能否...？」的形式，可以用是/否回答的问题最好",
+            "submit_button": "提交问题",
+            "submitted_button": "提交成功！",
+            "success_message": "谢谢！您的问题将由社区审核。"
+        }
+    }
+}

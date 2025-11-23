@@ -7,8 +7,10 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Lightbulb, CheckCircle2 } from "lucide-react"
+import { useI18n } from "@/lib/i18n-context"
 
 export default function SuggestPage() {
+    const { t } = useI18n()
     const [category, setCategory] = useState<string>("")
     const [question, setQuestion] = useState<string>("")
     const [submitted, setSubmitted] = useState(false)
@@ -30,9 +32,9 @@ export default function SuggestPage() {
     return (
         <div className="container mx-auto px-4 py-8 max-w-7xl">
             <div className="mb-8">
-                <h1 className="text-3xl md:text-4xl font-bold mb-3">Suggest a Question</h1>
+                <h1 className="text-3xl md:text-4xl font-bold mb-3">{t('suggest.title')}</h1>
                 <p className="text-muted-foreground text-lg">
-                    Help us build better benchmarks for AGI by proposing meaningful questions.
+                    {t('suggest.description')}
                 </p>
             </div>
 
@@ -42,53 +44,53 @@ export default function SuggestPage() {
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                             <Lightbulb className="w-5 h-5 text-primary" />
-                            How to Write a Good Question
+                            {t('suggest.guide.title')}
                         </CardTitle>
                         <CardDescription>
-                            We don't need complex theories. Think of moments when you thought "If AI can't do this, can we call it intelligent?"
+                            {t('suggest.guide.description')}
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <div>
-                            <h3 className="font-semibold mb-2 text-green-700 dark:text-green-400">✓ Good Question</h3>
+                            <h3 className="font-semibold mb-2 text-green-700 dark:text-green-400">✓ {t('suggest.guide.good_title')}</h3>
                             <p className="text-sm bg-green-50 dark:bg-green-950/20 p-3 rounded-md border border-green-200 dark:border-green-900">
-                                "Can it explain directions by drawing on a map?"
+                                {t('suggest.guide.good_example')}
                             </p>
                         </div>
 
                         <div>
-                            <h3 className="font-semibold mb-2 text-red-700 dark:text-red-400">✗ Difficult Question</h3>
+                            <h3 className="font-semibold mb-2 text-red-700 dark:text-red-400">✗ {t('suggest.guide.bad_title')}</h3>
                             <p className="text-sm bg-red-50 dark:bg-red-950/20 p-3 rounded-md border border-red-200 dark:border-red-900">
-                                "Is the error rate below 5%?"
+                                {t('suggest.guide.bad_example')}
                             </p>
                         </div>
 
                         <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
                             <h3 className="font-semibold mb-2 flex items-center gap-2">
-                                ⭐ Key Check
+                                ⭐ {t('suggest.guide.key_check_title')}
                             </h3>
                             <p className="text-sm mb-2">
-                                "If AI lacks this ability... could I work with it? Could I spend my life with it?"
+                                {t('suggest.guide.key_check_question')}
                             </p>
                             <ul className="text-sm space-y-1 ml-4">
-                                <li>→ If "it would be difficult", that's a great question!</li>
-                                <li>→ Best if answerable with "Yes" or "No"!</li>
+                                <li>→ {t('suggest.guide.key_check_tip1')}</li>
+                                <li>→ {t('suggest.guide.key_check_tip2')}</li>
                             </ul>
                         </div>
 
                         <div className="space-y-3 pt-2 border-t">
-                            <h3 className="font-semibold">Categories</h3>
+                            <h3 className="font-semibold">{t('suggest.categories.title')}</h3>
                             <div className="space-y-2">
                                 <div className="p-3 bg-blue-50 dark:bg-blue-950/20 rounded-md border border-blue-200 dark:border-blue-900">
-                                    <h4 className="font-medium text-sm mb-1">Linguistic</h4>
+                                    <h4 className="font-medium text-sm mb-1">{t('suggest.categories.linguistic_title')}</h4>
                                     <p className="text-xs text-muted-foreground">
-                                        Abilities that can be judged through text conversation only
+                                        {t('suggest.categories.linguistic_desc')}
                                     </p>
                                 </div>
                                 <div className="p-3 bg-purple-50 dark:bg-purple-950/20 rounded-md border border-purple-200 dark:border-purple-900">
-                                    <h4 className="font-medium text-sm mb-1">Multimodal</h4>
+                                    <h4 className="font-medium text-sm mb-1">{t('suggest.categories.multimodal_title')}</h4>
                                     <p className="text-xs text-muted-foreground">
-                                        All abilities requiring sound, expressions, images, actions, etc. beyond text
+                                        {t('suggest.categories.multimodal_desc')}
                                     </p>
                                 </div>
                             </div>
@@ -99,35 +101,35 @@ export default function SuggestPage() {
                 {/* Form Section */}
                 <Card>
                     <CardHeader>
-                        <CardTitle>Submit Your Question</CardTitle>
+                        <CardTitle>{t('suggest.form.title')}</CardTitle>
                         <CardDescription>
-                            Your question will be reviewed and added to the public vote.
+                            {t('suggest.form.description')}
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="space-y-3">
-                                <Label>Category *</Label>
+                                <Label>{t('suggest.form.category_label')} *</Label>
                                 <RadioGroup value={category} onValueChange={setCategory}>
                                     <div className="flex items-start space-x-3 p-3 rounded-lg border hover:bg-accent transition-colors">
-                                        <RadioGroupItem value="Linguistic" id="linguistic" className="mt-0.5" />
+                                        <RadioGroupItem value="linguistic" id="linguistic" className="mt-0.5" />
                                         <div className="flex-1">
                                             <Label htmlFor="linguistic" className="font-medium cursor-pointer">
-                                                Linguistic
+                                                {t('suggest.form.linguistic_label')}
                                             </Label>
                                             <p className="text-xs text-muted-foreground mt-1">
-                                                Text-based abilities only
+                                                {t('suggest.form.linguistic_desc')}
                                             </p>
                                         </div>
                                     </div>
                                     <div className="flex items-start space-x-3 p-3 rounded-lg border hover:bg-accent transition-colors">
-                                        <RadioGroupItem value="Multimodal" id="multimodal" className="mt-0.5" />
+                                        <RadioGroupItem value="multimodal" id="multimodal" className="mt-0.5" />
                                         <div className="flex-1">
                                             <Label htmlFor="multimodal" className="font-medium cursor-pointer">
-                                                Multimodal
+                                                {t('suggest.form.multimodal_label')}
                                             </Label>
                                             <p className="text-xs text-muted-foreground mt-1">
-                                                Requires images, sound, actions, etc.
+                                                {t('suggest.form.multimodal_desc')}
                                             </p>
                                         </div>
                                     </div>
@@ -135,17 +137,17 @@ export default function SuggestPage() {
                             </div>
 
                             <div className="space-y-3">
-                                <Label htmlFor="question">Your Question *</Label>
+                                <Label htmlFor="question">{t('suggest.form.question_label')} *</Label>
                                 <Textarea
                                     id="question"
                                     value={question}
                                     onChange={(e) => setQuestion(e.target.value)}
-                                    placeholder="Can an AI...?"
+                                    placeholder={t('suggest.form.question_placeholder')}
                                     className="min-h-[120px] resize-none"
                                     required
                                 />
                                 <p className="text-xs text-muted-foreground">
-                                    Try to phrase it as a yes/no question starting with "Can an AI..."
+                                    {t('suggest.form.question_hint')}
                                 </p>
                             </div>
 
@@ -157,16 +159,16 @@ export default function SuggestPage() {
                                 {submitted ? (
                                     <>
                                         <CheckCircle2 className="w-4 h-4 mr-2" />
-                                        Question Submitted!
+                                        {t('suggest.form.submitted_button')}
                                     </>
                                 ) : (
-                                    "Submit Question"
+                                    t('suggest.form.submit_button')
                                 )}
                             </Button>
 
                             {submitted && (
                                 <p className="text-sm text-center text-green-600 dark:text-green-400 animate-in fade-in">
-                                    Thank you! Your question will be reviewed by the community.
+                                    {t('suggest.form.success_message')}
                                 </p>
                             )}
                         </form>

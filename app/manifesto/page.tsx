@@ -2,6 +2,9 @@
 
 import { Trans } from "@/components/ui/trans"
 import { useI18n } from "@/lib/i18n-context"
+import { Info, Users } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function ManifestoPage() {
     const { t } = useI18n()
@@ -67,7 +70,7 @@ export default function ManifestoPage() {
                 </section>
 
                 {/* How It Works Section */}
-                <section className="space-y-6 pt-8 border-t">
+                <section id="how-it-works" className="space-y-6 pt-8 border-t">
                     <h2 className="text-3xl font-bold tracking-tight">{t('manifesto.how_it_works.title')}</h2>
 
                     <div className="grid gap-8 md:grid-cols-2">
@@ -116,6 +119,45 @@ export default function ManifestoPage() {
                             </div>
                             <p className="text-muted-foreground ml-13">
                                 {t('manifesto.how_it_works.step4.desc')}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Call for Coalition */}
+                <section className="pt-8 border-t">
+                    <div className="p-8 rounded-xl bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 border border-primary/20">
+                        <div className="flex items-start gap-4">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 shrink-0">
+                                <Users className="h-6 w-6 text-primary" />
+                            </div>
+                            <div className="space-y-4">
+                                <h2 className="text-2xl font-bold tracking-tight">{t('manifesto.coalition.title')}</h2>
+                                <div className="space-y-3 text-muted-foreground">
+                                    <p>{t('manifesto.coalition.p1')}</p>
+                                    <p>{t('manifesto.coalition.p2')}</p>
+                                </div>
+                                <p className="font-semibold text-foreground italic">
+                                    {t('manifesto.coalition.closing')}
+                                </p>
+                                <Button asChild className="mt-2">
+                                    <Link href="mailto:partner@agiindex.org">
+                                        {t('manifesto.coalition.cta')}
+                                    </Link>
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Transparency Note */}
+                <section className="pt-8 border-t">
+                    <div className="flex gap-4 p-6 rounded-lg bg-muted/50 border">
+                        <Info className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                        <div className="space-y-1">
+                            <h3 className="font-semibold text-sm">{t('manifesto.transparency.title')}</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                {t('manifesto.transparency.content')}
                             </p>
                         </div>
                     </div>

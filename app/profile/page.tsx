@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -13,12 +13,19 @@ import { Badge } from "@/components/ui/badge"
 import { ProfileListSkeleton } from "@/components/ui/loading-skeletons"
 import { useI18n } from "@/lib/i18n-context"
 
+interface Translation {
+    question_id: number
+    lang_code: string
+    content: string
+}
+
 export default function ProfilePage() {
     const { user, signOut } = useAuth()
-    const { t } = useI18n()
+    const { t, language } = useI18n()
     const router = useRouter()
     const [votedQuestions, setVotedQuestions] = useState<any[]>([])
     const [authoredQuestions, setAuthoredQuestions] = useState<any[]>([])
+    const [translations, setTranslations] = useState<Translation[]>([])
     const [expandedVotes, setExpandedVotes] = useState<Set<number>>(new Set())
     const [expandedAuthored, setExpandedAuthored] = useState<Set<number>>(new Set())
     const [loading, setLoading] = useState(true)
@@ -57,11 +64,24 @@ export default function ProfilePage() {
                 setAuthoredQuestions(authored)
             }
 
+            // Fetch translations for current language (skip if English)
+            if (language !== 'en') {
+                const { data: transData } = await supabase
+                    .from('question_translations')
+                    .select('question_id, lang_code, content')
+                    .eq('lang_code', language)
+                if (transData) {
+                    setTranslations(transData)
+                }
+            } else {
+                setTranslations([])
+            }
+
             setLoading(false)
         }
 
         fetchUserData()
-    }, [user, router])
+    }, [user, router, language])
 
     const toggleVoteExpand = (id: number) => {
         const newExpanded = new Set(expandedVotes)
@@ -95,6 +115,28 @@ export default function ProfilePage() {
         return "bg-secondary text-secondary-foreground"
     }
 
+    // Create translation map for efficient lookup
+    const translationMap = useMemo(() => {
+        const map = new Map<number, string>()
+        translations.forEach(t => map.set(t.question_id, t.content))
+        return map
+    }, [translations])
+
+    // Apply translations to questions
+    const translatedVotedQuestions = useMemo(() => {
+        return votedQuestions.map(q => ({
+            ...q,
+            content: translationMap.get(q.id) || q.content
+        }))
+    }, [votedQuestions, translationMap])
+
+    const translatedAuthoredQuestions = useMemo(() => {
+        return authoredQuestions.map(q => ({
+            ...q,
+            content: translationMap.get(q.id) || q.content
+        }))
+    }, [authoredQuestions, translationMap])
+
     if (!user) {
         return null
     }
@@ -118,9 +160,9 @@ export default function ProfilePage() {
                 <TabsContent value="votes" className="space-y-2">
                     {loading ? (
                         <ProfileListSkeleton />
-                    ) : votedQuestions.length > 0 ? (
+                    ) : translatedVotedQuestions.length > 0 ? (
                         <div className="space-y-2">
-                            {votedQuestions.map((question) => (
+                            {translatedVotedQuestions.map((question) => (
                                 <div key={question.id} className="border rounded-lg overflow-hidden">
                                     <button
                                         onClick={() => toggleVoteExpand(question.id)}
@@ -164,9 +206,9 @@ export default function ProfilePage() {
                 <TabsContent value="questions" className="space-y-2">
                     {loading ? (
                         <ProfileListSkeleton />
-                    ) : authoredQuestions.length > 0 ? (
+                    ) : translatedAuthoredQuestions.length > 0 ? (
                         <div className="space-y-2">
-                            {authoredQuestions.map((question) => (
+                            {translatedAuthoredQuestions.map((question) => (
                                 <div key={question.id} className="border rounded-lg overflow-hidden">
                                     <button
                                         onClick={() => toggleAuthoredExpand(question.id)}

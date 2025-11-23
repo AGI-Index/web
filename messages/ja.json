@@ -1,0 +1,228 @@
+{
+    "nav": {
+        "manifesto": "マニフェスト",
+        "questions": "質問",
+        "history": "履歴",
+        "suggest": "質問を提案",
+        "login": "ログイン",
+        "profile": "プロフィール",
+        "logout": "ログアウト"
+    },
+    "footer": {
+        "built_by": "制作",
+        "community": "AGI Index コミュニティ",
+        "source_code": "ソースコード:",
+        "language": "言語",
+        "menu": "メニュー",
+        "legal": "法的情報",
+        "social": "ソーシャル",
+        "terms": "利用規約",
+        "privacy": "プライバシーポリシー",
+        "twitter": "X (Twitter)",
+        "discord": "Discord",
+        "github": "GitHub",
+        "become_partner": "パートナーになる"
+    },
+    "common": {
+        "loading": "読み込み中...",
+        "error": "エラー",
+        "submit": "送信",
+        "cancel": "キャンセル",
+        "save": "保存",
+        "delete": "削除",
+        "edit": "編集"
+    },
+    "home": {
+        "hero": {
+            "title": "知能の定義は、正しい問いから始まる。",
+            "subtitle": "集合知でAGIの基準を定義し追跡するコミュニティプラットフォーム",
+            "agi_level": "AGIレベル",
+            "linguistic": "言語",
+            "multimodal": "マルチモーダル",
+            "view_milestones": "全ての質問を見る",
+            "how_it_works": "参加方法"
+        },
+        "quick_vote": {
+            "title": "クイック投票",
+            "description": "質問に投票してAGIの基準を一緒に定義しましょう。",
+            "refresh": "新しい質問"
+        },
+        "index_questions": {
+            "title": "インデックス質問",
+            "badge": "AGI基準",
+            "empty": "まだインデックス質問がありません。投票に参加してください！"
+        },
+        "candidate_questions": {
+            "title": "候補質問",
+            "badge": "審査中",
+            "empty": "まだ候補質問がありません。"
+        },
+        "contribute_more": "もっと投票する"
+    },
+    "manifesto": {
+        "title": "マニフェスト：私たち自身を映す鏡",
+        "p1": "<strong>「AGIとは何か？」</strong> おそらく人類が投げかけた最も複雑な問いでしょう。しかし逆説的に、この問いは私たちにより深い問いを投げかけます：<strong>「人間とは何か？」</strong>",
+        "quote": "「問題解決に1時間与えられたら、55分を問題の定義に、残り5分を解決に使う。」",
+        "quote_author": "— アルバート・アインシュタイン",
+        "p2": "数十年間、コンピュータ科学者たちはより速いチップとより大きなモデルを作りながら、最後の<strong>5分</strong>だけに向かって走ってきました。知能を単なる計算問題として扱いながら。",
+        "p3": "<strong>しかし知能はコードではありません。</strong> 泣く子をあやす母親の直感であり、比喩を生み出す作家の機知であり、難しい選択の前で感じる躊躇いです。",
+        "p4": "<strong>AGIの定義を研究室のエンジニアだけに任せられない理由です。</strong> AGIが人間の知能を反映するなら、その基準は少数ではなく全ての人から生まれるべきです。",
+        "list": {
+            "item1": "博士号は必要ありません。",
+            "item2": "コーディングを知らなくても大丈夫です。",
+            "item3": "生きている人間としての経験があれば十分です。"
+        },
+        "p5": "<strong>AGI INDEXは失われた「55分」を取り戻す場所です。</strong> アーティスト、教師、親、哲学者がエンジニアと共に立つ場所です。私たちは機械を測定しているのではなく、人間らしさの境界を描いています。",
+        "closing": "一緒に私たち自身を定義しましょう。",
+        "how_it_works": {
+            "title": "参加方法",
+            "step1": {
+                "title": "質問を提案",
+                "desc": "誰でもAIが特定の領域で人間レベルの知能に達したかを判断する質問を提案できます。"
+            },
+            "step2": {
+                "title": "コミュニティ投票",
+                "desc": "コミュニティが質問の適切性と現在のAIの達成状況を投票で決定します。"
+            },
+            "step3": {
+                "title": "インデックス登録",
+                "desc": "十分な合意を得た質問はAGI Indexに登録され、生きたベンチマークになります。"
+            },
+            "step4": {
+                "title": "進捗を追跡",
+                "desc": "AI能力の発展を見守り、真のAGIにどれだけ近づいたか確認してください。"
+            }
+        },
+        "transparency": {
+            "title": "透明性に関するお知らせ",
+            "content": "このプロジェクトはH1R.aiがオープンリサーチコミュニティへの貢献として開始・支援しています。AGI Indexは広告なしで独立して運営され、全てのデータは常に公開されます。"
+        },
+        "coalition": {
+            "title": "連合への呼びかけ",
+            "p1": "AGIを定義することは、単一の組織には大きすぎる課題です。他のAI研究所、テック企業、研究財団の参加を正式にお招きします。",
+            "p2": "データ提供、コンピューティング支援、学術レビューなど、どのような形でも皆様の参加がこのベンチマークをより強固なものにします。",
+            "closing": "AGI Indexは今後も中立的な場であり続けます。",
+            "cta": "パートナーになる"
+        }
+    },
+    "login": {
+        "title_signup": "アカウント作成",
+        "title_signin": "ログイン",
+        "desc_signup": "メールアドレスを入力してアカウントを作成",
+        "desc_signin": "メールアドレスを入力してログイン",
+        "or_continue": "または",
+        "email": "メールアドレス",
+        "password": "パスワード",
+        "submit_signup": "登録",
+        "submit_signin": "ログイン",
+        "toggle_signup": "アカウントをお持ちでないですか？登録",
+        "toggle_signin": "すでにアカウントをお持ちですか？ログイン",
+        "check_email": "確認リンクをメールで送信しました！"
+    },
+    "questions": {
+        "title": "質問一覧",
+        "description": "AGI基準の質問を閲覧して投票してください。",
+        "suggest_button": "質問を提案",
+        "tabs": {
+            "index": "インデックス質問",
+            "candidate": "候補質問"
+        },
+        "filter": {
+            "unvoted": "未投票のみ"
+        },
+        "sort": {
+            "newest": "新しい順",
+            "oldest": "古い順",
+            "most_voted": "投票多い順",
+            "least_voted": "投票少ない順"
+        },
+        "category": {
+            "all": "全て",
+            "linguistic": "言語",
+            "multimodal": "マルチモーダル"
+        },
+        "search_placeholder": "質問を検索...",
+        "empty": {
+            "index": "条件に合うインデックス質問がありません。",
+            "candidate": "条件に合う候補質問がありません。"
+        }
+    },
+    "profile": {
+        "title": "マイプロフィール",
+        "sign_out": "ログアウト",
+        "tabs": {
+            "votes": "投票履歴",
+            "questions": "提案した質問"
+        },
+        "empty": {
+            "votes": "まだ投票した質問がありません。",
+            "browse": "質問を見る",
+            "questions": "まだ提案した質問がありません。",
+            "suggest": "質問を提案する"
+        }
+    },
+    "question_card": {
+        "index_badge": "インデックス質問",
+        "consensus": "合意",
+        "achieved": "達成",
+        "not_yet": "未達成",
+        "suitable": "適切",
+        "unsuitable": "不適切",
+        "you_voted": "投票済み:",
+        "edit": "編集",
+        "advanced_options": "追加オプション",
+        "importance_weight": "重要度",
+        "weight": {
+            "low": "低",
+            "med": "中",
+            "high": "高"
+        },
+        "why_unsuitable": "不適切な理由",
+        "reasons": {
+            "too_broad": "範囲が広すぎる",
+            "too_narrow": "範囲が狭すぎる",
+            "duplicate": "重複",
+            "other": "その他"
+        },
+        "specify_placeholder": "理由を入力してください...",
+        "submit_vote": "投票する"
+    },
+    "suggest": {
+        "title": "質問を提案する",
+        "description": "意味のある質問を提案して、より良いAGIベンチマークを一緒に作りましょう。",
+        "guide": {
+            "title": "良い質問の書き方",
+            "description": "複雑な理論は必要ありません。「AIがこれもできないなら、知能と言えるだろうか？」と思った瞬間を思い出してください。",
+            "good_title": "良い質問",
+            "good_example": "「地図を描いて道を説明できるか？」",
+            "bad_title": "難しい質問",
+            "bad_example": "「エラー率は5%未満か？」",
+            "key_check_title": "重要チェック",
+            "key_check_question": "「AIにこの能力がなければ...一緒に働けるか？一生を共にできるか？」",
+            "key_check_tip1": "「難しそう」なら、素晴らしい質問です！",
+            "key_check_tip2": "「はい」か「いいえ」で答えられると最高！"
+        },
+        "categories": {
+            "title": "カテゴリー",
+            "linguistic_title": "言語",
+            "linguistic_desc": "テキスト会話だけで判断できる能力",
+            "multimodal_title": "マルチモーダル",
+            "multimodal_desc": "テキスト以外に音声、表情、画像、行動などが必要なすべての能力"
+        },
+        "form": {
+            "title": "質問を提出",
+            "description": "提出された質問は審査後、公開投票に追加されます。",
+            "category_label": "カテゴリー",
+            "linguistic_label": "言語",
+            "linguistic_desc": "テキストベースの能力のみ",
+            "multimodal_label": "マルチモーダル",
+            "multimodal_desc": "画像、音声、行動などが必要",
+            "question_label": "質問",
+            "question_placeholder": "AIは...できるか？",
+            "question_hint": "「AIは...できるか？」の形式で、はい/いいえで答えられる質問が良いです",
+            "submit_button": "質問を提出",
+            "submitted_button": "提出完了！",
+            "success_message": "ありがとうございます！質問はコミュニティで審査されます。"
+        }
+    }
+}

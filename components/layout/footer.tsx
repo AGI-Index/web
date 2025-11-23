@@ -39,6 +39,11 @@ export function Footer() {
                                     {t('nav.history')}
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="mailto:partner@agiindex.org" className="hover:text-foreground transition-colors text-primary font-medium">
+                                    {t('footer.become_partner')}
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
@@ -71,10 +76,15 @@ export function Footer() {
                             <select
                                 className="h-9 w-full md:w-[140px] rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                                 value={language}
-                                onChange={(e) => setLanguage(e.target.value as 'en' | 'ko')}
+                                onChange={(e) => setLanguage(e.target.value as 'en' | 'ko' | 'ja' | 'zh' | 'es' | 'de' | 'fr')}
                             >
                                 <option value="en">English</option>
                                 <option value="ko">한국어</option>
+                                <option value="ja">日本語</option>
+                                <option value="zh">中文</option>
+                                <option value="es">Español</option>
+                                <option value="de">Deutsch</option>
+                                <option value="fr">Français</option>
                             </select>
                         </div>
                     </div>
@@ -82,7 +92,7 @@ export function Footer() {
 
                 <div className="border-t mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
                     <p>
-                        © 2024 {t('footer.community')}. {t('footer.built_by')} <a href="https://github.com/yourusername/agiindex" className="underline underline-offset-4 hover:text-foreground">AGI Index Community</a>.
+                        © 2025 {t('footer.community')}. {t('footer.built_by')} <a href="https://github.com/yourusername/agiindex" className="underline underline-offset-4 hover:text-foreground">AGI Index Community</a>.
                     </p>
                     <div className="flex gap-6">
                         <Link href="/terms" className="hover:text-foreground transition-colors">{t('footer.terms')}</Link>
