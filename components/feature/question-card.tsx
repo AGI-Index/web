@@ -60,12 +60,13 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 .single()
 
             if (data) {
-                setUserVote(data)
+                const voteData = data as any
+                setUserVote(voteData)
                 if (isEditMode) {
-                    setSelectedSuitable(data.is_suitable)
-                    setSelectedAchieved(data.is_achieved)
-                    setSelectedWeight(data.weight)
-                    setUnsuitableReason(data.unsuitable_reason)
+                    setSelectedSuitable(voteData.is_suitable)
+                    setSelectedAchieved(voteData.is_achieved)
+                    setSelectedWeight(voteData.weight)
+                    setUnsuitableReason(voteData.unsuitable_reason)
                 }
             }
         }

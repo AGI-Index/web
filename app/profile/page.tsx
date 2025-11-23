@@ -36,6 +36,8 @@ export default function ProfilePage() {
             return
         }
 
+        const currentUser = user
+
         async function fetchUserData() {
             setLoading(true)
 
@@ -46,18 +48,18 @@ export default function ProfilePage() {
                     *,
                     questions (*)
                 `)
-                .eq('user_id', user.id)
+                .eq('user_id', currentUser.id)
                 .order('updated_at', { ascending: false })
 
             if (votes) {
-                setVotedQuestions(votes.filter(v => v.questions).map(v => v.questions))
+                setVotedQuestions((votes as any[]).filter(v => v.questions).map(v => v.questions))
             }
 
             // Fetch user's authored questions
             const { data: authored } = await supabase
                 .from('questions')
                 .select('*')
-                .eq('author_id', user.id)
+                .eq('author_id', currentUser.id)
                 .order('created_at', { ascending: false })
 
             if (authored) {

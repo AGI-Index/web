@@ -48,10 +48,11 @@ export default function Home() {
       .single()
 
     if (statsData) {
+      const stats = statsData as { overall_rate: number; linguistic_rate: number; multimodal_rate: number }
       setAgiStats({
-        overall: Math.round(statsData.overall_rate || 0),
-        linguistic: Math.round(statsData.linguistic_rate || 0),
-        multimodal: Math.round(statsData.multimodal_rate || 0)
+        overall: Math.round(stats.overall_rate || 0),
+        linguistic: Math.round(stats.linguistic_rate || 0),
+        multimodal: Math.round(stats.multimodal_rate || 0)
       })
     }
 

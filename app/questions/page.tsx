@@ -42,7 +42,7 @@ export default function QuestionsPage() {
                 .eq('user_id', user.id)
 
             if (data) {
-                setUserVotes(new Set(data.map(v => v.question_id)))
+                setUserVotes(new Set((data as any[]).map(v => v.question_id)))
             }
         }
 
