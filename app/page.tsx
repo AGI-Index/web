@@ -121,7 +121,7 @@ export default function Home() {
           <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 mb-6">
             AGI Index Beta
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 max-w-5xl">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 max-w-6xl">
             <Trans
               i18nKey="home.hero.title"
               components={{

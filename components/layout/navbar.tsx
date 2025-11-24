@@ -4,14 +4,14 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { User, LogOut, Menu, X } from "lucide-react"
+import { User, LogOut, Menu, X, Globe } from "lucide-react"
 import { useAuth } from "@/lib/auth-context"
 import { cn } from "@/lib/utils"
 import { useI18n } from "@/lib/i18n-context"
 
 export function Navbar() {
     const { user, signOut, loading } = useAuth()
-    const { t } = useI18n()
+    const { t, language, setLanguage } = useI18n()
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
@@ -40,6 +40,24 @@ export function Navbar() {
 
                 {/* Desktop Auth Buttons */}
                 <div className="hidden md:flex items-center gap-2">
+                    {/* Language Selector */}
+                    <div className="relative">
+                        <select
+                            className="h-9 w-[100px] rounded-md border border-input bg-background pl-7 pr-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring appearance-none cursor-pointer"
+                            value={language}
+                            onChange={(e) => setLanguage(e.target.value as 'en' | 'ko' | 'ja' | 'zh' | 'es' | 'de' | 'fr')}
+                        >
+                            <option value="en">English</option>
+                            <option value="ko">한국어</option>
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                            <option value="es">Español</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                        </select>
+                        <Globe className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                    </div>
+
                     {loading ? (
                         <div className="h-9 w-20 bg-secondary animate-pulse rounded-md" />
                     ) : user ? (
@@ -138,6 +156,26 @@ export function Navbar() {
                                 </button>
                             </>
                         )}
+
+                        {/* Mobile Language Selector */}
+                        <div className="border-t pt-3 mt-2">
+                            <div className="flex items-center gap-2">
+                                <Globe className="h-4 w-4 text-muted-foreground" />
+                                <select
+                                    className="h-9 flex-1 rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                                    value={language}
+                                    onChange={(e) => setLanguage(e.target.value as 'en' | 'ko' | 'ja' | 'zh' | 'es' | 'de' | 'fr')}
+                                >
+                                    <option value="en">English</option>
+                                    <option value="ko">한국어</option>
+                                    <option value="ja">日本語</option>
+                                    <option value="zh">中文</option>
+                                    <option value="es">Español</option>
+                                    <option value="de">Deutsch</option>
+                                    <option value="fr">Français</option>
+                                </select>
+                            </div>
+                        </div>
                     </nav>
                 </div>
             )}
