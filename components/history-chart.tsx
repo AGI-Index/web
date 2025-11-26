@@ -206,7 +206,7 @@ export function HistoryChart() {
                                         type="monotone"
                                         dataKey="overall_rate"
                                         name={t('history.chart.overall')}
-                                        stroke="hsl(var(--primary))"
+                                        stroke="#f97316"
                                         strokeWidth={2}
                                         dot={{ r: 4 }}
                                         hide={!visibleLines.overall_rate}
