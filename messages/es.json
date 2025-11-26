@@ -50,7 +50,7 @@
         "index_questions": {
             "title": "Preguntas del índice",
             "badge": "Criterios AGI",
-            "description": "Ayuda a evaluar los niveles de logro de AGI. Vota 'Logrado/Aún no' en las preguntas de abajo.",
+            "description": "¿Puede la IA actual hacer esto? Vota 'Logrado' si sí, 'Aún no' si no.",
             "empty": "Aún no hay preguntas en el índice. ¡Participa votando!"
         },
         "candidate_questions": {
@@ -205,7 +205,8 @@
             "other": "Otro"
         },
         "specify_placeholder": "Por favor especifica...",
-        "submit_vote": "Enviar voto"
+        "submit_vote": "Enviar voto",
+        "vote_to_see_results": "Vota para ver los resultados"
     },
     "history": {
         "title": "Historial de AGI Index",

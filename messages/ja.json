@@ -50,7 +50,7 @@
         "index_questions": {
             "title": "インデックス質問",
             "badge": "AGI基準",
-            "description": "AGIの達成レベルを一緒に評価しましょう。下の質問に「達成/未達成」で投票してください。",
+            "description": "今のAIはこれができますか？できれば「達成」、まだなら「未達成」を押してください。",
             "empty": "まだインデックス質問がありません。投票に参加してください！"
         },
         "candidate_questions": {
@@ -205,7 +205,8 @@
             "other": "その他"
         },
         "specify_placeholder": "理由を入力してください...",
-        "submit_vote": "投票する"
+        "submit_vote": "投票する",
+        "vote_to_see_results": "投票すると結果が表示されます"
     },
     "history": {
         "title": "AGI Index履歴",

@@ -50,7 +50,7 @@
         "index_questions": {
             "title": "Index-Fragen",
             "badge": "AGI-Kriterien",
-            "description": "Hilf mit, die AGI-Erreichungsstufen zu bewerten. Stimme mit 'Erreicht/Noch nicht' bei den Fragen unten ab.",
+            "description": "Kann die heutige KI das? Stimme mit 'Erreicht' wenn ja, 'Noch nicht' wenn nein.",
             "empty": "Noch keine Index-Fragen vorhanden. Nimm an Abstimmungen teil!"
         },
         "candidate_questions": {
@@ -205,7 +205,8 @@
             "other": "Sonstiges"
         },
         "specify_placeholder": "Bitte angeben...",
-        "submit_vote": "Abstimmen"
+        "submit_vote": "Abstimmen",
+        "vote_to_see_results": "Stimme ab, um die Ergebnisse zu sehen"
     },
     "history": {
         "title": "AGI Index Verlauf",

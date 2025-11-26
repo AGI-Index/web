@@ -50,7 +50,7 @@
         "index_questions": {
             "title": "인덱스 질문",
             "badge": "AGI 기준",
-            "description": "AGI의 달성 수준을 함께 평가해주세요. 아래 질문들에 '달성/미달성'을 눌러 투표하면 됩니다.",
+            "description": "현재 AI가 이것을 할 수 있나요? 가능하면 '달성', 아직이면 '미달성'을 눌러주세요.",
             "empty": "아직 인덱스 질문이 없습니다. 투표에 참여해주세요!"
         },
         "candidate_questions": {
@@ -205,7 +205,8 @@
             "other": "기타"
         },
         "specify_placeholder": "사유를 입력해주세요...",
-        "submit_vote": "투표하기"
+        "submit_vote": "투표하기",
+        "vote_to_see_results": "투표 후 결과를 확인할 수 있습니다"
     },
     "history": {
         "title": "AGI Index 히스토리",

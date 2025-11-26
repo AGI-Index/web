@@ -28,6 +28,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
     const [isEditing, setIsEditing] = useState(isEditMode)
     const [userVote, setUserVote] = useState<any>(null)
     const [loading, setLoading] = useState(false)
+    const [localQuestion, setLocalQuestion] = useState(question)
 
     // Voting State
     const [selectedSuitable, setSelectedSuitable] = useState<boolean | null>(null)
@@ -35,18 +36,18 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
     const [showSuitabilityOption, setShowSuitabilityOption] = useState(false)
     const [showCategoryInfo, setShowCategoryInfo] = useState(false)
 
-    const isIndex = isIndexQuestion(question)
+    const isIndex = isIndexQuestion(localQuestion)
 
     // Calculate achievement rate for Index questions
-    const achievedTotal = (question.achieved_count || 0) + (question.not_achieved_count || 0)
+    const achievedTotal = (localQuestion.achieved_count || 0) + (localQuestion.not_achieved_count || 0)
     const achievedPercentage = achievedTotal > 0
-        ? Math.round((question.achieved_count || 0) / achievedTotal * 100)
+        ? Math.round((localQuestion.achieved_count || 0) / achievedTotal * 100)
         : 0
 
     // Calculate suitability rate for Candidate questions
-    const suitableTotal = (question.suitable_count || 0) + (question.unsuitable_count || 0)
+    const suitableTotal = (localQuestion.suitable_count || 0) + (localQuestion.unsuitable_count || 0)
     const suitablePercentage = suitableTotal > 0
-        ? Math.round((question.suitable_count || 0) / suitableTotal * 100)
+        ? Math.round((localQuestion.suitable_count || 0) / suitableTotal * 100)
         : 0
 
     // Display percentage based on question type
@@ -126,6 +127,25 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 // Optimistic update: Update local state instead of reloading
                 setUserVote(voteData)
                 setIsEditing(false)
+
+                // Optimistic update for counts
+                setLocalQuestion(prev => {
+                    const updated = { ...prev }
+
+                    if (voteData.is_achieved === true) {
+                        updated.achieved_count = (prev.achieved_count || 0) + 1
+                    } else if (voteData.is_achieved === false) {
+                        updated.not_achieved_count = (prev.not_achieved_count || 0) + 1
+                    }
+
+                    if (voteData.is_suitable === true) {
+                        updated.suitable_count = (prev.suitable_count || 0) + 1
+                    } else if (voteData.is_suitable === false) {
+                        updated.unsuitable_count = (prev.unsuitable_count || 0) + 1
+                    }
+
+                    return updated
+                })
 
                 // Reset voting state to show the vote was saved
                 setSelectedSuitable(null)
@@ -227,23 +247,29 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
             </CardHeader>
 
             <CardContent className="pb-3 flex-grow">
-                <div className="space-y-2">
-                    <div className="flex justify-between text-xs text-muted-foreground">
-                        <span>{t('question_card.consensus')}</span>
-                        <span>
-                            {displayPercentage}% {isIndex ? t('question_card.achieved') : t('question_card.suitable')}
-                        </span>
+                {userVote ? (
+                    <div className="space-y-2">
+                        <div className="flex justify-between text-xs text-muted-foreground">
+                            <span>{t('question_card.consensus')}</span>
+                            <span>
+                                {displayPercentage}% {isIndex ? t('question_card.achieved') : t('question_card.suitable')}
+                            </span>
+                        </div>
+                        <Progress
+                            value={displayPercentage}
+                            className="h-2"
+                            indicatorClassName={cn(
+                                isIndex
+                                    ? (displayPercentage >= 50 ? "bg-green-500" : "bg-blue-500")
+                                    : (displayPercentage >= 50 ? "bg-primary" : "bg-amber-500")
+                            )}
+                        />
                     </div>
-                    <Progress
-                        value={displayPercentage}
-                        className="h-2"
-                        indicatorClassName={cn(
-                            isIndex
-                                ? (displayPercentage >= 50 ? "bg-green-500" : "bg-blue-500")
-                                : (displayPercentage >= 50 ? "bg-primary" : "bg-amber-500")
-                        )}
-                    />
-                </div>
+                ) : (
+                    <div className="text-xs text-muted-foreground text-center py-2">
+                        {t('question_card.vote_to_see_results')}
+                    </div>
+                )}
             </CardContent>
 
             <CardFooter className="pt-0 pb-4 flex flex-col gap-3">

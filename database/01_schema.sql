@@ -130,28 +130,36 @@ ALTER TABLE agi_stats ENABLE ROW LEVEL SECURITY;
 
 -- 8-1. Profiles 정책
 CREATE POLICY "Public profiles are viewable by everyone" ON profiles FOR SELECT USING (true);
-CREATE POLICY "Users can insert their own profile" ON profiles FOR INSERT WITH CHECK (auth.uid() = id);
-CREATE POLICY "Users can update own profile" ON profiles FOR UPDATE USING (auth.uid() = id);
+CREATE POLICY "Users can insert their own profile" ON profiles FOR INSERT WITH CHECK ((SELECT auth.uid()) = id);
+CREATE POLICY "Users can update own profile" ON profiles FOR UPDATE USING ((SELECT auth.uid()) = id);
 
 -- 8-2. Questions 정책 (승인 시스템 반영)
-CREATE POLICY "Public read approved" ON questions FOR SELECT
-  USING (status = 'approved');
-CREATE POLICY "Authors read own" ON questions FOR SELECT
-  USING (auth.uid() = author_id);
-CREATE POLICY "Admin full access" ON questions FOR ALL
-  USING ((SELECT is_admin FROM profiles WHERE id = auth.uid()) = true);
+CREATE POLICY "Questions read policy" ON questions FOR SELECT
+  USING (
+    status = 'approved'
+    OR (SELECT auth.uid()) = author_id
+    OR (SELECT is_admin FROM profiles WHERE id = (SELECT auth.uid())) = true
+  );
+CREATE POLICY "Admin update" ON questions FOR UPDATE
+  USING ((SELECT is_admin FROM profiles WHERE id = (SELECT auth.uid())) = true);
+CREATE POLICY "Admin delete" ON questions FOR DELETE
+  USING ((SELECT is_admin FROM profiles WHERE id = (SELECT auth.uid())) = true);
 CREATE POLICY "Authenticated users can insert questions" ON questions FOR INSERT
-  WITH CHECK (auth.role() = 'authenticated');
+  WITH CHECK ((SELECT auth.role()) = 'authenticated');
 
 -- 8-3. Votes 정책
 CREATE POLICY "Votes are viewable by everyone" ON votes FOR SELECT USING (true);
-CREATE POLICY "Authenticated users can vote" ON votes FOR INSERT WITH CHECK (auth.role() = 'authenticated');
-CREATE POLICY "Users can update own vote" ON votes FOR UPDATE USING (auth.uid() = user_id);
+CREATE POLICY "Authenticated users can vote" ON votes FOR INSERT WITH CHECK ((SELECT auth.role()) = 'authenticated');
+CREATE POLICY "Users can update own vote" ON votes FOR UPDATE USING ((SELECT auth.uid()) = user_id);
 
 -- 8-4. Question Translations 정책
 CREATE POLICY "Translations are viewable by everyone" ON question_translations FOR SELECT USING (true);
-CREATE POLICY "Only admins can modify translations" ON question_translations FOR ALL
-  USING ((SELECT is_admin FROM profiles WHERE id = auth.uid()) = true);
+CREATE POLICY "Only admins can insert translations" ON question_translations FOR INSERT
+  WITH CHECK ((SELECT is_admin FROM profiles WHERE id = (SELECT auth.uid())) = true);
+CREATE POLICY "Only admins can update translations" ON question_translations FOR UPDATE
+  USING ((SELECT is_admin FROM profiles WHERE id = (SELECT auth.uid())) = true);
+CREATE POLICY "Only admins can delete translations" ON question_translations FOR DELETE
+  USING ((SELECT is_admin FROM profiles WHERE id = (SELECT auth.uid())) = true);
 
 -- 8-5. AGI Stats 정책
 CREATE POLICY "AGI stats are viewable by everyone" ON agi_stats FOR SELECT USING (true);
@@ -172,7 +180,7 @@ BEGIN
   VALUES (new.id, new.raw_user_meta_data->>'full_name');
   RETURN new;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
@@ -251,7 +259,7 @@ BEGIN
 
   RETURN NULL;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 CREATE TRIGGER on_vote_change
   AFTER INSERT OR UPDATE OR DELETE ON votes
@@ -329,7 +337,7 @@ BEGIN
 
   RETURN NULL;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 -- Callable version
 CREATE OR REPLACE FUNCTION do_recalculate_agi_stats()
@@ -394,7 +402,7 @@ BEGIN
     candidate_question_count = EXCLUDED.candidate_question_count,
     updated_at = EXCLUDED.updated_at;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 -- AGI Stats 트리거
 CREATE TRIGGER trigger_recalculate_agi_stats_on_vote
@@ -451,7 +459,7 @@ BEGIN
   
   RETURN NULL;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 CREATE TRIGGER trigger_sync_daily_metrics
   AFTER INSERT OR UPDATE ON agi_stats

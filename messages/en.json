@@ -50,7 +50,7 @@
         "index_questions": {
             "title": "Index Questions",
             "badge": "AGI Milestones",
-            "description": "Help evaluate AGI achievement levels. Vote 'Achieved/Not Yet' on the questions below.",
+            "description": "Can today's AI do this? Vote 'Achieved' if yes, 'Not Yet' if no.",
             "empty": "No index questions yet. Start voting to create them!"
         },
         "candidate_questions": {
@@ -205,7 +205,8 @@
             "other": "Other"
         },
         "specify_placeholder": "Please specify...",
-        "submit_vote": "Submit Vote"
+        "submit_vote": "Submit Vote",
+        "vote_to_see_results": "Vote to see results"
     },
     "history": {
         "title": "AGI Index History",

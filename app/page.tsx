@@ -239,13 +239,13 @@ export default function Home() {
       {/* Quick Vote Section */}
       <section className="py-16 bg-secondary/20">
         <div className="container px-4 mx-auto">
-          <div className="flex justify-between items-end mb-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
             <div>
               <h2 className="text-3xl font-bold tracking-tight">{t('home.quick_vote.title')}</h2>
             </div>
-            <div className="hidden md:flex gap-2">
-              <Button variant="ghost" onClick={fetchQuestions}>{t('home.quick_vote.refresh')}</Button>
-              <Button asChild>
+            <div className="flex gap-2">
+              <Button variant="ghost" size="sm" onClick={fetchQuestions}>{t('home.quick_vote.refresh')}</Button>
+              <Button size="sm" asChild>
                 <Link href="/suggest">
                   <Plus className="mr-2 h-4 w-4" /> {t('nav.suggest')}
                 </Link>

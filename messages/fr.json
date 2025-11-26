@@ -50,7 +50,7 @@
         "index_questions": {
             "title": "Questions de l'index",
             "badge": "Critères AGI",
-            "description": "Aidez à évaluer les niveaux d'atteinte de l'AGI. Votez 'Atteint/Pas encore' sur les questions ci-dessous.",
+            "description": "L'IA actuelle peut-elle faire cela ? Votez 'Atteint' si oui, 'Pas encore' si non.",
             "empty": "Pas encore de questions dans l'index. Participez en votant !"
         },
         "candidate_questions": {
@@ -205,7 +205,8 @@
             "other": "Autre"
         },
         "specify_placeholder": "Veuillez préciser...",
-        "submit_vote": "Voter"
+        "submit_vote": "Voter",
+        "vote_to_see_results": "Votez pour voir les résultats"
     },
     "history": {
         "title": "Historique AGI Index",

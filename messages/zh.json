@@ -50,7 +50,7 @@
         "index_questions": {
             "title": "指数问题",
             "badge": "AGI 标准",
-            "description": "一起评估AGI的达成水平吧。点击下方问题的「已达成/未达成」进行投票。",
+            "description": "现在的AI能做到这个吗？能的话点「已达成」，还不能点「未达成」。",
             "empty": "暂无指数问题，快来参与投票吧！"
         },
         "candidate_questions": {
@@ -205,7 +205,8 @@
             "other": "其他"
         },
         "specify_placeholder": "请说明原因...",
-        "submit_vote": "提交投票"
+        "submit_vote": "提交投票",
+        "vote_to_see_results": "投票后查看结果"
     },
     "history": {
         "title": "AGI Index历史",
