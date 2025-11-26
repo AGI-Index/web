@@ -52,28 +52,24 @@ export default function SuggestPage() {
                 throw new Error('No active session')
             }
 
-            // Call submit-question Edge Function
-            const response = await supabase.functions.invoke('submit-question', {
+            // Fire-and-forget: Call Edge Function without waiting for response
+            supabase.functions.invoke('submit-question', {
                 body: {
                     content: question.trim(),
                     category: category,
                 },
+            }).catch(err => {
+                // Log error but don't show to user - processing happens in background
+                console.error('Background processing error:', err)
             })
 
-            if (response.error) {
-                console.error('Function error:', response.error)
-                setError(response.error.message || 'Failed to submit question')
-            } else if (response.data?.error) {
-                console.error('Submit error:', response.data.error)
-                setError(response.data.error)
-            } else {
-                setSubmitted(true)
-                setTimeout(() => {
-                    setSubmitted(false)
-                    setCategory("")
-                    setQuestion("")
-                }, 3000)
-            }
+            // Immediately show success - review happens in background
+            setSubmitted(true)
+            setTimeout(() => {
+                setSubmitted(false)
+                setCategory("")
+                setQuestion("")
+            }, 3000)
         } catch (err) {
             console.error('Submit error:', err)
             setError('An unexpected error occurred')
