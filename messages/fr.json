@@ -59,7 +59,13 @@
             "description": "Ces questions sont encore en cours d'examen. Votez 'Appropriée/Inappropriée' pour décider si elles méritent de devenir des critères AGI.",
             "empty": "Pas encore de questions candidates."
         },
-        "contribute_more": "Voter davantage"
+        "contribute_more": "Voter davantage",
+        "stats": {
+            "total_participants": "Participants totaux",
+            "total_votes": "Votes totaux",
+            "index_questions": "Questions de l'index",
+            "candidate_questions": "Questions candidates"
+        }
     },
     "manifesto": {
         "title": "Qu'est-ce que AGI Index ?",

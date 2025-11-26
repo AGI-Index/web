@@ -59,7 +59,13 @@
             "description": "まだ審査中の質問です。「適切/不適切」で投票して、AGI基準に上がる資格があるか一緒に決めましょう。",
             "empty": "まだ候補質問がありません。"
         },
-        "contribute_more": "もっと投票する"
+        "contribute_more": "もっと投票する",
+        "stats": {
+            "total_participants": "総参加者数",
+            "total_votes": "総投票数",
+            "index_questions": "インデックス質問",
+            "candidate_questions": "候補質問"
+        }
     },
     "manifesto": {
         "title": "AGI Indexとは？",

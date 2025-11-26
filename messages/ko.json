@@ -59,7 +59,13 @@
             "description": "아직 검토 중인 질문들입니다. 적합/부적합을 눌러 이 질문이 AGI 기준으로 올라갈 자격이 있는지 함께 결정해주세요.",
             "empty": "아직 후보 질문이 없습니다."
         },
-        "contribute_more": "더 많이 투표하기"
+        "contribute_more": "더 많이 투표하기",
+        "stats": {
+            "total_participants": "총 참여자",
+            "total_votes": "총 투표",
+            "index_questions": "인덱스 질문",
+            "candidate_questions": "후보 질문"
+        }
     },
     "manifesto": {
         "title": "AGI Index란?",

@@ -59,7 +59,13 @@
             "description": "These questions are still under review. Vote 'Suitable/Unsuitable' to help decide if they qualify as AGI criteria.",
             "empty": "No candidate questions yet."
         },
-        "contribute_more": "Contribute More Votes"
+        "contribute_more": "Contribute More Votes",
+        "stats": {
+            "total_participants": "Total Participants",
+            "total_votes": "Total Votes",
+            "index_questions": "Index Questions",
+            "candidate_questions": "Candidate Questions"
+        }
     },
     "manifesto": {
         "title": "What is AGI Index?",

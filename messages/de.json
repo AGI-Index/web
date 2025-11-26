@@ -59,7 +59,13 @@
             "description": "Diese Fragen werden noch geprüft. Stimme mit 'Geeignet/Ungeeignet' ab, um zu entscheiden, ob sie AGI-Kriterien werden.",
             "empty": "Noch keine Kandidaten-Fragen vorhanden."
         },
-        "contribute_more": "Mehr abstimmen"
+        "contribute_more": "Mehr abstimmen",
+        "stats": {
+            "total_participants": "Gesamtteilnehmer",
+            "total_votes": "Gesamtstimmen",
+            "index_questions": "Index-Fragen",
+            "candidate_questions": "Kandidaten-Fragen"
+        }
     },
     "manifesto": {
         "title": "Was ist AGI Index?",

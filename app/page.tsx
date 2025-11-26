@@ -209,28 +209,28 @@ export default function Home() {
               <div className="text-3xl font-bold">
                 <CountUp end={agiStats.total_users} />
               </div>
-              <div className="text-sm text-muted-foreground">Total Participants</div>
+              <div className="text-sm text-muted-foreground">{t('home.stats.total_participants')}</div>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Activity className="w-6 h-6 text-muted-foreground" />
               <div className="text-3xl font-bold">
                 <CountUp end={agiStats.total_votes} />
               </div>
-              <div className="text-sm text-muted-foreground">Total Votes</div>
+              <div className="text-sm text-muted-foreground">{t('home.stats.total_votes')}</div>
             </div>
             <div className="flex flex-col items-center gap-2">
               <FileCheck className="w-6 h-6 text-muted-foreground" />
               <div className="text-3xl font-bold">
                 <CountUp end={agiStats.index_question_count} />
               </div>
-              <div className="text-sm text-muted-foreground">Index Questions</div>
+              <div className="text-sm text-muted-foreground">{t('home.stats.index_questions')}</div>
             </div>
             <div className="flex flex-col items-center gap-2">
               <FileQuestion className="w-6 h-6 text-muted-foreground" />
               <div className="text-3xl font-bold">
                 <CountUp end={agiStats.candidate_question_count} />
               </div>
-              <div className="text-sm text-muted-foreground">Candidate Questions</div>
+              <div className="text-sm text-muted-foreground">{t('home.stats.candidate_questions')}</div>
             </div>
           </div>
         </div>

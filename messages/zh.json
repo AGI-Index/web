@@ -59,7 +59,13 @@
             "description": "这些问题还在审核中。点击「适合/不适合」来决定它们是否有资格成为AGI标准。",
             "empty": "暂无候选问题。"
         },
-        "contribute_more": "参与更多投票"
+        "contribute_more": "参与更多投票",
+        "stats": {
+            "total_participants": "参与者总数",
+            "total_votes": "投票总数",
+            "index_questions": "指数问题",
+            "candidate_questions": "候选问题"
+        }
     },
     "manifesto": {
         "title": "什么是AGI Index？",

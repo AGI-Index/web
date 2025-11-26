@@ -59,7 +59,13 @@
             "description": "Estas preguntas aún están en revisión. Vota 'Adecuada/Inadecuada' para decidir si califican como criterios de AGI.",
             "empty": "Aún no hay preguntas candidatas."
         },
-        "contribute_more": "Votar más"
+        "contribute_more": "Votar más",
+        "stats": {
+            "total_participants": "Participantes totales",
+            "total_votes": "Votos totales",
+            "index_questions": "Preguntas del índice",
+            "candidate_questions": "Preguntas candidatas"
+        }
     },
     "manifesto": {
         "title": "¿Qué es AGI Index?",
