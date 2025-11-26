@@ -97,27 +97,45 @@ export interface Database {
             daily_metrics: {
                 Row: {
                     date: string
-                    total_agi_percentage: number
-                    linguistic_percentage: number
-                    multimodal_percentage: number
-                    snapshot_data?: Json
+                    overall_rate: number | null
+                    linguistic_rate: number | null
+                    multimodal_rate: number | null
+                    linguistic_count: number | null
+                    multimodal_count: number | null
+                    total_votes: number | null
+                    total_users: number | null
+                    index_question_count: number | null
+                    candidate_question_count: number | null
                     created_at?: string
+                    updated_at?: string
                 }
                 Insert: {
-                    date: string
-                    total_agi_percentage: number
-                    linguistic_percentage: number
-                    multimodal_percentage: number
-                    snapshot_data?: Json
+                    date?: string
+                    overall_rate?: number | null
+                    linguistic_rate?: number | null
+                    multimodal_rate?: number | null
+                    linguistic_count?: number | null
+                    multimodal_count?: number | null
+                    total_votes?: number | null
+                    total_users?: number | null
+                    index_question_count?: number | null
+                    candidate_question_count?: number | null
                     created_at?: string
+                    updated_at?: string
                 }
                 Update: {
                     date?: string
-                    total_agi_percentage?: number
-                    linguistic_percentage?: number
-                    multimodal_percentage?: number
-                    snapshot_data?: Json
+                    overall_rate?: number | null
+                    linguistic_rate?: number | null
+                    multimodal_rate?: number | null
+                    linguistic_count?: number | null
+                    multimodal_count?: number | null
+                    total_votes?: number | null
+                    total_users?: number | null
+                    index_question_count?: number | null
+                    candidate_question_count?: number | null
                     created_at?: string
+                    updated_at?: string
                 }
             }
             agi_stats: {
@@ -126,6 +144,12 @@ export interface Database {
                     overall_rate: number
                     linguistic_rate: number
                     multimodal_rate: number
+                    linguistic_count: number
+                    multimodal_count: number
+                    total_votes: number
+                    total_users: number
+                    index_question_count: number
+                    candidate_question_count: number
                     updated_at?: string
                 }
                 Insert: {
@@ -133,6 +157,12 @@ export interface Database {
                     overall_rate?: number
                     linguistic_rate?: number
                     multimodal_rate?: number
+                    linguistic_count?: number
+                    multimodal_count?: number
+                    total_votes?: number
+                    total_users?: number
+                    index_question_count?: number
+                    candidate_question_count?: number
                     updated_at?: string
                 }
                 Update: {
@@ -140,6 +170,12 @@ export interface Database {
                     overall_rate?: number
                     linguistic_rate?: number
                     multimodal_rate?: number
+                    linguistic_count?: number
+                    multimodal_count?: number
+                    total_votes?: number
+                    total_users?: number
+                    index_question_count?: number
+                    candidate_question_count?: number
                     updated_at?: string
                 }
             }
