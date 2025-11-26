@@ -2,9 +2,10 @@
 
 import { Trans } from "@/components/ui/trans"
 import { useI18n } from "@/lib/i18n-context"
-import { Info, Users, Lightbulb, Vote, CheckCircle, Calculator } from "lucide-react"
+import { Info, Users, Lightbulb, Vote, CheckCircle, Calculator, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function ManifestoPage() {
     const { t } = useI18n()
@@ -153,6 +154,32 @@ export default function ManifestoPage() {
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    {/* AIGO Discord CTA */}
+                    <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 p-6 bg-primary/5 rounded-xl border border-primary/20">
+                        <Image
+                            src="/aigo.png"
+                            alt="AIGO"
+                            width={100}
+                            height={100}
+                            className="rounded-full shrink-0"
+                        />
+                        <div className="text-center sm:text-left space-y-3">
+                            <h4 className="text-lg font-semibold">{t('manifesto.aigo.title')}</h4>
+                            <p className="text-muted-foreground">
+                                <Trans
+                                    i18nKey="manifesto.aigo.description"
+                                    components={{ strong: <strong /> }}
+                                />
+                            </p>
+                            <Button asChild>
+                                <Link href="https://discord.gg/U8aPe7W9QJ" target="_blank" rel="noreferrer">
+                                    <MessageCircle className="mr-2 h-4 w-4" />
+                                    {t('manifesto.aigo.cta')}
+                                </Link>
+                            </Button>
                         </div>
                     </div>
                 </section>

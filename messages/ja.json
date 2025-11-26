@@ -101,6 +101,11 @@
                 "index_overall": "Overall AGI Index — すべての公式質問を統合"
             }
         },
+        "aigo": {
+            "title": "まだ質問がありますか？",
+            "description": "Discordコミュニティに参加してください。<strong>AIGO</strong>が知能の定義について案内します。",
+            "cta": "DiscordでAIGOに質問する"
+        },
         "transparency": {
             "title": "透明性に関するお知らせ",
             "content": "このプロジェクトはH1R.aiがオープンリサーチコミュニティへの貢献として開始・支援しています。AGI Indexは広告なしで独立して運営され、全てのデータは常に公開されます。"

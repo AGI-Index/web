@@ -101,6 +101,11 @@
                 "index_overall": "Overall AGI Index — 所有正式问题的综合"
             }
         },
+        "aigo": {
+            "title": "还有问题吗？",
+            "description": "加入我们的Discord社区。<strong>AIGO</strong>会帮助您理解智能的定义。",
+            "cta": "在Discord上问AIGO"
+        },
         "transparency": {
             "title": "透明声明",
             "content": "本项目由H1R.ai发起并资助，旨在为开放研究社区做出贡献。我们承诺AGI Index将保持无广告、独立运营，所有数据始终公开。"

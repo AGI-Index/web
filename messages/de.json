@@ -101,6 +101,11 @@
                 "index_overall": "Overall AGI Index — alle offiziellen Fragen kombiniert"
             }
         },
+        "aigo": {
+            "title": "Noch Fragen?",
+            "description": "Tritt unserer Discord-Community bei. <strong>AIGO</strong>, unser Community Manager, hilft dir bei den Definitionen von Intelligenz.",
+            "cta": "Frag AIGO auf Discord"
+        },
         "transparency": {
             "title": "Transparenzhinweis",
             "content": "Dieses Projekt wird von H1R.ai als Beitrag zur offenen Forschungsgemeinschaft initiiert und finanziert. Wir garantieren, dass AGI Index werbefrei und unabhängig bleibt und alle Daten immer öffentlich zugänglich sein werden."
