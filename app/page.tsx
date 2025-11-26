@@ -194,8 +194,7 @@ export default function Home() {
         <div className="container px-4 mx-auto">
           <div className="flex justify-between items-end mb-8">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight mb-2">{t('home.quick_vote.title')}</h2>
-              <p className="text-muted-foreground">{t('home.quick_vote.description')}</p>
+              <h2 className="text-3xl font-bold tracking-tight">{t('home.quick_vote.title')}</h2>
             </div>
             <div className="hidden md:flex gap-2">
               <Button variant="ghost" onClick={fetchQuestions}>{t('home.quick_vote.refresh')}</Button>
@@ -210,9 +209,12 @@ export default function Home() {
           <div className="space-y-12">
             {/* Index Questions */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-xl font-semibold">{t('home.index_questions.title')}</h3>
-                <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20">{t('home.index_questions.badge')}</Badge>
+              <div className="mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-xl font-semibold">{t('home.index_questions.title')}</h3>
+                  <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20">{t('home.index_questions.badge')}</Badge>
+                </div>
+                <p className="text-sm text-muted-foreground">{t('home.index_questions.description')}</p>
               </div>
               {loading ? (
                 <QuestionListSkeleton />
@@ -231,9 +233,12 @@ export default function Home() {
 
             {/* Candidate Questions */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-xl font-semibold">{t('home.candidate_questions.title')}</h3>
-                <Badge variant="outline" className="bg-secondary text-secondary-foreground">{t('home.candidate_questions.badge')}</Badge>
+              <div className="mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-xl font-semibold">{t('home.candidate_questions.title')}</h3>
+                  <Badge variant="outline" className="bg-secondary text-secondary-foreground">{t('home.candidate_questions.badge')}</Badge>
+                </div>
+                <p className="text-sm text-muted-foreground">{t('home.candidate_questions.description')}</p>
               </div>
               {loading ? (
                 <QuestionListSkeleton />

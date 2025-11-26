@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { QuestionCard } from "@/components/feature/question-card"
 import { supabase } from "@/lib/supabase"
 import { useAuth } from "@/lib/auth-context"
-import { ChevronDown, ChevronUp, MessageSquare, Eye } from "lucide-react"
+import { ChevronDown, ChevronUp, MessageSquare, Eye, Clock, CheckCircle, XCircle } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { ProfileListSkeleton } from "@/components/ui/loading-skeletons"
 import { useI18n } from "@/lib/i18n-context"
@@ -117,6 +117,34 @@ export default function ProfilePage() {
         return "bg-secondary text-secondary-foreground"
     }
 
+    const getStatusBadge = (status: string) => {
+        switch (status) {
+            case 'pending':
+                return (
+                    <Badge variant="outline" className="bg-yellow-100 text-yellow-800 border-yellow-300 gap-1">
+                        <Clock className="w-3 h-3" />
+                        {t('profile.status.pending')}
+                    </Badge>
+                )
+            case 'approved':
+                return (
+                    <Badge variant="outline" className="bg-green-100 text-green-800 border-green-300 gap-1">
+                        <CheckCircle className="w-3 h-3" />
+                        {t('profile.status.approved')}
+                    </Badge>
+                )
+            case 'rejected':
+                return (
+                    <Badge variant="outline" className="bg-red-100 text-red-800 border-red-300 gap-1">
+                        <XCircle className="w-3 h-3" />
+                        {t('profile.status.rejected')}
+                    </Badge>
+                )
+            default:
+                return null
+        }
+    }
+
     // Create translation map for efficient lookup
     const translationMap = useMemo(() => {
         const map = new Map<number, string>()
@@ -221,6 +249,7 @@ export default function ProfilePage() {
                                             <span className="font-medium truncate">{question.content}</span>
                                         </div>
                                         <div className="flex items-center gap-2 flex-shrink-0">
+                                            {getStatusBadge(question.status)}
                                             <Badge variant="outline" className={getCategoryColor(question.category)}>
                                                 {question.category}
                                             </Badge>
@@ -232,7 +261,16 @@ export default function ProfilePage() {
                                     </button>
                                     {expandedAuthored.has(question.id) && (
                                         <div className="border-t p-4 bg-secondary/20">
-                                            <QuestionCard question={question} />
+                                            {question.status === 'approved' ? (
+                                                <QuestionCard question={question} />
+                                            ) : (
+                                                <div className="text-sm text-muted-foreground p-4 text-center">
+                                                    {question.status === 'pending'
+                                                        ? t('profile.status.pending_message')
+                                                        : t('profile.status.rejected_message')
+                                                    }
+                                                </div>
+                                            )}
                                         </div>
                                     )}
                                 </div>

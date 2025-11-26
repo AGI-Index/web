@@ -6,20 +6,15 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button"
-import { ThumbsUp, ThumbsDown, CheckCircle, XCircle, BarChart2, AlertCircle, Check, ChevronDown, ChevronUp } from "lucide-react"
+import { CheckCircle, XCircle, BarChart2, Check, ChevronDown, ChevronUp, Info } from "lucide-react"
 import { Database } from "@/types/database"
 import { cn } from "@/lib/utils"
-import { Label } from "@/components/ui/label"
 import { supabase } from "@/lib/supabase"
 import { useAuth } from "@/lib/auth-context"
 import { isIndexQuestion } from "@/lib/utils"
 import { useI18n } from "@/lib/i18n-context"
 
-type Question = Database['public']['Tables']['questions']['Row'] & {
-    achieved_count?: number
-    suitable_votes?: number
-    unsuitable_votes?: number
-}
+type Question = Database['public']['Tables']['questions']['Row']
 
 interface QuestionCardProps {
     question: Question
@@ -30,7 +25,6 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
     const { user } = useAuth()
     const { t } = useI18n()
     const router = useRouter()
-    const [showDetails, setShowDetails] = useState(false)
     const [isEditing, setIsEditing] = useState(isEditMode)
     const [userVote, setUserVote] = useState<any>(null)
     const [loading, setLoading] = useState(false)
@@ -38,14 +32,25 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
     // Voting State
     const [selectedSuitable, setSelectedSuitable] = useState<boolean | null>(null)
     const [selectedAchieved, setSelectedAchieved] = useState<boolean | null>(null)
-    const [selectedWeight, setSelectedWeight] = useState<number | null>(null)
-    const [unsuitableReason, setUnsuitableReason] = useState<string | null>(null)
-    const [customReason, setCustomReason] = useState("")
+    const [showSuitabilityOption, setShowSuitabilityOption] = useState(false)
+    const [showCategoryInfo, setShowCategoryInfo] = useState(false)
 
     const isIndex = isIndexQuestion(question)
-    const achievedCount = question.achieved_count || 0
-    const voteCount = question.vote_count || 1
-    const achievedPercentage = Math.round((achievedCount / voteCount) * 100)
+
+    // Calculate achievement rate for Index questions
+    const achievedTotal = (question.achieved_count || 0) + (question.not_achieved_count || 0)
+    const achievedPercentage = achievedTotal > 0
+        ? Math.round((question.achieved_count || 0) / achievedTotal * 100)
+        : 0
+
+    // Calculate suitability rate for Candidate questions
+    const suitableTotal = (question.suitable_count || 0) + (question.unsuitable_count || 0)
+    const suitablePercentage = suitableTotal > 0
+        ? Math.round((question.suitable_count || 0) / suitableTotal * 100)
+        : 0
+
+    // Display percentage based on question type
+    const displayPercentage = isIndex ? achievedPercentage : suitablePercentage
 
     // Fetch user's existing vote
     useEffect(() => {
@@ -65,8 +70,6 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 if (isEditMode) {
                     setSelectedSuitable(voteData.is_suitable)
                     setSelectedAchieved(voteData.is_achieved)
-                    setSelectedWeight(voteData.weight)
-                    setUnsuitableReason(voteData.unsuitable_reason)
                 }
             }
         }
@@ -96,20 +99,17 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
 
             if (isIndex) {
                 if (selectedAchieved !== null) {
-                    voteData.is_suitable = true
+                    // Index question: default to suitable=true, but allow override
+                    voteData.is_suitable = selectedSuitable !== null ? selectedSuitable : true
                     voteData.is_achieved = selectedAchieved
-                    voteData.weight = selectedWeight
                 }
             } else {
                 // Candidate Question Logic
                 if (selectedSuitable === true && selectedAchieved !== null) {
                     voteData.is_suitable = true
                     voteData.is_achieved = selectedAchieved
-                    voteData.weight = selectedWeight
                 } else if (selectedSuitable === false) {
-                    const finalReason = unsuitableReason === "other" ? customReason : unsuitableReason
                     voteData.is_suitable = false
-                    voteData.unsuitable_reason = finalReason
                 }
             }
 
@@ -130,9 +130,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 // Reset voting state to show the vote was saved
                 setSelectedSuitable(null)
                 setSelectedAchieved(null)
-                setSelectedWeight(null)
-                setUnsuitableReason(null)
-                setCustomReason("")
+                setShowSuitabilityOption(false)
             }
         } catch (err) {
             console.error('Vote error:', err)
@@ -142,64 +140,74 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
         }
     }
 
-    const toggleWeight = (weight: number) => {
-        setSelectedWeight(prev => prev === weight ? null : weight)
-    }
-
-    // Render Advanced Options (Shared between Index and Candidate-Suitable)
-    const renderAdvancedOptions = () => (
+    // Render Suitability Option for Index Questions
+    const renderSuitabilityOption = () => (
         <div className="border-t pt-2">
             <Button
                 variant="ghost"
                 size="sm"
                 className="w-full flex justify-between text-xs text-muted-foreground h-8"
-                onClick={() => setShowDetails(!showDetails)}
+                onClick={() => setShowSuitabilityOption(!showSuitabilityOption)}
             >
-                <span>{t('question_card.advanced_options')}</span>
-                {showDetails ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                <span>{t('question_card.suitability_option')}</span>
+                {showSuitabilityOption ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
             </Button>
 
-            {showDetails && (
-                <div className="pt-3 space-y-4 animate-in fade-in slide-in-from-top-1">
-                    <div className="space-y-2">
-                        <div className="flex justify-between">
-                            <Label className="text-xs">{t('question_card.importance_weight')}</Label>
-                        </div>
-                        <div className="flex gap-2">
-                            {[1, 2, 3].map((w) => (
-                                <Button
-                                    key={w}
-                                    variant={selectedWeight === w ? "default" : "outline"}
-                                    size="sm"
-                                    className={cn(
-                                        "flex-1 text-xs h-7",
-                                        selectedWeight === w && "bg-primary text-primary-foreground"
-                                    )}
-                                    onClick={() => toggleWeight(w)}
-                                >
-                                    {w === 1 ? t('question_card.weight.low') : w === 2 ? t('question_card.weight.med') : t('question_card.weight.high')}
-                                </Button>
-                            ))}
-                        </div>
+            {showSuitabilityOption && (
+                <div className="pt-3 animate-in fade-in slide-in-from-top-1">
+                    <div className="grid grid-cols-2 gap-2">
+                        <Button
+                            variant={selectedSuitable === true ? "default" : "outline"}
+                            size="sm"
+                            className={cn("w-full gap-1 text-xs", selectedSuitable === true && "bg-primary text-primary-foreground")}
+                            onClick={() => setSelectedSuitable(true)}
+                        >
+                            <Check className="w-3 h-3" /> {t('question_card.suitable')}
+                        </Button>
+                        <Button
+                            variant={selectedSuitable === false ? "destructive" : "outline"}
+                            size="sm"
+                            className={cn("w-full gap-1 text-xs", selectedSuitable === false && "bg-destructive text-destructive-foreground")}
+                            onClick={() => setSelectedSuitable(false)}
+                        >
+                            <XCircle className="w-3 h-3" /> {t('question_card.unsuitable')}
+                        </Button>
                     </div>
                 </div>
             )}
         </div>
     )
 
+    const getCategoryLabel = (category: string) => {
+        if (category.toLowerCase() === 'linguistic') return t('questions.category.linguistic')
+        if (category.toLowerCase() === 'multimodal') return t('questions.category.multimodal')
+        return category
+    }
+
+    const getCategoryDescription = (category: string) => {
+        if (category.toLowerCase() === 'linguistic') return t('suggest.categories.linguistic_desc')
+        if (category.toLowerCase() === 'multimodal') return t('suggest.categories.multimodal_desc')
+        return ''
+    }
+
     return (
-        <Card className="w-full hover:shadow-md transition-shadow duration-200 border-l-4 border-l-primary/20 flex flex-col h-full">
+        <Card className={cn(
+            "w-full hover:shadow-md transition-shadow duration-200 border-l-4 flex flex-col h-full",
+            isIndex ? "border-l-primary/30" : "border-l-muted-foreground/30 bg-muted/40"
+        )}>
             <CardHeader className="pb-3">
                 <div className="flex justify-between items-start gap-4 mb-2">
-                    <div className="flex gap-2">
+                    <div className="flex items-center gap-2">
                         <Badge variant="outline" className={cn("text-xs border-0", getCategoryColor(question.category))}>
-                            {question.category}
+                            {getCategoryLabel(question.category)}
                         </Badge>
-                        {isIndex && (
-                            <Badge variant="outline" className="text-xs border-primary/50 text-primary bg-primary/5">
-                                {t('question_card.index_badge')}
-                            </Badge>
-                        )}
+                        <button
+                            type="button"
+                            onClick={() => setShowCategoryInfo(!showCategoryInfo)}
+                            className="text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                            <Info className="w-3.5 h-3.5" />
+                        </button>
                     </div>
                     <div className="flex gap-2">
                         <Badge variant="secondary" className="flex gap-1 items-center text-xs">
@@ -208,6 +216,11 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                         </Badge>
                     </div>
                 </div>
+                {showCategoryInfo && (
+                    <p className="text-xs text-muted-foreground bg-secondary/50 p-2 rounded-md mb-2 animate-in fade-in slide-in-from-top-1">
+                        {getCategoryDescription(question.category)}
+                    </p>
+                )}
                 <CardTitle className="text-base md:text-lg font-medium leading-snug min-h-[3.5rem]">
                     {question.content}
                 </CardTitle>
@@ -217,9 +230,19 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 <div className="space-y-2">
                     <div className="flex justify-between text-xs text-muted-foreground">
                         <span>{t('question_card.consensus')}</span>
-                        <span>{achievedPercentage}% {t('question_card.achieved')}</span>
+                        <span>
+                            {displayPercentage}% {isIndex ? t('question_card.achieved') : t('question_card.suitable')}
+                        </span>
                     </div>
-                    <Progress value={achievedPercentage} className="h-2" indicatorClassName={cn(achievedPercentage >= 50 ? "bg-green-500" : "bg-blue-500")} />
+                    <Progress
+                        value={displayPercentage}
+                        className="h-2"
+                        indicatorClassName={cn(
+                            isIndex
+                                ? (displayPercentage >= 50 ? "bg-green-500" : "bg-blue-500")
+                                : (displayPercentage >= 50 ? "bg-primary" : "bg-amber-500")
+                        )}
+                    />
                 </div>
             </CardContent>
 
@@ -242,7 +265,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 ) : (
                     <div className="w-full space-y-4">
                         {isIndex ? (
-                            // Index Question Voting Flow
+                            // Index Question Voting Flow: Achieved/Not Yet first, Suitability optional
                             <div className="flex flex-col gap-3">
                                 <div className="grid grid-cols-2 gap-3">
                                     <Button
@@ -267,7 +290,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                     </Button>
                                 </div>
 
-                                {renderAdvancedOptions()}
+                                {renderSuitabilityOption()}
 
                                 {selectedAchieved !== null && (
                                     <Button className="w-full animate-in fade-in slide-in-from-top-1" onClick={handleVoteSubmit}>
@@ -282,7 +305,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                     <Button
                                         variant={selectedSuitable === true ? "default" : "outline"}
                                         className={cn("w-full gap-2", selectedSuitable === true && "bg-primary text-primary-foreground")}
-                                        onClick={() => { setSelectedSuitable(true); setUnsuitableReason(null); }}
+                                        onClick={() => setSelectedSuitable(true)}
                                     >
                                         <Check className="w-4 h-4" /> {t('question_card.suitable')}
                                     </Button>
@@ -314,8 +337,6 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                             </Button>
                                         </div>
 
-                                        {renderAdvancedOptions()}
-
                                         {selectedAchieved !== null && (
                                             <Button className="w-full" onClick={handleVoteSubmit}>
                                                 {t('question_card.submit_vote')}
@@ -325,40 +346,9 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                                 )}
 
                                 {selectedSuitable === false && (
-                                    <div className="space-y-3 animate-in fade-in slide-in-from-top-2">
-                                        <Label className="text-xs">{t('question_card.why_unsuitable')}</Label>
-                                        <div className="flex flex-wrap gap-2">
-                                            {["too_broad", "too_narrow", "duplicate", "other"].map((reason) => (
-                                                <Button
-                                                    key={reason}
-                                                    type="button"
-                                                    variant={unsuitableReason === reason ? "default" : "outline"}
-                                                    size="sm"
-                                                    onClick={() => setUnsuitableReason(reason)}
-                                                >
-                                                    {reason === "too_broad" ? t('question_card.reasons.too_broad') :
-                                                        reason === "too_narrow" ? t('question_card.reasons.too_narrow') :
-                                                            reason === "duplicate" ? t('question_card.reasons.duplicate') : t('question_card.reasons.other')}
-                                                </Button>
-                                            ))}
-                                        </div>
-
-                                        {unsuitableReason === "other" && (
-                                            <input
-                                                type="text"
-                                                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                                                placeholder={t('question_card.specify_placeholder')}
-                                                value={customReason}
-                                                onChange={(e) => setCustomReason(e.target.value)}
-                                            />
-                                        )}
-
-                                        {unsuitableReason && (unsuitableReason !== "Other" || customReason.length > 0) && (
-                                            <Button className="w-full" onClick={handleVoteSubmit}>
-                                                {t('question_card.submit_vote')}
-                                            </Button>
-                                        )}
-                                    </div>
+                                    <Button className="w-full animate-in fade-in slide-in-from-top-2" onClick={handleVoteSubmit}>
+                                        {t('question_card.submit_vote')}
+                                    </Button>
                                 )}
                             </div>
                         )}

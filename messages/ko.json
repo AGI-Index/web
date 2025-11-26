@@ -50,11 +50,13 @@
         "index_questions": {
             "title": "인덱스 질문",
             "badge": "AGI 기준",
+            "description": "AGI의 달성 수준을 함께 평가해주세요. 아래 질문들에 '달성/미달성'을 눌러 투표하면 됩니다.",
             "empty": "아직 인덱스 질문이 없습니다. 투표에 참여해주세요!"
         },
         "candidate_questions": {
             "title": "후보 질문",
             "badge": "검토 중",
+            "description": "아직 검토 중인 질문들입니다. 적합/부적합을 눌러 이 질문이 AGI 기준으로 올라갈 자격이 있는지 함께 결정해주세요.",
             "empty": "아직 후보 질문이 없습니다."
         },
         "contribute_more": "더 많이 투표하기"
@@ -159,6 +161,13 @@
             "browse": "질문 둘러보기",
             "questions": "아직 제안한 질문이 없습니다.",
             "suggest": "질문 제안하기"
+        },
+        "status": {
+            "pending": "대기중",
+            "approved": "승인됨",
+            "rejected": "거절됨",
+            "pending_message": "이 질문은 현재 검토 대기 중입니다.",
+            "rejected_message": "이 질문은 거절되었습니다."
         }
     },
     "question_card": {
@@ -170,7 +179,7 @@
         "unsuitable": "부적합",
         "you_voted": "내 투표:",
         "edit": "수정",
-        "advanced_options": "추가 옵션",
+        "suitability_option": "적합도 투표",
         "importance_weight": "중요도",
         "weight": {
             "low": "낮음",

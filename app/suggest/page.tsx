@@ -1,31 +1,84 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Lightbulb, CheckCircle2 } from "lucide-react"
+import { Lightbulb, CheckCircle2, Loader2 } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
+import { useAuth } from "@/lib/auth-context"
+import { supabase } from "@/lib/supabase"
 
 export default function SuggestPage() {
     const { t } = useI18n()
+    const { user, loading: authLoading } = useAuth()
+    const router = useRouter()
     const [category, setCategory] = useState<string>("")
     const [question, setQuestion] = useState<string>("")
     const [submitted, setSubmitted] = useState(false)
+    const [submitting, setSubmitting] = useState(false)
+    const [error, setError] = useState<string | null>(null)
 
-    const handleSubmit = (e: React.FormEvent) => {
+    // Redirect to login if not authenticated
+    useEffect(() => {
+        if (!authLoading && !user) {
+            router.push('/login')
+        }
+    }, [user, authLoading, router])
+
+    // Show loading state while checking auth
+    if (authLoading || !user) {
+        return (
+            <div className="container mx-auto px-4 py-8 max-w-7xl flex items-center justify-center min-h-[50vh]">
+                <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+            </div>
+        )
+    }
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        if (category && question.trim()) {
-            // Mock submission - In real app, this would call an API
-            console.log({ category, question })
-            setSubmitted(true)
-            setTimeout(() => {
-                setSubmitted(false)
-                setCategory("")
-                setQuestion("")
-            }, 3000)
+        if (!category || !question.trim() || !user) return
+
+        setSubmitting(true)
+        setError(null)
+
+        try {
+            // Get current session for authorization
+            const { data: { session } } = await supabase.auth.getSession()
+            if (!session) {
+                throw new Error('No active session')
+            }
+
+            // Call submit-question Edge Function
+            const response = await supabase.functions.invoke('submit-question', {
+                body: {
+                    content: question.trim(),
+                    category: category,
+                },
+            })
+
+            if (response.error) {
+                console.error('Function error:', response.error)
+                setError(response.error.message || 'Failed to submit question')
+            } else if (response.data?.error) {
+                console.error('Submit error:', response.data.error)
+                setError(response.data.error)
+            } else {
+                setSubmitted(true)
+                setTimeout(() => {
+                    setSubmitted(false)
+                    setCategory("")
+                    setQuestion("")
+                }, 3000)
+            }
+        } catch (err) {
+            console.error('Submit error:', err)
+            setError('An unexpected error occurred')
+        } finally {
+            setSubmitting(false)
         }
     }
 
@@ -154,9 +207,14 @@ export default function SuggestPage() {
                             <Button
                                 type="submit"
                                 className="w-full"
-                                disabled={!category || !question.trim() || submitted}
+                                disabled={!category || !question.trim() || submitted || submitting}
                             >
-                                {submitted ? (
+                                {submitting ? (
+                                    <>
+                                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                        {t('suggest.form.submitting_button') || 'Submitting...'}
+                                    </>
+                                ) : submitted ? (
                                     <>
                                         <CheckCircle2 className="w-4 h-4 mr-2" />
                                         {t('suggest.form.submitted_button')}
@@ -165,6 +223,12 @@ export default function SuggestPage() {
                                     t('suggest.form.submit_button')
                                 )}
                             </Button>
+
+                            {error && (
+                                <p className="text-sm text-center text-red-600 dark:text-red-400 animate-in fade-in">
+                                    {error}
+                                </p>
+                            )}
 
                             {submitted && (
                                 <p className="text-sm text-center text-green-600 dark:text-green-400 animate-in fade-in">

@@ -1,6 +1,6 @@
 {
     "nav": {
-        "manifesto": "Manifeste",
+        "manifesto": "À propos",
         "questions": "Questions",
         "history": "Historique",
         "suggest": "Proposer une question",
@@ -50,17 +50,19 @@
         "index_questions": {
             "title": "Questions de l'index",
             "badge": "Critères AGI",
+            "description": "Aidez à évaluer les niveaux d'atteinte de l'AGI. Votez 'Atteint/Pas encore' sur les questions ci-dessous.",
             "empty": "Pas encore de questions dans l'index. Participez en votant !"
         },
         "candidate_questions": {
             "title": "Questions candidates",
             "badge": "En cours d'examen",
+            "description": "Ces questions sont encore en cours d'examen. Votez 'Appropriée/Inappropriée' pour décider si elles méritent de devenir des critères AGI.",
             "empty": "Pas encore de questions candidates."
         },
         "contribute_more": "Voter davantage"
     },
     "manifesto": {
-        "title": "Le Manifeste : Un miroir de nous-mêmes",
+        "title": "Qu'est-ce que AGI Index ?",
         "p1": "<strong>« Qu'est-ce que l'AGI ? »</strong> C'est peut-être la question la plus complexe que l'humanité ait jamais posée. Mais paradoxalement, cette question nous oblige à en répondre une plus profonde : <strong>« Qu'est-ce qu'être humain ? »</strong>",
         "quote": "« Si j'avais une heure pour résoudre un problème, je passerais 55 minutes à le définir et 5 minutes à le résoudre. »",
         "quote_author": "— Albert Einstein",
@@ -73,7 +75,7 @@
             "item3": "Juste votre expérience en tant qu'être humain."
         },
         "p5": "<strong>AGI INDEX est l'endroit où nous récupérons nos « 55 minutes ».</strong> Un lieu où artistes, enseignants, parents et philosophes se tiennent aux côtés des ingénieurs. Nous ne mesurons pas une machine ; nous cartographions les frontières de notre humanité.",
-        "closing": "Venez, définissons ensemble qui nous sommes.",
+        "closing": "Prêts à le définir ensemble ? À quoi ressemble votre vision de la « prochaine intelligence » ?",
         "how_it_works": {
             "title": "Comment participer",
             "step1": {
@@ -159,6 +161,13 @@
             "browse": "Parcourir les questions",
             "questions": "Vous n'avez pas encore proposé de questions.",
             "suggest": "Proposer une question"
+        },
+        "status": {
+            "pending": "En attente",
+            "approved": "Approuvée",
+            "rejected": "Rejetée",
+            "pending_message": "Cette question est actuellement en cours de révision.",
+            "rejected_message": "Cette question a été rejetée."
         }
     },
     "question_card": {
@@ -170,7 +179,7 @@
         "unsuitable": "Inappropriée",
         "you_voted": "Votre vote :",
         "edit": "Modifier",
-        "advanced_options": "Plus d'options",
+        "suitability_option": "Voter la pertinence",
         "importance_weight": "Importance",
         "weight": {
             "low": "Faible",

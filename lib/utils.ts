@@ -5,12 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function isIndexQuestion(question: { suitable_votes?: number; unsuitable_votes?: number }) {
-  const suitable = question.suitable_votes || 0
-  const unsuitable = question.unsuitable_votes || 0
-  const total = suitable + unsuitable
-
-  if (total === 0) return false
-
-  return suitable >= 10 && (suitable / total) > 0.5
+export function isIndexQuestion(question: { is_indexed?: boolean }) {
+  return question.is_indexed === true
 }

@@ -1,6 +1,6 @@
 {
     "nav": {
-        "manifesto": "Manifiesto",
+        "manifesto": "Acerca de",
         "questions": "Preguntas",
         "history": "Historial",
         "suggest": "Proponer pregunta",
@@ -50,17 +50,19 @@
         "index_questions": {
             "title": "Preguntas del índice",
             "badge": "Criterios AGI",
+            "description": "Ayuda a evaluar los niveles de logro de AGI. Vota 'Logrado/Aún no' en las preguntas de abajo.",
             "empty": "Aún no hay preguntas en el índice. ¡Participa votando!"
         },
         "candidate_questions": {
             "title": "Preguntas candidatas",
             "badge": "En revisión",
+            "description": "Estas preguntas aún están en revisión. Vota 'Adecuada/Inadecuada' para decidir si califican como criterios de AGI.",
             "empty": "Aún no hay preguntas candidatas."
         },
         "contribute_more": "Votar más"
     },
     "manifesto": {
-        "title": "El Manifiesto: Un espejo de nosotros mismos",
+        "title": "¿Qué es AGI Index?",
         "p1": "<strong>«¿Qué es AGI?»</strong> Es quizás la pregunta más compleja que la humanidad ha planteado. Pero paradójicamente, esta pregunta nos obliga a responder algo más profundo: <strong>«¿Qué significa ser humano?»</strong>",
         "quote": "«Si tuviera una hora para resolver un problema, dedicaría 55 minutos a definirlo y 5 minutos a resolverlo.»",
         "quote_author": "— Albert Einstein",
@@ -73,7 +75,7 @@
             "item3": "Solo necesitas tu experiencia como ser humano."
         },
         "p5": "<strong>AGI INDEX es donde recuperamos los «55 minutos».</strong> Un lugar donde artistas, profesores, padres y filósofos se unen a los ingenieros. No estamos midiendo una máquina; estamos trazando los límites de nuestra humanidad.",
-        "closing": "Ven, definamos juntos quiénes somos.",
+        "closing": "¿Listos para definirlo juntos? ¿Cómo imaginas la 'próxima inteligencia'?",
         "how_it_works": {
             "title": "Cómo participar",
             "step1": {
@@ -159,6 +161,13 @@
             "browse": "Explorar preguntas",
             "questions": "Aún no has propuesto ninguna pregunta.",
             "suggest": "Proponer una pregunta"
+        },
+        "status": {
+            "pending": "Pendiente",
+            "approved": "Aprobada",
+            "rejected": "Rechazada",
+            "pending_message": "Esta pregunta está actualmente en revisión.",
+            "rejected_message": "Esta pregunta ha sido rechazada."
         }
     },
     "question_card": {
@@ -170,7 +179,7 @@
         "unsuitable": "Inadecuada",
         "you_voted": "Tu voto:",
         "edit": "Editar",
-        "advanced_options": "Más opciones",
+        "suitability_option": "Votar idoneidad",
         "importance_weight": "Importancia",
         "weight": {
             "low": "Baja",

@@ -1,6 +1,6 @@
 {
     "nav": {
-        "manifesto": "宣言",
+        "manifesto": "介绍",
         "questions": "问题",
         "history": "历史",
         "suggest": "提议问题",
@@ -50,17 +50,19 @@
         "index_questions": {
             "title": "指数问题",
             "badge": "AGI 标准",
+            "description": "一起评估AGI的达成水平吧。点击下方问题的「已达成/未达成」进行投票。",
             "empty": "暂无指数问题，快来参与投票吧！"
         },
         "candidate_questions": {
             "title": "候选问题",
             "badge": "审核中",
+            "description": "这些问题还在审核中。点击「适合/不适合」来决定它们是否有资格成为AGI标准。",
             "empty": "暂无候选问题。"
         },
         "contribute_more": "参与更多投票"
     },
     "manifesto": {
-        "title": "宣言：照见自我的镜子",
+        "title": "什么是AGI Index？",
         "p1": "<strong>「什么是AGI？」</strong> 这可能是人类提出过的最复杂的问题。但矛盾的是，这个问题迫使我们回答一个更深刻的问题：<strong>「什么是人类？」</strong>",
         "quote": "「如果给我一小时解决问题，我会用55分钟定义问题，5分钟解决它。」",
         "quote_author": "— 阿尔伯特·爱因斯坦",
@@ -73,7 +75,7 @@
             "item3": "只需要作为一个活生生的人的经验。"
         },
         "p5": "<strong>AGI INDEX是我们找回「55分钟」的地方。</strong> 艺术家、教师、父母、哲学家与工程师并肩站立的地方。我们不是在测量机器，而是在描绘人性的边界。",
-        "closing": "来吧，让我们一起定义自己。",
+        "closing": "一起来定义吧？你心目中「下一代智能」是什么样子？",
         "how_it_works": {
             "title": "参与方式",
             "step1": {
@@ -159,6 +161,13 @@
             "browse": "浏览问题",
             "questions": "您还没有提议过问题。",
             "suggest": "提议问题"
+        },
+        "status": {
+            "pending": "审核中",
+            "approved": "已批准",
+            "rejected": "已拒绝",
+            "pending_message": "此问题正在审核中。",
+            "rejected_message": "此问题已被拒绝。"
         }
     },
     "question_card": {
@@ -170,7 +179,7 @@
         "unsuitable": "不适合",
         "you_voted": "我的投票：",
         "edit": "编辑",
-        "advanced_options": "更多选项",
+        "suitability_option": "投票适合度",
         "importance_weight": "重要程度",
         "weight": {
             "low": "低",

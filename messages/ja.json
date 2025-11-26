@@ -1,6 +1,6 @@
 {
     "nav": {
-        "manifesto": "マニフェスト",
+        "manifesto": "紹介",
         "questions": "質問",
         "history": "履歴",
         "suggest": "質問を提案",
@@ -50,17 +50,19 @@
         "index_questions": {
             "title": "インデックス質問",
             "badge": "AGI基準",
+            "description": "AGIの達成レベルを一緒に評価しましょう。下の質問に「達成/未達成」で投票してください。",
             "empty": "まだインデックス質問がありません。投票に参加してください！"
         },
         "candidate_questions": {
             "title": "候補質問",
             "badge": "審査中",
+            "description": "まだ審査中の質問です。「適切/不適切」で投票して、AGI基準に上がる資格があるか一緒に決めましょう。",
             "empty": "まだ候補質問がありません。"
         },
         "contribute_more": "もっと投票する"
     },
     "manifesto": {
-        "title": "マニフェスト：私たち自身を映す鏡",
+        "title": "AGI Indexとは？",
         "p1": "<strong>「AGIとは何か？」</strong> おそらく人類が投げかけた最も複雑な問いでしょう。しかし逆説的に、この問いは私たちにより深い問いを投げかけます：<strong>「人間とは何か？」</strong>",
         "quote": "「問題解決に1時間与えられたら、55分を問題の定義に、残り5分を解決に使う。」",
         "quote_author": "— アルバート・アインシュタイン",
@@ -73,7 +75,7 @@
             "item3": "生きている人間としての経験があれば十分です。"
         },
         "p5": "<strong>AGI INDEXは失われた「55分」を取り戻す場所です。</strong> アーティスト、教師、親、哲学者がエンジニアと共に立つ場所です。私たちは機械を測定しているのではなく、人間らしさの境界を描いています。",
-        "closing": "一緒に私たち自身を定義しましょう。",
+        "closing": "一緒に定義してみませんか？あなたが思い描く「次の知能」はどんな姿ですか？",
         "how_it_works": {
             "title": "参加方法",
             "step1": {
@@ -159,6 +161,13 @@
             "browse": "質問を見る",
             "questions": "まだ提案した質問がありません。",
             "suggest": "質問を提案する"
+        },
+        "status": {
+            "pending": "審査中",
+            "approved": "承認済み",
+            "rejected": "却下",
+            "pending_message": "この質問は現在審査中です。",
+            "rejected_message": "この質問は却下されました。"
         }
     },
     "question_card": {
@@ -170,7 +179,7 @@
         "unsuitable": "不適切",
         "you_voted": "投票済み:",
         "edit": "編集",
-        "advanced_options": "追加オプション",
+        "suitability_option": "適合性を投票",
         "importance_weight": "重要度",
         "weight": {
             "low": "低",

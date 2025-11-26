@@ -57,12 +57,12 @@ export function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="https://discord.com" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors flex items-center gap-2">
+                                <Link href="https://discord.gg/U8aPe7W9QJ" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors flex items-center gap-2">
                                     {t('footer.discord')}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="https://github.com/yourusername/agiindex" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors flex items-center gap-2">
+                                <Link href="https://github.com/AGI-Index/web" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors flex items-center gap-2">
                                     {t('footer.github')}
                                 </Link>
                             </li>
@@ -92,7 +92,7 @@ export function Footer() {
 
                 <div className="border-t mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
                     <p>
-                        © 2025 {t('footer.community')}. {t('footer.built_by')} <a href="https://github.com/yourusername/agiindex" className="underline underline-offset-4 hover:text-foreground">AGI Index Community</a>.
+                        © 2025 {t('footer.community')}. {t('footer.built_by')} <a href="https://github.com/AGI-Index/web" className="underline underline-offset-4 hover:text-foreground">AGI Index Community</a>.
                     </p>
                     <div className="flex gap-6">
                         <Link href="/terms" className="hover:text-foreground transition-colors">{t('footer.terms')}</Link>

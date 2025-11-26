@@ -1,6 +1,6 @@
 {
     "nav": {
-        "manifesto": "Manifesto",
+        "manifesto": "About",
         "questions": "Questions",
         "history": "History",
         "suggest": "Suggest Question",
@@ -50,17 +50,19 @@
         "index_questions": {
             "title": "Index Questions",
             "badge": "AGI Milestones",
+            "description": "Help evaluate AGI achievement levels. Vote 'Achieved/Not Yet' on the questions below.",
             "empty": "No index questions yet. Start voting to create them!"
         },
         "candidate_questions": {
             "title": "Candidate Questions",
             "badge": "Under Review",
+            "description": "These questions are still under review. Vote 'Suitable/Unsuitable' to help decide if they qualify as AGI criteria.",
             "empty": "No candidate questions yet."
         },
         "contribute_more": "Contribute More Votes"
     },
     "manifesto": {
-        "title": "The Manifesto: A Mirror to Ourselves",
+        "title": "What is AGI Index?",
         "p1": "<strong>\"What is AGI?\"</strong> It is perhaps the most complex question humanity has ever asked. But paradoxically, asking it forces us to answer a much deeper question: <strong>\"What does it mean to be human?\"</strong>",
         "quote": "\"If I had an hour to solve a problem, I'd spend 55 minutes thinking about the problem and 5 minutes solving it.\"",
         "quote_author": "— Albert Einstein",
@@ -73,7 +75,7 @@
             "item3": "You only need your experience as a living, thinking human being."
         },
         "p5": "<strong>The AGI INDEX is where we reclaim our \"55 minutes.\"</strong> It is a place for the artist, the teacher, the parent, and the philosopher to stand alongside the engineer. Together, we are not just measuring a machine; we are mapping the boundaries of our own humanity.",
-        "closing": "Come, let's define ourselves.",
+        "closing": "Ready to define it together? What does your vision of the 'next intelligence' look like?",
         "how_it_works": {
             "title": "How It Works",
             "step1": {
@@ -159,6 +161,13 @@
             "browse": "Browse Questions",
             "questions": "You haven't submitted any questions yet.",
             "suggest": "Suggest a Question"
+        },
+        "status": {
+            "pending": "Pending",
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "pending_message": "This question is currently under review.",
+            "rejected_message": "This question has been rejected."
         }
     },
     "question_card": {
@@ -170,7 +179,7 @@
         "unsuitable": "Unsuitable",
         "you_voted": "You voted:",
         "edit": "Edit",
-        "advanced_options": "Advanced Options",
+        "suitability_option": "Vote Suitability",
         "importance_weight": "Importance Weight",
         "weight": {
             "low": "Low",

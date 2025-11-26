@@ -1,6 +1,6 @@
 {
     "nav": {
-        "manifesto": "Manifest",
+        "manifesto": "Über uns",
         "questions": "Fragen",
         "history": "Verlauf",
         "suggest": "Frage vorschlagen",
@@ -50,17 +50,19 @@
         "index_questions": {
             "title": "Index-Fragen",
             "badge": "AGI-Kriterien",
+            "description": "Hilf mit, die AGI-Erreichungsstufen zu bewerten. Stimme mit 'Erreicht/Noch nicht' bei den Fragen unten ab.",
             "empty": "Noch keine Index-Fragen vorhanden. Nimm an Abstimmungen teil!"
         },
         "candidate_questions": {
             "title": "Kandidaten-Fragen",
             "badge": "In Prüfung",
+            "description": "Diese Fragen werden noch geprüft. Stimme mit 'Geeignet/Ungeeignet' ab, um zu entscheiden, ob sie AGI-Kriterien werden.",
             "empty": "Noch keine Kandidaten-Fragen vorhanden."
         },
         "contribute_more": "Mehr abstimmen"
     },
     "manifesto": {
-        "title": "Das Manifest: Ein Spiegel unserer selbst",
+        "title": "Was ist AGI Index?",
         "p1": "<strong>«Was ist AGI?»</strong> Es ist vielleicht die komplexeste Frage, die die Menschheit je gestellt hat. Paradoxerweise zwingt uns diese Frage, eine noch tiefere Frage zu beantworten: <strong>«Was bedeutet es, Mensch zu sein?»</strong>",
         "quote": "«Wenn ich eine Stunde hätte, um ein Problem zu lösen, würde ich 55 Minuten damit verbringen, das Problem zu definieren, und 5 Minuten, es zu lösen.»",
         "quote_author": "— Albert Einstein",
@@ -73,7 +75,7 @@
             "item3": "Du brauchst nur deine Erfahrung als lebender, denkender Mensch."
         },
         "p5": "<strong>AGI INDEX ist der Ort, an dem wir unsere «55 Minuten» zurückgewinnen.</strong> Ein Ort, an dem Künstler, Lehrer, Eltern und Philosophen Seite an Seite mit Ingenieuren stehen. Wir messen nicht nur eine Maschine; wir kartieren die Grenzen unserer eigenen Menschlichkeit.",
-        "closing": "Komm, lass uns gemeinsam definieren, wer wir sind.",
+        "closing": "Bereit, es gemeinsam zu definieren? Wie sieht deine Vision der 'nächsten Intelligenz' aus?",
         "how_it_works": {
             "title": "So funktioniert's",
             "step1": {
@@ -159,6 +161,13 @@
             "browse": "Fragen durchsuchen",
             "questions": "Du hast noch keine Fragen vorgeschlagen.",
             "suggest": "Frage vorschlagen"
+        },
+        "status": {
+            "pending": "Ausstehend",
+            "approved": "Genehmigt",
+            "rejected": "Abgelehnt",
+            "pending_message": "Diese Frage wird derzeit überprüft.",
+            "rejected_message": "Diese Frage wurde abgelehnt."
         }
     },
     "question_card": {
@@ -170,7 +179,7 @@
         "unsuitable": "Ungeeignet",
         "you_voted": "Deine Stimme:",
         "edit": "Bearbeiten",
-        "advanced_options": "Weitere Optionen",
+        "suitability_option": "Eignung bewerten",
         "importance_weight": "Wichtigkeit",
         "weight": {
             "low": "Niedrig",
