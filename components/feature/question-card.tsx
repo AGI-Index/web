@@ -132,16 +132,32 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 setLocalQuestion(prev => {
                     const updated = { ...prev }
 
+                    // If previous vote exists, subtract old values first
+                    if (userVote) {
+                        if (userVote.is_achieved === true) {
+                            updated.achieved_count = Math.max(0, (prev.achieved_count || 0) - 1)
+                        } else if (userVote.is_achieved === false) {
+                            updated.not_achieved_count = Math.max(0, (prev.not_achieved_count || 0) - 1)
+                        }
+
+                        if (userVote.is_suitable === true) {
+                            updated.suitable_count = Math.max(0, (prev.suitable_count || 0) - 1)
+                        } else if (userVote.is_suitable === false) {
+                            updated.unsuitable_count = Math.max(0, (prev.unsuitable_count || 0) - 1)
+                        }
+                    }
+
+                    // Add new vote values
                     if (voteData.is_achieved === true) {
-                        updated.achieved_count = (prev.achieved_count || 0) + 1
+                        updated.achieved_count = (updated.achieved_count || 0) + 1
                     } else if (voteData.is_achieved === false) {
-                        updated.not_achieved_count = (prev.not_achieved_count || 0) + 1
+                        updated.not_achieved_count = (updated.not_achieved_count || 0) + 1
                     }
 
                     if (voteData.is_suitable === true) {
-                        updated.suitable_count = (prev.suitable_count || 0) + 1
+                        updated.suitable_count = (updated.suitable_count || 0) + 1
                     } else if (voteData.is_suitable === false) {
-                        updated.unsuitable_count = (prev.unsuitable_count || 0) + 1
+                        updated.unsuitable_count = (updated.unsuitable_count || 0) + 1
                     }
 
                     return updated

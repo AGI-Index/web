@@ -136,7 +136,24 @@
         "submit_signin": "登录",
         "toggle_signup": "没有账户？注册",
         "toggle_signin": "已有账户？登录",
-        "check_email": "确认链接已发送到您的邮箱！"
+        "check_email": "确认链接已发送到您的邮箱！",
+        "forgot_password": "忘记密码？"
+    },
+    "forgot_password": {
+        "title": "重置密码",
+        "description": "输入您的邮箱，我们将发送重置链接。",
+        "submit": "发送重置链接",
+        "success": "请查收邮件！我们已发送密码重置链接。",
+        "back_to_login": "返回登录"
+    },
+    "reset_password": {
+        "title": "设置新密码",
+        "description": "请输入您的新密码。",
+        "new_password": "新密码",
+        "confirm_password": "确认密码",
+        "submit": "更新密码",
+        "success": "密码更新成功！正在跳转...",
+        "password_mismatch": "两次密码不一致。"
     },
     "questions": {
         "title": "问题列表",

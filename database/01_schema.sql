@@ -310,8 +310,8 @@ BEGIN
   -- Let's stick to total votes in the system for "Community Stats"
   SELECT COUNT(DISTINCT user_id) INTO v_total_users FROM votes;
   
-  SELECT COUNT(*) INTO v_index_question_count FROM questions WHERE is_indexed = true;
-  SELECT COUNT(*) INTO v_candidate_question_count FROM questions WHERE is_indexed = false;
+  SELECT COUNT(*) INTO v_index_question_count FROM questions WHERE is_indexed = true AND status = 'approved';
+  SELECT COUNT(*) INTO v_candidate_question_count FROM questions WHERE is_indexed = false AND status = 'approved';
 
   INSERT INTO agi_stats (
     id, overall_rate, linguistic_rate, multimodal_rate, 
@@ -377,8 +377,8 @@ BEGIN
 
   SELECT COALESCE(SUM(vote_count), 0) INTO v_total_votes FROM questions;
   SELECT COUNT(DISTINCT user_id) INTO v_total_users FROM votes;
-  SELECT COUNT(*) INTO v_index_question_count FROM questions WHERE is_indexed = true;
-  SELECT COUNT(*) INTO v_candidate_question_count FROM questions WHERE is_indexed = false;
+  SELECT COUNT(*) INTO v_index_question_count FROM questions WHERE is_indexed = true AND status = 'approved';
+  SELECT COUNT(*) INTO v_candidate_question_count FROM questions WHERE is_indexed = false AND status = 'approved';
 
   INSERT INTO agi_stats (
     id, overall_rate, linguistic_rate, multimodal_rate, 

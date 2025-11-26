@@ -136,7 +136,24 @@
         "submit_signin": "Sign In",
         "toggle_signup": "Don't have an account? Sign up",
         "toggle_signin": "Already have an account? Sign in",
-        "check_email": "Check your email for the confirmation link!"
+        "check_email": "Check your email for the confirmation link!",
+        "forgot_password": "Forgot password?"
+    },
+    "forgot_password": {
+        "title": "Reset Password",
+        "description": "Enter your email and we'll send you a reset link.",
+        "submit": "Send Reset Link",
+        "success": "Check your email! We've sent you a password reset link.",
+        "back_to_login": "Back to Login"
+    },
+    "reset_password": {
+        "title": "Set New Password",
+        "description": "Enter your new password below.",
+        "new_password": "New Password",
+        "confirm_password": "Confirm Password",
+        "submit": "Update Password",
+        "success": "Password updated successfully! Redirecting...",
+        "password_mismatch": "Passwords do not match."
     },
     "questions": {
         "title": "Questions Index",

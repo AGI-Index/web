@@ -136,7 +136,24 @@
         "submit_signin": "ログイン",
         "toggle_signup": "アカウントをお持ちでないですか？登録",
         "toggle_signin": "すでにアカウントをお持ちですか？ログイン",
-        "check_email": "確認リンクをメールで送信しました！"
+        "check_email": "確認リンクをメールで送信しました！",
+        "forgot_password": "パスワードをお忘れですか？"
+    },
+    "forgot_password": {
+        "title": "パスワードをリセット",
+        "description": "メールアドレスを入力してください。リセットリンクを送信します。",
+        "submit": "リセットリンクを送信",
+        "success": "メールをご確認ください！パスワードリセットリンクを送信しました。",
+        "back_to_login": "ログインに戻る"
+    },
+    "reset_password": {
+        "title": "新しいパスワードを設定",
+        "description": "新しいパスワードを入力してください。",
+        "new_password": "新しいパスワード",
+        "confirm_password": "パスワード確認",
+        "submit": "パスワードを更新",
+        "success": "パスワードが更新されました！リダイレクト中...",
+        "password_mismatch": "パスワードが一致しません。"
     },
     "questions": {
         "title": "質問一覧",

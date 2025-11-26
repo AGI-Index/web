@@ -136,7 +136,24 @@
         "submit_signin": "Anmelden",
         "toggle_signup": "Noch kein Konto? Registrieren",
         "toggle_signin": "Bereits ein Konto? Anmelden",
-        "check_email": "Wir haben dir einen Bestätigungslink per E-Mail gesendet!"
+        "check_email": "Wir haben dir einen Bestätigungslink per E-Mail gesendet!",
+        "forgot_password": "Passwort vergessen?"
+    },
+    "forgot_password": {
+        "title": "Passwort zurücksetzen",
+        "description": "Gib deine E-Mail ein und wir senden dir einen Reset-Link.",
+        "submit": "Reset-Link senden",
+        "success": "Prüfe deine E-Mail! Wir haben dir einen Link zum Zurücksetzen gesendet.",
+        "back_to_login": "Zurück zur Anmeldung"
+    },
+    "reset_password": {
+        "title": "Neues Passwort festlegen",
+        "description": "Gib dein neues Passwort ein.",
+        "new_password": "Neues Passwort",
+        "confirm_password": "Passwort bestätigen",
+        "submit": "Passwort aktualisieren",
+        "success": "Passwort aktualisiert! Weiterleitung...",
+        "password_mismatch": "Passwörter stimmen nicht überein."
     },
     "questions": {
         "title": "Fragenliste",

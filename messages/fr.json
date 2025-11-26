@@ -136,7 +136,24 @@
         "submit_signin": "Se connecter",
         "toggle_signup": "Pas de compte ? Inscrivez-vous",
         "toggle_signin": "Déjà un compte ? Connectez-vous",
-        "check_email": "Un lien de confirmation vous a été envoyé par e-mail !"
+        "check_email": "Un lien de confirmation vous a été envoyé par e-mail !",
+        "forgot_password": "Mot de passe oublié ?"
+    },
+    "forgot_password": {
+        "title": "Réinitialiser le mot de passe",
+        "description": "Entrez votre e-mail et nous vous enverrons un lien de réinitialisation.",
+        "submit": "Envoyer le lien",
+        "success": "Vérifiez votre e-mail ! Nous vous avons envoyé un lien de réinitialisation.",
+        "back_to_login": "Retour à la connexion"
+    },
+    "reset_password": {
+        "title": "Nouveau mot de passe",
+        "description": "Entrez votre nouveau mot de passe.",
+        "new_password": "Nouveau mot de passe",
+        "confirm_password": "Confirmer le mot de passe",
+        "submit": "Mettre à jour le mot de passe",
+        "success": "Mot de passe mis à jour ! Redirection...",
+        "password_mismatch": "Les mots de passe ne correspondent pas."
     },
     "questions": {
         "title": "Liste des questions",

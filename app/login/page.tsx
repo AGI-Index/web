@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Separator } from "@/components/ui/separator"
 import { Chrome, Github, Disc } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
+import Link from "next/link"
 
 export default function LoginPage() {
     const [isSignUp, setIsSignUp] = useState(false)
@@ -121,7 +122,17 @@ export default function LoginPage() {
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="password">{t('login.password')}</Label>
+                            <div className="flex items-center justify-between">
+                                <Label htmlFor="password">{t('login.password')}</Label>
+                                {!isSignUp && (
+                                    <Link
+                                        href="/forgot-password"
+                                        className="text-xs text-muted-foreground hover:text-primary hover:underline"
+                                    >
+                                        {t('login.forgot_password')}
+                                    </Link>
+                                )}
+                            </div>
                             <Input
                                 id="password"
                                 type="password"

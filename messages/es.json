@@ -136,7 +136,24 @@
         "submit_signin": "Iniciar sesión",
         "toggle_signup": "¿No tienes cuenta? Regístrate",
         "toggle_signin": "¿Ya tienes cuenta? Inicia sesión",
-        "check_email": "¡Te enviamos un enlace de confirmación por correo!"
+        "check_email": "¡Te enviamos un enlace de confirmación por correo!",
+        "forgot_password": "¿Olvidaste tu contraseña?"
+    },
+    "forgot_password": {
+        "title": "Restablecer contraseña",
+        "description": "Ingresa tu correo y te enviaremos un enlace de restablecimiento.",
+        "submit": "Enviar enlace",
+        "success": "¡Revisa tu correo! Te enviamos un enlace para restablecer tu contraseña.",
+        "back_to_login": "Volver al inicio de sesión"
+    },
+    "reset_password": {
+        "title": "Nueva contraseña",
+        "description": "Ingresa tu nueva contraseña.",
+        "new_password": "Nueva contraseña",
+        "confirm_password": "Confirmar contraseña",
+        "submit": "Actualizar contraseña",
+        "success": "¡Contraseña actualizada! Redirigiendo...",
+        "password_mismatch": "Las contraseñas no coinciden."
     },
     "questions": {
         "title": "Lista de preguntas",

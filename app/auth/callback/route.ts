@@ -6,6 +6,12 @@ export async function GET(request: Request) {
     const { searchParams, origin } = new URL(request.url)
     const code = searchParams.get('code')
     const next = searchParams.get('next') ?? '/'
+    const type = searchParams.get('type')
+
+    // Handle password recovery redirect
+    if (type === 'recovery') {
+        return NextResponse.redirect(`${origin}/reset-password`)
+    }
 
     if (code) {
         const cookieStore = await cookies()
