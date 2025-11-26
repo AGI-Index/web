@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { Chrome, Github, Apple, Disc } from "lucide-react"
+import { Chrome, Github, Disc } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
 
 export default function LoginPage() {
@@ -45,7 +45,7 @@ export default function LoginPage() {
         setLoading(false)
     }
 
-    const handleOAuthSignIn = async (provider: 'google' | 'apple' | 'discord' | 'github') => {
+    const handleOAuthSignIn = async (provider: 'google' | 'discord' | 'github') => {
         setLoading(true)
         await signInWithOAuth(provider)
         setLoading(false)
@@ -88,17 +88,10 @@ export default function LoginPage() {
                             variant="outline"
                             onClick={() => handleOAuthSignIn('discord')}
                             disabled={loading}
+                            className="col-span-2"
                         >
                             <Disc className="mr-2 h-4 w-4" />
                             Discord
-                        </Button>
-                        <Button
-                            variant="outline"
-                            onClick={() => handleOAuthSignIn('apple')}
-                            disabled={loading}
-                        >
-                            <Apple className="mr-2 h-4 w-4" />
-                            Apple
                         </Button>
                     </div>
 
