@@ -36,10 +36,19 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     const [language, setLanguage] = useState<Language>('en')
 
     useEffect(() => {
+        // 1. localStorage에 저장된 언어가 있으면 사용
         const savedLang = localStorage.getItem('language') as Language
         if (savedLang && SUPPORTED_LANGUAGES.includes(savedLang)) {
             setLanguage(savedLang)
+            return
         }
+
+        // 2. 브라우저 언어 감지
+        const browserLang = navigator.language.split('-')[0] as Language
+        if (SUPPORTED_LANGUAGES.includes(browserLang)) {
+            setLanguage(browserLang)
+        }
+        // 3. 둘 다 없으면 기본값 'en' 유지
     }, [])
 
     const handleSetLanguage = (lang: Language) => {
