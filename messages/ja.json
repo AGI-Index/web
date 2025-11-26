@@ -231,36 +231,56 @@
         "title": "質問を提案する",
         "description": "意味のある質問を提案して、より良いAGIベンチマークを一緒に作りましょう。",
         "guide": {
-            "title": "良い質問の書き方",
+            "title": "質問作成ガイド",
             "description": "複雑な理論は必要ありません。「AIがこれもできないなら、知能と言えるだろうか？」と思った瞬間を思い出してください。",
-            "good_title": "良い質問",
-            "good_example": "「地図を描いて道を説明できるか？」",
-            "bad_title": "難しい質問",
-            "bad_example": "「エラー率は5%未満か？」",
-            "key_check_title": "重要チェック",
-            "key_check_question": "「AIにこの能力がなければ...一緒に働けるか？一生を共にできるか？」",
-            "key_check_tip1": "「難しそう」なら、素晴らしい質問です！",
-            "key_check_tip2": "「はい」か「いいえ」で答えられると最高！"
+            "principles": {
+                "clear_answer": {
+                    "title": "明確な答え",
+                    "desc": "「はい」か「いいえ」で答えられる質問ですか？"
+                },
+                "map_point": {
+                    "title": "地図に点を打つ",
+                    "desc": "知能の様々な側面を示してください。あなたの質問が巨大な知能地図の一点になります。"
+                },
+                "new_perspective": {
+                    "title": "新しい視点",
+                    "desc": "これまでにない新鮮な状況ですか？重複を避けてください。"
+                }
+            },
+            "footer": "あなたの経験がAIの進む道を照らします。"
         },
         "categories": {
-            "title": "カテゴリー",
             "linguistic_title": "言語",
             "linguistic_desc": "テキスト会話だけで判断できる能力",
-            "multimodal_title": "マルチモーダル",
+            "multimodal_title": "マルチモーダル（言語以外）",
             "multimodal_desc": "テキスト以外に音声、表情、画像、行動などが必要なすべての能力"
+        },
+        "examples": {
+            "linguistic_title": "言語知能の例",
+            "linguistic": [
+                "一週間前の会話を覚えているか？",
+                "Slackでの仕事の話を別のプラットフォームで続けられるか？",
+                "仕事用と私的な会話、それぞれに合った対話ができるか？",
+                "冗談と本気を区別できるか？"
+            ],
+            "multimodal_title": "マルチモーダルの例",
+            "multimodal": [
+                "声だけで誰か分かるか？",
+                "表情と言葉が違う時、本当の感情が分かるか？",
+                "地図に絵を描きながら道を説明できるか？",
+                "箸の使い方を見て学べるか？",
+                "初めて行った場所でトイレを探せるか？"
+            ]
         },
         "form": {
             "title": "質問を提出",
             "description": "提出された質問は審査後、公開投票に追加されます。",
-            "category_label": "カテゴリー",
-            "linguistic_label": "言語",
-            "linguistic_desc": "テキストベースの能力のみ",
-            "multimodal_label": "マルチモーダル",
-            "multimodal_desc": "画像、音声、行動などが必要",
-            "question_label": "質問",
-            "question_placeholder": "AIは...できるか？",
-            "question_hint": "「AIは...できるか？」の形式で、はい/いいえで答えられる質問が良いです",
-            "submit_button": "質問を提出",
+            "category_select": "カテゴリーを選択",
+            "question_label": "質問内容",
+            "question_placeholder": "上の例のように具体的な状況を想定して書いてください。",
+            "char_count": "{count}/200",
+            "submit_button": "質問を提出する",
+            "submitting_button": "提出中...",
             "submitted_button": "提出完了！",
             "success_message": "ありがとうございます！質問はコミュニティで審査されます。"
         }

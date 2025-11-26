@@ -231,36 +231,56 @@
         "title": "질문 제안하기",
         "description": "의미 있는 질문을 제안하여 더 나은 AGI 벤치마크를 함께 만들어주세요.",
         "guide": {
-            "title": "좋은 질문 작성법",
-            "description": "복잡한 이론이 필요 없습니다. \"AI가 이것도 못하면 지능이라고 할 수 있을까?\"라고 생각했던 순간을 떠올려보세요.",
-            "good_title": "좋은 질문",
-            "good_example": "\"지도를 그려서 길을 설명할 수 있는가?\"",
-            "bad_title": "어려운 질문",
-            "bad_example": "\"오류율이 5% 미만인가?\"",
-            "key_check_title": "핵심 체크",
-            "key_check_question": "\"AI가 이 능력이 없다면... 같이 일할 수 있을까? 평생을 함께할 수 있을까?\"",
-            "key_check_tip1": "\"어려울 것 같다\"면, 훌륭한 질문입니다!",
-            "key_check_tip2": "\"예\" 또는 \"아니오\"로 답할 수 있으면 최고!"
+            "title": "질문 작성 가이드",
+            "description": "복잡한 이론은 필요 없습니다. 'AI가 이것도 못하면 지능이라고 할 수 있을까?'라고 생각했던 순간을 떠올려보세요.",
+            "principles": {
+                "clear_answer": {
+                    "title": "명확한 답변",
+                    "desc": "\"예\" 또는 \"아니오\"로 답할 수 있는 질문인가요?"
+                },
+                "map_point": {
+                    "title": "지도의 점 찍기",
+                    "desc": "지능의 다양한 측면을 보여주세요. 당신의 질문이 거대한 지능 지도의 한 점이 됩니다."
+                },
+                "new_perspective": {
+                    "title": "새로운 관점",
+                    "desc": "기존에 없던 참신한 상황인가요? 중복을 피해주세요."
+                }
+            },
+            "footer": "당신의 경험이 AI가 나아갈 길을 비춥니다."
         },
         "categories": {
-            "title": "카테고리",
             "linguistic_title": "언어",
             "linguistic_desc": "텍스트 대화만으로 판단할 수 있는 능력",
-            "multimodal_title": "멀티모달",
+            "multimodal_title": "멀티모달(언어 외)",
             "multimodal_desc": "텍스트 외에 소리, 표정, 이미지, 행동 등이 필요한 모든 능력"
+        },
+        "examples": {
+            "linguistic_title": "언어 지능 예시",
+            "linguistic": [
+                "일주일 전 대화를 기억할 수 있는가?",
+                "슬랙에서 하던 업무 이야기를 카카오톡에서도 이어서 할 수 있는가?",
+                "업무용 대화방과 사적인 대화방, 각각에 맞는 대화를 할 수 있는가?",
+                "농담과 진담을 구별할 수 있는가?"
+            ],
+            "multimodal_title": "멀티모달 예시",
+            "multimodal": [
+                "목소리만으로 누군지 알아볼 수 있는가?",
+                "표정과 말이 다를 때 진짜 감정을 알 수 있는가?",
+                "지도에 그림을 그려가며 길을 설명할 수 있는가?",
+                "젓가락 사용법을 보고 배울 수 있는가?",
+                "처음 가본 곳에서 화장실을 찾을 수 있는가?"
+            ]
         },
         "form": {
             "title": "질문 제출",
             "description": "제출된 질문은 검토 후 공개 투표에 추가됩니다.",
-            "category_label": "카테고리",
-            "linguistic_label": "언어",
-            "linguistic_desc": "텍스트 기반 능력만",
-            "multimodal_label": "멀티모달",
-            "multimodal_desc": "이미지, 소리, 행동 등이 필요",
-            "question_label": "질문",
-            "question_placeholder": "AI가 ... 할 수 있는가?",
-            "question_hint": "\"AI가 ... 할 수 있는가?\" 형태의 예/아니오로 답할 수 있는 질문이 좋습니다",
-            "submit_button": "질문 제출",
+            "category_select": "카테고리 선택",
+            "question_label": "질문 내용",
+            "question_placeholder": "위 예시처럼 구체적인 상황을 가정해서 적어주세요.",
+            "char_count": "{count}/200",
+            "submit_button": "질문 제출하기",
+            "submitting_button": "제출 중...",
             "submitted_button": "제출 완료!",
             "success_message": "감사합니다! 질문이 커뮤니티에서 검토될 예정입니다."
         }

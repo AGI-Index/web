@@ -12,6 +12,7 @@ import { ChevronDown, ChevronUp, MessageSquare, Eye, Clock, CheckCircle, XCircle
 import { Badge } from "@/components/ui/badge"
 import { ProfileListSkeleton } from "@/components/ui/loading-skeletons"
 import { useI18n } from "@/lib/i18n-context"
+import { cn } from "@/lib/utils"
 
 interface Translation {
     question_id: number
@@ -152,12 +153,19 @@ export default function ProfilePage() {
         return map
     }, [translations])
 
-    // Apply translations to questions
+    // Apply translations to questions and sort (index first, then candidate)
     const translatedVotedQuestions = useMemo(() => {
-        return votedQuestions.map(q => ({
-            ...q,
-            content: translationMap.get(q.id) || q.content
-        }))
+        return votedQuestions
+            .map(q => ({
+                ...q,
+                content: translationMap.get(q.id) || q.content
+            }))
+            .sort((a, b) => {
+                // Index questions first (is_indexed: true), then candidate questions
+                if (a.is_indexed && !b.is_indexed) return -1
+                if (!a.is_indexed && b.is_indexed) return 1
+                return 0 // Keep original order within same type
+            })
     }, [votedQuestions, translationMap])
 
     const translatedAuthoredQuestions = useMemo(() => {
@@ -193,7 +201,13 @@ export default function ProfilePage() {
                     ) : translatedVotedQuestions.length > 0 ? (
                         <div className="space-y-2">
                             {translatedVotedQuestions.map((question) => (
-                                <div key={question.id} className="border rounded-lg overflow-hidden">
+                                <div
+                                    key={question.id}
+                                    className={cn(
+                                        "border rounded-lg overflow-hidden",
+                                        !question.is_indexed && "bg-muted/50"
+                                    )}
+                                >
                                     <button
                                         onClick={() => toggleVoteExpand(question.id)}
                                         className="w-full px-4 py-3 flex items-center justify-between hover:bg-secondary/50 transition-colors text-left"

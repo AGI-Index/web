@@ -231,36 +231,56 @@
         "title": "Sugerir una pregunta",
         "description": "Ayúdanos a construir mejores benchmarks para AGI proponiendo preguntas significativas.",
         "guide": {
-            "title": "Cómo escribir una buena pregunta",
-            "description": "No necesitamos teorías complejas. Piensa en momentos cuando pensaste \"Si la IA no puede hacer esto, ¿podemos llamarla inteligente?\"",
-            "good_title": "Buena pregunta",
-            "good_example": "\"¿Puede explicar direcciones dibujando un mapa?\"",
-            "bad_title": "Pregunta difícil",
-            "bad_example": "\"¿Es la tasa de error inferior al 5%?\"",
-            "key_check_title": "Verificación clave",
-            "key_check_question": "\"Si la IA carece de esta habilidad... ¿podría trabajar con ella? ¿Podría pasar mi vida con ella?\"",
-            "key_check_tip1": "Si \"sería difícil\", ¡es una gran pregunta!",
-            "key_check_tip2": "¡Mejor si se puede responder con \"Sí\" o \"No\"!"
+            "title": "Guía para escribir preguntas",
+            "description": "No necesitamos teorías complejas. Piensa en momentos cuando pensaste 'Si la IA no puede hacer esto, ¿podemos llamarla inteligente?'",
+            "principles": {
+                "clear_answer": {
+                    "title": "Respuesta clara",
+                    "desc": "¿Se puede responder la pregunta con \"Sí\" o \"No\"?"
+                },
+                "map_point": {
+                    "title": "Un punto en el mapa",
+                    "desc": "Muestra diferentes aspectos de la inteligencia. Tu pregunta se convierte en un punto en el vasto mapa de la inteligencia."
+                },
+                "new_perspective": {
+                    "title": "Nueva perspectiva",
+                    "desc": "¿Es una situación novedosa que no existía antes? Evita duplicados."
+                }
+            },
+            "footer": "Tu experiencia ilumina el camino que seguirá la IA."
         },
         "categories": {
-            "title": "Categorías",
             "linguistic_title": "Lingüístico",
             "linguistic_desc": "Habilidades que pueden juzgarse solo a través de conversación textual",
-            "multimodal_title": "Multimodal",
+            "multimodal_title": "Multimodal (No lingüístico)",
             "multimodal_desc": "Todas las habilidades que requieren sonido, expresiones, imágenes, acciones, etc. más allá del texto"
+        },
+        "examples": {
+            "linguistic_title": "Ejemplos de inteligencia lingüística",
+            "linguistic": [
+                "¿Puede recordar una conversación de hace una semana?",
+                "¿Puede continuar una discusión de trabajo de Slack en otra plataforma?",
+                "¿Puede adaptar su tono para conversaciones profesionales vs. casuales?",
+                "¿Puede distinguir entre bromas y declaraciones serias?"
+            ],
+            "multimodal_title": "Ejemplos multimodales",
+            "multimodal": [
+                "¿Puede reconocer a alguien solo por su voz?",
+                "¿Puede detectar emociones verdaderas cuando las expresiones contradicen las palabras?",
+                "¿Puede explicar direcciones dibujando en un mapa?",
+                "¿Puede aprender a usar palillos observando?",
+                "¿Puede encontrar un baño en un lugar desconocido?"
+            ]
         },
         "form": {
             "title": "Enviar tu pregunta",
             "description": "Tu pregunta será revisada y añadida a la votación pública.",
-            "category_label": "Categoría",
-            "linguistic_label": "Lingüístico",
-            "linguistic_desc": "Solo habilidades basadas en texto",
-            "multimodal_label": "Multimodal",
-            "multimodal_desc": "Requiere imágenes, sonido, acciones, etc.",
-            "question_label": "Tu pregunta",
-            "question_placeholder": "¿Puede una IA...?",
-            "question_hint": "Intenta formularla como una pregunta sí/no comenzando con \"¿Puede una IA...\"",
+            "category_select": "Seleccionar categoría",
+            "question_label": "Contenido de la pregunta",
+            "question_placeholder": "Describe una situación específica como los ejemplos anteriores.",
+            "char_count": "{count}/200",
             "submit_button": "Enviar pregunta",
+            "submitting_button": "Enviando...",
             "submitted_button": "¡Pregunta enviada!",
             "success_message": "¡Gracias! Tu pregunta será revisada por la comunidad."
         }

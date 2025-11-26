@@ -231,36 +231,56 @@
         "title": "Suggest a Question",
         "description": "Help us build better benchmarks for AGI by proposing meaningful questions.",
         "guide": {
-            "title": "How to Write a Good Question",
-            "description": "We don't need complex theories. Think of moments when you thought \"If AI can't do this, can we call it intelligent?\"",
-            "good_title": "Good Question",
-            "good_example": "\"Can it explain directions by drawing on a map?\"",
-            "bad_title": "Difficult Question",
-            "bad_example": "\"Is the error rate below 5%?\"",
-            "key_check_title": "Key Check",
-            "key_check_question": "\"If AI lacks this ability... could I work with it? Could I spend my life with it?\"",
-            "key_check_tip1": "If \"it would be difficult\", that's a great question!",
-            "key_check_tip2": "Best if answerable with \"Yes\" or \"No\"!"
+            "title": "Question Writing Guide",
+            "description": "No complex theories needed. Think of moments when you thought 'If AI can't do this, can we call it intelligent?'",
+            "principles": {
+                "clear_answer": {
+                    "title": "Clear Answer",
+                    "desc": "Can the question be answered with \"Yes\" or \"No\"?"
+                },
+                "map_point": {
+                    "title": "A Point on the Map",
+                    "desc": "Show different aspects of intelligence. Your question becomes a point on the vast map of intelligence."
+                },
+                "new_perspective": {
+                    "title": "New Perspective",
+                    "desc": "Is it a novel situation that didn't exist before? Avoid duplicates."
+                }
+            },
+            "footer": "Your experience lights the path AI will follow."
         },
         "categories": {
-            "title": "Categories",
             "linguistic_title": "Linguistic",
             "linguistic_desc": "Abilities that can be judged through text conversation only",
-            "multimodal_title": "Multimodal",
+            "multimodal_title": "Multimodal (Non-linguistic)",
             "multimodal_desc": "All abilities requiring sound, expressions, images, actions, etc. beyond text"
+        },
+        "examples": {
+            "linguistic_title": "Linguistic Intelligence Examples",
+            "linguistic": [
+                "Can it remember a conversation from a week ago?",
+                "Can it continue a work discussion from Slack on another platform?",
+                "Can it adapt its tone for professional vs. casual conversations?",
+                "Can it distinguish between jokes and serious statements?"
+            ],
+            "multimodal_title": "Multimodal Examples",
+            "multimodal": [
+                "Can it recognize someone by their voice alone?",
+                "Can it detect true emotions when expressions contradict words?",
+                "Can it explain directions by drawing on a map?",
+                "Can it learn how to use chopsticks by watching?",
+                "Can it find a restroom in an unfamiliar place?"
+            ]
         },
         "form": {
             "title": "Submit Your Question",
             "description": "Your question will be reviewed and added to the public vote.",
-            "category_label": "Category",
-            "linguistic_label": "Linguistic",
-            "linguistic_desc": "Text-based abilities only",
-            "multimodal_label": "Multimodal",
-            "multimodal_desc": "Requires images, sound, actions, etc.",
-            "question_label": "Your Question",
-            "question_placeholder": "Can an AI...?",
-            "question_hint": "Try to phrase it as a yes/no question starting with \"Can an AI...\"",
+            "category_select": "Select Category",
+            "question_label": "Question Content",
+            "question_placeholder": "Describe a specific situation like the examples above.",
+            "char_count": "{count}/200",
             "submit_button": "Submit Question",
+            "submitting_button": "Submitting...",
             "submitted_button": "Question Submitted!",
             "success_message": "Thank you! Your question will be reviewed by the community."
         }

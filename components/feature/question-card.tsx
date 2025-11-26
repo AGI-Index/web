@@ -62,7 +62,7 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 .select('*')
                 .eq('question_id', question.id)
                 .eq('user_id', user.id)
-                .single()
+                .maybeSingle()
 
             if (data) {
                 const voteData = data as any

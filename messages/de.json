@@ -231,36 +231,56 @@
         "title": "Frage vorschlagen",
         "description": "Helfen Sie uns, bessere Benchmarks für AGI zu erstellen, indem Sie bedeutungsvolle Fragen vorschlagen.",
         "guide": {
-            "title": "Wie man eine gute Frage schreibt",
-            "description": "Wir brauchen keine komplexen Theorien. Denken Sie an Momente, als Sie dachten: «Wenn KI das nicht kann, können wir sie dann intelligent nennen?»",
-            "good_title": "Gute Frage",
-            "good_example": "«Kann sie Wegbeschreibungen durch Zeichnen einer Karte erklären?»",
-            "bad_title": "Schwierige Frage",
-            "bad_example": "«Liegt die Fehlerquote unter 5%?»",
-            "key_check_title": "Wichtige Prüfung",
-            "key_check_question": "«Wenn KI diese Fähigkeit nicht hat... könnte ich mit ihr arbeiten? Könnte ich mein Leben mit ihr verbringen?»",
-            "key_check_tip1": "Wenn «es schwierig wäre», ist das eine großartige Frage!",
-            "key_check_tip2": "Am besten mit «Ja» oder «Nein» beantwortbar!"
+            "title": "Leitfaden zum Schreiben von Fragen",
+            "description": "Wir brauchen keine komplexen Theorien. Denken Sie an Momente, als Sie dachten: 'Wenn KI das nicht kann, können wir sie dann intelligent nennen?'",
+            "principles": {
+                "clear_answer": {
+                    "title": "Klare Antwort",
+                    "desc": "Kann die Frage mit \"Ja\" oder \"Nein\" beantwortet werden?"
+                },
+                "map_point": {
+                    "title": "Ein Punkt auf der Karte",
+                    "desc": "Zeigen Sie verschiedene Aspekte der Intelligenz. Ihre Frage wird zu einem Punkt auf der riesigen Karte der Intelligenz."
+                },
+                "new_perspective": {
+                    "title": "Neue Perspektive",
+                    "desc": "Ist es eine neuartige Situation, die vorher nicht existierte? Vermeiden Sie Duplikate."
+                }
+            },
+            "footer": "Ihre Erfahrung beleuchtet den Weg, dem KI folgen wird."
         },
         "categories": {
-            "title": "Kategorien",
             "linguistic_title": "Sprachlich",
             "linguistic_desc": "Fähigkeiten, die nur durch Textkonversation beurteilt werden können",
-            "multimodal_title": "Multimodal",
+            "multimodal_title": "Multimodal (Nicht-sprachlich)",
             "multimodal_desc": "Alle Fähigkeiten, die Ton, Ausdrücke, Bilder, Aktionen usw. über Text hinaus erfordern"
+        },
+        "examples": {
+            "linguistic_title": "Beispiele für sprachliche Intelligenz",
+            "linguistic": [
+                "Kann sie sich an ein Gespräch von vor einer Woche erinnern?",
+                "Kann sie eine Arbeitsdiskussion von Slack auf einer anderen Plattform fortsetzen?",
+                "Kann sie ihren Ton für professionelle vs. lockere Gespräche anpassen?",
+                "Kann sie zwischen Scherzen und ernsthaften Aussagen unterscheiden?"
+            ],
+            "multimodal_title": "Multimodale Beispiele",
+            "multimodal": [
+                "Kann sie jemanden nur an der Stimme erkennen?",
+                "Kann sie wahre Emotionen erkennen, wenn Ausdrücke den Worten widersprechen?",
+                "Kann sie Wegbeschreibungen durch Zeichnen auf einer Karte erklären?",
+                "Kann sie durch Beobachten lernen, Stäbchen zu benutzen?",
+                "Kann sie an einem unbekannten Ort eine Toilette finden?"
+            ]
         },
         "form": {
             "title": "Frage einreichen",
             "description": "Ihre Frage wird überprüft und zur öffentlichen Abstimmung hinzugefügt.",
-            "category_label": "Kategorie",
-            "linguistic_label": "Sprachlich",
-            "linguistic_desc": "Nur textbasierte Fähigkeiten",
-            "multimodal_label": "Multimodal",
-            "multimodal_desc": "Erfordert Bilder, Ton, Aktionen usw.",
-            "question_label": "Ihre Frage",
-            "question_placeholder": "Kann eine KI...?",
-            "question_hint": "Versuchen Sie, sie als Ja/Nein-Frage zu formulieren, beginnend mit «Kann eine KI...»",
+            "category_select": "Kategorie auswählen",
+            "question_label": "Frageinhalt",
+            "question_placeholder": "Beschreiben Sie eine konkrete Situation wie in den obigen Beispielen.",
+            "char_count": "{count}/200",
             "submit_button": "Frage einreichen",
+            "submitting_button": "Wird eingereicht...",
             "submitted_button": "Frage eingereicht!",
             "success_message": "Vielen Dank! Ihre Frage wird von der Community überprüft."
         }

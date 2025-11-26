@@ -231,36 +231,56 @@
         "title": "Proposer une question",
         "description": "Aidez-nous à construire de meilleurs benchmarks pour l'AGI en proposant des questions significatives.",
         "guide": {
-            "title": "Comment écrire une bonne question",
-            "description": "Pas besoin de théories complexes. Pensez aux moments où vous vous êtes dit « Si l'IA ne peut pas faire ça, peut-on l'appeler intelligente ? »",
-            "good_title": "Bonne question",
-            "good_example": "« Peut-elle expliquer des directions en dessinant une carte ? »",
-            "bad_title": "Question difficile",
-            "bad_example": "« Le taux d'erreur est-il inférieur à 5% ? »",
-            "key_check_title": "Vérification clé",
-            "key_check_question": "« Si l'IA manque cette capacité... pourrais-je travailler avec elle ? Pourrais-je passer ma vie avec elle ? »",
-            "key_check_tip1": "Si « ce serait difficile », c'est une excellente question !",
-            "key_check_tip2": "Mieux si on peut répondre par « Oui » ou « Non » !"
+            "title": "Guide de rédaction de questions",
+            "description": "Pas besoin de théories complexes. Pensez aux moments où vous vous êtes dit 'Si l'IA ne peut pas faire ça, peut-on l'appeler intelligente ?'",
+            "principles": {
+                "clear_answer": {
+                    "title": "Réponse claire",
+                    "desc": "La question peut-elle être répondue par \"Oui\" ou \"Non\" ?"
+                },
+                "map_point": {
+                    "title": "Un point sur la carte",
+                    "desc": "Montrez différents aspects de l'intelligence. Votre question devient un point sur la vaste carte de l'intelligence."
+                },
+                "new_perspective": {
+                    "title": "Nouvelle perspective",
+                    "desc": "Est-ce une situation nouvelle qui n'existait pas avant ? Évitez les doublons."
+                }
+            },
+            "footer": "Votre expérience éclaire le chemin que l'IA suivra."
         },
         "categories": {
-            "title": "Catégories",
             "linguistic_title": "Linguistique",
             "linguistic_desc": "Capacités qui peuvent être jugées uniquement par la conversation textuelle",
-            "multimodal_title": "Multimodal",
+            "multimodal_title": "Multimodal (Non-linguistique)",
             "multimodal_desc": "Toutes les capacités nécessitant son, expressions, images, actions, etc. au-delà du texte"
+        },
+        "examples": {
+            "linguistic_title": "Exemples d'intelligence linguistique",
+            "linguistic": [
+                "Peut-elle se souvenir d'une conversation d'il y a une semaine ?",
+                "Peut-elle continuer une discussion de travail de Slack sur une autre plateforme ?",
+                "Peut-elle adapter son ton pour des conversations professionnelles vs. décontractées ?",
+                "Peut-elle distinguer les blagues des déclarations sérieuses ?"
+            ],
+            "multimodal_title": "Exemples multimodaux",
+            "multimodal": [
+                "Peut-elle reconnaître quelqu'un uniquement par sa voix ?",
+                "Peut-elle détecter les vraies émotions quand les expressions contredisent les mots ?",
+                "Peut-elle expliquer des directions en dessinant sur une carte ?",
+                "Peut-elle apprendre à utiliser des baguettes en observant ?",
+                "Peut-elle trouver des toilettes dans un endroit inconnu ?"
+            ]
         },
         "form": {
             "title": "Soumettre votre question",
             "description": "Votre question sera examinée et ajoutée au vote public.",
-            "category_label": "Catégorie",
-            "linguistic_label": "Linguistique",
-            "linguistic_desc": "Capacités basées sur le texte uniquement",
-            "multimodal_label": "Multimodal",
-            "multimodal_desc": "Nécessite images, son, actions, etc.",
-            "question_label": "Votre question",
-            "question_placeholder": "Une IA peut-elle...?",
-            "question_hint": "Essayez de la formuler comme une question oui/non commençant par « Une IA peut-elle... »",
+            "category_select": "Sélectionner une catégorie",
+            "question_label": "Contenu de la question",
+            "question_placeholder": "Décrivez une situation spécifique comme les exemples ci-dessus.",
+            "char_count": "{count}/200",
             "submit_button": "Soumettre la question",
+            "submitting_button": "Soumission...",
             "submitted_button": "Question soumise !",
             "success_message": "Merci ! Votre question sera examinée par la communauté."
         }

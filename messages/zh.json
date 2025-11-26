@@ -231,36 +231,56 @@
         "title": "提出问题",
         "description": "提出有意义的问题，帮助我们构建更好的AGI基准。",
         "guide": {
-            "title": "如何写出好问题",
+            "title": "问题编写指南",
             "description": "不需要复杂的理论。想想那些让你觉得「如果AI连这个都做不到，能叫智能吗？」的时刻。",
-            "good_title": "好问题",
-            "good_example": "「它能通过画地图来解释方向吗？」",
-            "bad_title": "困难的问题",
-            "bad_example": "「错误率低于5%吗？」",
-            "key_check_title": "关键检查",
-            "key_check_question": "「如果AI缺少这种能力...我能和它一起工作吗？能和它共度一生吗？」",
-            "key_check_tip1": "如果「会很困难」，那就是一个很好的问题！",
-            "key_check_tip2": "如果能用「是」或「否」回答就更好！"
+            "principles": {
+                "clear_answer": {
+                    "title": "明确的答案",
+                    "desc": "问题能用「是」或「否」来回答吗？"
+                },
+                "map_point": {
+                    "title": "在地图上标点",
+                    "desc": "展示智能的不同方面。你的问题将成为巨大智能地图上的一个点。"
+                },
+                "new_perspective": {
+                    "title": "新视角",
+                    "desc": "是以前没有的新情境吗？请避免重复。"
+                }
+            },
+            "footer": "你的经验照亮AI前进的道路。"
         },
         "categories": {
-            "title": "类别",
             "linguistic_title": "语言",
             "linguistic_desc": "仅通过文字对话就能判断的能力",
-            "multimodal_title": "多模态",
+            "multimodal_title": "多模态（非语言）",
             "multimodal_desc": "需要文字以外的声音、表情、图像、动作等的所有能力"
+        },
+        "examples": {
+            "linguistic_title": "语言智能示例",
+            "linguistic": [
+                "能记住一周前的对话吗？",
+                "能在不同平台继续Slack上的工作讨论吗？",
+                "能区分工作和私人对话的语气吗？",
+                "能分辨玩笑和认真的话吗？"
+            ],
+            "multimodal_title": "多模态示例",
+            "multimodal": [
+                "仅凭声音就能认出是谁吗？",
+                "当表情和语言不一致时，能识别真实情感吗？",
+                "能通过在地图上画图来解释方向吗？",
+                "能通过观看学会使用筷子吗？",
+                "能在陌生的地方找到洗手间吗？"
+            ]
         },
         "form": {
             "title": "提交您的问题",
             "description": "您的问题将经过审核后添加到公开投票中。",
-            "category_label": "类别",
-            "linguistic_label": "语言",
-            "linguistic_desc": "仅基于文本的能力",
-            "multimodal_label": "多模态",
-            "multimodal_desc": "需要图像、声音、动作等",
-            "question_label": "您的问题",
-            "question_placeholder": "AI能否...？",
-            "question_hint": "尝试使用「AI能否...？」的形式，可以用是/否回答的问题最好",
+            "category_select": "选择类别",
+            "question_label": "问题内容",
+            "question_placeholder": "请像上面的例子一样，描述一个具体的情境。",
+            "char_count": "{count}/200",
             "submit_button": "提交问题",
+            "submitting_button": "提交中...",
             "submitted_button": "提交成功！",
             "success_message": "谢谢！您的问题将由社区审核。"
         }

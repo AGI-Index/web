@@ -18,6 +18,7 @@ interface I18nContextType {
     language: Language
     setLanguage: (lang: Language) => void
     t: (key: string) => string
+    tArray: (key: string) => string[]
 }
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined)
@@ -80,8 +81,32 @@ export function I18nProvider({ children }: { children: ReactNode }) {
         return value as string
     }
 
+    const tArray = (key: string): string[] => {
+        const keys = key.split('.')
+        let value: any = translations[language]
+
+        for (const k of keys) {
+            if (value && typeof value === 'object' && k in value) {
+                value = value[k as keyof typeof value]
+            } else {
+                // Fallback to English if translation missing
+                let fallback: any = translations['en']
+                for (const fk of keys) {
+                    if (fallback && typeof fallback === 'object' && fk in fallback) {
+                        fallback = fallback[fk as keyof typeof fallback]
+                    } else {
+                        return []
+                    }
+                }
+                return Array.isArray(fallback) ? fallback : []
+            }
+        }
+
+        return Array.isArray(value) ? value : []
+    }
+
     return (
-        <I18nContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+        <I18nContext.Provider value={{ language, setLanguage: handleSetLanguage, t, tArray }}>
             {children}
         </I18nContext.Provider>
     )
