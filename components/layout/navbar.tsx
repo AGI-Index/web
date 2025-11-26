@@ -19,7 +19,7 @@ export function Navbar() {
             <div className="container flex h-14 items-center">
                 {/* Logo */}
                 <Link href="/" className="flex items-center space-x-2 mr-6">
-                    <Image src="/logo.png" alt="AGI Index" width={120} height={30} className="h-7 w-auto" />
+                    <Image src="/logo.png" alt="AGI Index" width={120} height={30} className="h-7 w-auto dark:invert" />
                 </Link>
 
                 {/* Desktop Navigation */}
