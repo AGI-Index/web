@@ -21,7 +21,7 @@ export default function QuestionsPage() {
     const [searchQuery, setSearchQuery] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("all")
     const [activeTab, setActiveTab] = useState("index")
-    const [sortBy, setSortBy] = useState<SortOption>("newest")
+    const [sortBy, setSortBy] = useState<SortOption>("most-voted")
     const [showOnlyUnvoted, setShowOnlyUnvoted] = useState(false)
     const [questions, setQuestions] = useState<any[]>([])
     const [translations, setTranslations] = useState<Translation[]>([])
@@ -79,6 +79,7 @@ export default function QuestionsPage() {
             const { data, error } = await supabase
                 .from('questions')
                 .select('*')
+                .neq('status', 'rejected')
                 .order(orderColumn, { ascending })
 
             if (!error && data) {
