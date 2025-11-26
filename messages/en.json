@@ -34,13 +34,13 @@
     },
     "home": {
         "hero": {
-            "title": "The definition of Intelligence begins with the right Question.",
+            "title": "We define our Intelligence by the questions we ask.",
             "subtitle": "A community-driven platform defining and tracking AGI milestones through collective intelligence.",
             "agi_level": "AGI Level",
             "linguistic": "Linguistic",
             "multimodal": "Multimodal",
             "view_milestones": "View All Milestones",
-            "how_it_works": "How it Works"
+            "how_it_works": "How It Works"
         },
         "quick_vote": {
             "title": "Quick Vote",
@@ -78,21 +78,27 @@
         "closing": "Ready to define it together? What does your vision of the 'next intelligence' look like?",
         "how_it_works": {
             "title": "How It Works",
+            "intro": "The AGI Index is shaped by the world, not by a closed group of experts. Every step is designed to let humanity collectively define — and measure — the next intelligence.",
             "step1": {
-                "title": "Community Questions",
-                "desc": "Anyone can suggest questions that test whether AI has achieved human-level intelligence in specific areas."
+                "title": "Anyone Can Propose a Question",
+                "desc": "If you believe a particular ability reflects real intelligence, you can submit it as a question for the AGI Index. No technical background needed — only human experience."
             },
             "step2": {
-                "title": "Collective Voting",
-                "desc": "The community votes on whether questions are suitable milestones and whether current AI has achieved them."
+                "title": "The Community Curates the Index",
+                "desc": "Every proposed question goes through community voting. A question becomes an official Index question if it receives 50% or more \"suitable\" votes and at least 10 total votes."
             },
             "step3": {
-                "title": "Index Formation",
-                "desc": "Questions with strong consensus become part of the AGI Index, creating a living benchmark of progress."
+                "title": "Evaluate Today's Leading AI Systems",
+                "desc": "For each question, users vote based on current major AI systems (ChatGPT, Claude, Gemini, Llama, etc.). Vote \"Achieved\" if at least one major AI can do it, \"Not Yet\" if none can reliably do it today."
             },
             "step4": {
-                "title": "Track Progress",
-                "desc": "Watch as AI capabilities evolve and see how close we are to achieving true artificial general intelligence."
+                "title": "Computing the AGI Index",
+                "desc": "Among official Index questions, if 50% or more votes say \"Achieved,\" that question is classified as Achieved.",
+                "formula": "AGI Index = Achieved Questions / Total Index Questions",
+                "index_types_title": "Three Index Types",
+                "index_language": "Language AGI Index — for language-only questions",
+                "index_multimodal": "Multimodal AGI Index — for vision, audio, and action-related questions",
+                "index_overall": "Overall AGI Index — combining all official questions"
             }
         },
         "transparency": {
@@ -100,10 +106,10 @@
             "content": "This project is initiated and funded by H1R.ai as a contribution to the open research community. We guarantee that the AGI Index will remain ad-free, independent, and its data will always be open to the public."
         },
         "coalition": {
-            "title": "A Call for Coalition",
-            "p1": "Defining AGI is a task too great for any single entity. We explicitly invite other AI labs, tech companies, and research foundations to join this initiative.",
-            "p2": "Whether through data contribution, computing sponsorship, or academic review—your participation makes this benchmark stronger.",
-            "closing": "The AGI Index is, and always will be, neutral ground.",
+            "title": "A Call to Join Us",
+            "p1": "Building a fair and meaningful AGI benchmark isn't something any single group should do alone. We welcome AI labs, companies, researchers, and communities who want to contribute—not as competitors, but as collaborators.",
+            "p2": "Whether you can offer data, compute, technical insight, or simply thoughtful review, your participation helps make the AGI Index more balanced, transparent, and useful for everyone.",
+            "closing": "The AGI Index is, and will remain, a neutral and community-driven project.",
             "cta": "Become a Partner"
         }
     },
@@ -195,6 +201,26 @@
         },
         "specify_placeholder": "Please specify...",
         "submit_vote": "Submit Vote"
+    },
+    "history": {
+        "title": "AGI Index History",
+        "description": "Track the progress of AGI development over time.",
+        "no_data": "No data available yet",
+        "min_votes_required": "Minimum {votes} votes required",
+        "min_votes": "Min Votes",
+        "tabs": {
+            "progress": "AGI Progress",
+            "community": "Community Stats"
+        },
+        "chart": {
+            "overall": "Overall",
+            "linguistic": "Linguistic",
+            "multimodal": "Multimodal",
+            "total_votes": "Total Votes",
+            "total_users": "Total Users",
+            "index_questions": "Index Questions",
+            "candidate_questions": "Candidate Questions"
+        }
     },
     "suggest": {
         "title": "Suggest a Question",

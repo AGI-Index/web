@@ -2,7 +2,7 @@
 
 import { Trans } from "@/components/ui/trans"
 import { useI18n } from "@/lib/i18n-context"
-import { Info, Users } from "lucide-react"
+import { Info, Users, Lightbulb, Vote, CheckCircle, Calculator } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -70,56 +70,89 @@ export default function ManifestoPage() {
                 </section>
 
                 {/* How It Works Section */}
-                <section id="how-it-works" className="space-y-6 pt-8 border-t">
-                    <h2 className="text-3xl font-bold tracking-tight">{t('manifesto.how_it_works.title')}</h2>
+                <section id="how-it-works" className="space-y-8 pt-8 border-t">
+                    <div className="space-y-4">
+                        <h2 className="text-3xl font-bold tracking-tight">{t('manifesto.how_it_works.title')}</h2>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                            {t('manifesto.how_it_works.intro')}
+                        </p>
+                    </div>
 
-                    <div className="grid gap-8 md:grid-cols-2">
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                                    1
-                                </div>
+                    <div className="space-y-8">
+                        {/* Step 1 */}
+                        <div className="flex gap-4">
+                            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                                <Lightbulb className="h-6 w-6 text-primary" />
+                            </div>
+                            <div className="space-y-2">
                                 <h3 className="text-xl font-semibold">{t('manifesto.how_it_works.step1.title')}</h3>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    {t('manifesto.how_it_works.step1.desc')}
+                                </p>
                             </div>
-                            <p className="text-muted-foreground ml-13">
-                                {t('manifesto.how_it_works.step1.desc')}
-                            </p>
                         </div>
 
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                                    2
-                                </div>
+                        {/* Step 2 */}
+                        <div className="flex gap-4">
+                            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                                <Vote className="h-6 w-6 text-primary" />
+                            </div>
+                            <div className="space-y-2">
                                 <h3 className="text-xl font-semibold">{t('manifesto.how_it_works.step2.title')}</h3>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    {t('manifesto.how_it_works.step2.desc')}
+                                </p>
                             </div>
-                            <p className="text-muted-foreground ml-13">
-                                {t('manifesto.how_it_works.step2.desc')}
-                            </p>
                         </div>
 
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                                    3
-                                </div>
+                        {/* Step 3 */}
+                        <div className="flex gap-4">
+                            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                                <CheckCircle className="h-6 w-6 text-primary" />
+                            </div>
+                            <div className="space-y-2">
                                 <h3 className="text-xl font-semibold">{t('manifesto.how_it_works.step3.title')}</h3>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    {t('manifesto.how_it_works.step3.desc')}
+                                </p>
                             </div>
-                            <p className="text-muted-foreground ml-13">
-                                {t('manifesto.how_it_works.step3.desc')}
-                            </p>
                         </div>
 
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                                    4
-                                </div>
-                                <h3 className="text-xl font-semibold">{t('manifesto.how_it_works.step4.title')}</h3>
+                        {/* Step 4 */}
+                        <div className="flex gap-4">
+                            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                                <Calculator className="h-6 w-6 text-primary" />
                             </div>
-                            <p className="text-muted-foreground ml-13">
-                                {t('manifesto.how_it_works.step4.desc')}
-                            </p>
+                            <div className="space-y-2">
+                                <h3 className="text-xl font-semibold">{t('manifesto.how_it_works.step4.title')}</h3>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    {t('manifesto.how_it_works.step4.desc')}
+                                </p>
+
+                                {/* Formula */}
+                                <div className="mt-4 p-4 rounded-lg bg-muted/50 border font-mono text-sm">
+                                    {t('manifesto.how_it_works.step4.formula')}
+                                </div>
+
+                                {/* Index Types */}
+                                <div className="mt-4 space-y-3">
+                                    <h4 className="font-semibold">{t('manifesto.how_it_works.step4.index_types_title')}</h4>
+                                    <ul className="space-y-2 text-muted-foreground">
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-blue-500 mt-1">•</span>
+                                            <span>{t('manifesto.how_it_works.step4.index_language')}</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-purple-500 mt-1">•</span>
+                                            <span>{t('manifesto.how_it_works.step4.index_multimodal')}</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-primary mt-1">•</span>
+                                            <span>{t('manifesto.how_it_works.step4.index_overall')}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

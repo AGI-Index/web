@@ -34,7 +34,7 @@
     },
     "home": {
         "hero": {
-            "title": "智能的定义，始于正确的问题。",
+            "title": "我们通过提出的问题来定义智能。",
             "subtitle": "通过集体智慧定义和追踪AGI标准的社区平台",
             "agi_level": "AGI 水平",
             "linguistic": "语言",
@@ -78,21 +78,27 @@
         "closing": "一起来定义吧？你心目中「下一代智能」是什么样子？",
         "how_it_works": {
             "title": "参与方式",
+            "intro": "AGI Index由全世界共同塑造，而非少数专家闭门决定。每个步骤都旨在让人类共同定义和衡量「下一代智能」。",
             "step1": {
-                "title": "提议问题",
-                "desc": "任何人都可以提议用于判断AI是否在特定领域达到人类水平智能的问题。"
+                "title": "任何人都可以提议问题",
+                "desc": "如果你认为某种能力能反映真正的智能，你可以将其作为问题提交到AGI Index。无需技术背景——只需作为人类的经验。"
             },
             "step2": {
-                "title": "社区投票",
-                "desc": "社区投票决定问题的适当性以及当前AI是否已达成。"
+                "title": "社区策展指数",
+                "desc": "每个提议的问题都要经过社区投票。如果「适合」票达到50%以上且总票数达到10票，该问题就成为正式的指数问题。"
             },
             "step3": {
-                "title": "收录指数",
-                "desc": "获得足够共识的问题将被收录到AGI Index，成为活的基准。"
+                "title": "评估当今主流AI系统",
+                "desc": "针对每个问题，用户根据当前主流AI系统（ChatGPT、Claude、Gemini、Llama等）进行投票。如果至少有一个主流AI能做到，投「已达成」；如果目前没有AI能稳定做到，投「未达成」。"
             },
             "step4": {
-                "title": "追踪进展",
-                "desc": "关注AI能力的发展，了解我们距离真正的AGI还有多远。"
+                "title": "计算AGI指数",
+                "desc": "在正式指数问题中，如果50%以上的投票认为「已达成」，该问题就被归类为「已达成」。",
+                "formula": "AGI指数 = 已达成问题数 / 总指数问题数",
+                "index_types_title": "三种指数",
+                "index_language": "Language AGI Index — 仅语言相关的问题",
+                "index_multimodal": "Multimodal AGI Index — 视觉、音频、动作相关的问题",
+                "index_overall": "Overall AGI Index — 所有正式问题的综合"
             }
         },
         "transparency": {
@@ -100,10 +106,10 @@
             "content": "本项目由H1R.ai发起并资助，旨在为开放研究社区做出贡献。我们承诺AGI Index将保持无广告、独立运营，所有数据始终公开。"
         },
         "coalition": {
-            "title": "联盟邀请",
-            "p1": "定义AGI是任何单一实体都无法独自完成的任务。我们正式邀请其他AI实验室、科技公司和研究基金会加入这一倡议。",
-            "p2": "无论是数据贡献、算力赞助还是学术评审，您的参与都将使这一基准更加强大。",
-            "closing": "AGI Index将永远是中立的平台。",
+            "title": "加入我们",
+            "p1": "构建公平且有意义的AGI基准不是任何单一团体能独自完成的。我们欢迎AI实验室、企业、研究人员和社区以协作者而非竞争者的身份参与。",
+            "p2": "无论是数据、算力、技术洞见，还是仅仅是深思熟虑的评审，您的参与都将使AGI Index更加平衡、透明，对所有人更有价值。",
+            "closing": "AGI Index是，也将继续是一个中立的、社区驱动的项目。",
             "cta": "成为合作伙伴"
         }
     },
@@ -195,6 +201,26 @@
         },
         "specify_placeholder": "请说明原因...",
         "submit_vote": "提交投票"
+    },
+    "history": {
+        "title": "AGI Index历史",
+        "description": "追踪AGI发展的进展。",
+        "no_data": "暂无数据",
+        "min_votes_required": "最少需要{votes}票",
+        "min_votes": "最少投票",
+        "tabs": {
+            "progress": "AGI进展",
+            "community": "社区统计"
+        },
+        "chart": {
+            "overall": "总体",
+            "linguistic": "语言",
+            "multimodal": "多模态",
+            "total_votes": "总投票",
+            "total_users": "总用户",
+            "index_questions": "指数问题",
+            "candidate_questions": "候选问题"
+        }
     },
     "suggest": {
         "title": "提出问题",
