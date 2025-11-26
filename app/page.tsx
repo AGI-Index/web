@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { QuestionCard } from "@/components/feature/question-card"
-import { ArrowRight, MessageSquare, Eye, Plus } from "lucide-react"
+import { ArrowRight, MessageSquare, Eye, Plus, Users, Activity, FileCheck, FileQuestion } from "lucide-react"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { supabase } from "@/lib/supabase"
@@ -11,6 +11,7 @@ import { useAuth } from "@/lib/auth-context"
 import { QuestionListSkeleton } from "@/components/ui/loading-skeletons"
 import { useI18n } from "@/lib/i18n-context"
 import { Trans } from "@/components/ui/trans"
+import { CountUp } from "@/components/ui/count-up"
 
 export default function Home() {
   const { user } = useAuth()
@@ -21,7 +22,11 @@ export default function Home() {
   const [agiStats, setAgiStats] = useState({
     overall: 0,
     linguistic: 0,
-    multimodal: 0
+    multimodal: 0,
+    total_users: 0,
+    total_votes: 0,
+    index_question_count: 0,
+    candidate_question_count: 0
   })
 
   const fetchQuestions = async () => {
@@ -48,11 +53,15 @@ export default function Home() {
       .single()
 
     if (statsData) {
-      const stats = statsData as { overall_rate: number; linguistic_rate: number; multimodal_rate: number }
+      const stats = statsData as any
       setAgiStats({
         overall: Math.round(stats.overall_rate || 0),
         linguistic: Math.round(stats.linguistic_rate || 0),
-        multimodal: Math.round(stats.multimodal_rate || 0)
+        multimodal: Math.round(stats.multimodal_rate || 0),
+        total_users: stats.total_users || 0,
+        total_votes: stats.total_votes || 0,
+        index_question_count: stats.index_question_count || 0,
+        candidate_question_count: stats.candidate_question_count || 0
       })
     }
 
@@ -61,12 +70,14 @@ export default function Home() {
       .from('questions')
       .select('*')
       .eq('is_indexed', true)
+      .neq('status', 'rejected')
 
     // Fetch Candidate Questions
     const { data: allCandidateQuestions } = await supabase
       .from('questions')
       .select('*')
       .eq('is_indexed', false)
+      .neq('status', 'rejected')
 
     // Fetch translations for current language (skip if English)
     let translationMap = new Map<number, string>()
@@ -185,6 +196,42 @@ export default function Home() {
                 {t('home.hero.how_it_works')}
               </Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Community Stats Section */}
+      <section className="py-12 border-b bg-muted/30">
+        <div className="container px-4 mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="flex flex-col items-center gap-2">
+              <Users className="w-6 h-6 text-muted-foreground" />
+              <div className="text-3xl font-bold">
+                <CountUp end={agiStats.total_users} />
+              </div>
+              <div className="text-sm text-muted-foreground">Total Participants</div>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Activity className="w-6 h-6 text-muted-foreground" />
+              <div className="text-3xl font-bold">
+                <CountUp end={agiStats.total_votes} />
+              </div>
+              <div className="text-sm text-muted-foreground">Total Votes</div>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <FileCheck className="w-6 h-6 text-muted-foreground" />
+              <div className="text-3xl font-bold">
+                <CountUp end={agiStats.index_question_count} />
+              </div>
+              <div className="text-sm text-muted-foreground">Index Questions</div>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <FileQuestion className="w-6 h-6 text-muted-foreground" />
+              <div className="text-3xl font-bold">
+                <CountUp end={agiStats.candidate_question_count} />
+              </div>
+              <div className="text-sm text-muted-foreground">Candidate Questions</div>
+            </div>
           </div>
         </div>
       </section>

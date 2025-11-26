@@ -89,11 +89,17 @@ CREATE INDEX idx_translations_lang_code ON question_translations(lang_code);
 -- ============================================
 CREATE TABLE daily_metrics (
   date DATE PRIMARY KEY DEFAULT CURRENT_DATE,
-  total_agi_percentage FLOAT,
-  linguistic_percentage FLOAT,
-  multimodal_percentage FLOAT,
-  snapshot_data JSONB,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+  overall_rate NUMERIC(5,2),
+  linguistic_rate NUMERIC(5,2),
+  multimodal_rate NUMERIC(5,2),
+  linguistic_count INTEGER,
+  multimodal_count INTEGER,
+  total_votes INTEGER,
+  total_users INTEGER,
+  index_question_count INTEGER,
+  candidate_question_count INTEGER,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
 -- ============================================
@@ -107,6 +113,9 @@ CREATE TABLE agi_stats (
   linguistic_count INTEGER DEFAULT 0,
   multimodal_count INTEGER DEFAULT 0,
   total_votes INTEGER DEFAULT 0,
+  total_users INTEGER DEFAULT 0,
+  index_question_count INTEGER DEFAULT 0,
+  candidate_question_count INTEGER DEFAULT 0,
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -146,6 +155,10 @@ CREATE POLICY "Only admins can modify translations" ON question_translations FOR
 
 -- 8-5. AGI Stats 정책
 CREATE POLICY "AGI stats are viewable by everyone" ON agi_stats FOR SELECT USING (true);
+
+-- 8-6. Daily Metrics 정책
+ALTER TABLE daily_metrics ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Daily metrics are viewable by everyone" ON daily_metrics FOR SELECT USING (true);
 
 -- ============================================
 -- 9. 자동화 함수 & 트리거
@@ -254,7 +267,11 @@ DECLARE
   v_linguistic_count INTEGER;
   v_multimodal_count INTEGER;
   v_total_votes INTEGER;
+  v_total_users INTEGER;
+  v_index_question_count INTEGER;
+  v_candidate_question_count INTEGER;
 BEGIN
+  -- Rate calculations (unchanged)
   SELECT
     COALESCE(AVG(CASE WHEN vote_count > 0 THEN (achieved_count::NUMERIC / vote_count) * 100 ELSE 0 END), 0),
     COUNT(*)
@@ -277,13 +294,27 @@ BEGIN
     v_overall_rate := 0;
   END IF;
 
+  -- New Metrics Calculations
   SELECT COALESCE(SUM(vote_count), 0)
   INTO v_total_votes
-  FROM questions
-  WHERE is_indexed = true;
+  FROM questions; -- Total votes across ALL questions (or just indexed? User said "Total votes", usually implies all)
+  
+  -- Let's stick to total votes in the system for "Community Stats"
+  SELECT COUNT(DISTINCT user_id) INTO v_total_users FROM votes;
+  
+  SELECT COUNT(*) INTO v_index_question_count FROM questions WHERE is_indexed = true;
+  SELECT COUNT(*) INTO v_candidate_question_count FROM questions WHERE is_indexed = false;
 
-  INSERT INTO agi_stats (id, overall_rate, linguistic_rate, multimodal_rate, linguistic_count, multimodal_count, total_votes, updated_at)
-  VALUES (1, v_overall_rate, v_linguistic_rate, v_multimodal_rate, v_linguistic_count, v_multimodal_count, v_total_votes, NOW())
+  INSERT INTO agi_stats (
+    id, overall_rate, linguistic_rate, multimodal_rate, 
+    linguistic_count, multimodal_count, total_votes, 
+    total_users, index_question_count, candidate_question_count, updated_at
+  )
+  VALUES (
+    1, v_overall_rate, v_linguistic_rate, v_multimodal_rate, 
+    v_linguistic_count, v_multimodal_count, v_total_votes, 
+    v_total_users, v_index_question_count, v_candidate_question_count, NOW()
+  )
   ON CONFLICT (id) DO UPDATE SET
     overall_rate = EXCLUDED.overall_rate,
     linguistic_rate = EXCLUDED.linguistic_rate,
@@ -291,6 +322,9 @@ BEGIN
     linguistic_count = EXCLUDED.linguistic_count,
     multimodal_count = EXCLUDED.multimodal_count,
     total_votes = EXCLUDED.total_votes,
+    total_users = EXCLUDED.total_users,
+    index_question_count = EXCLUDED.index_question_count,
+    candidate_question_count = EXCLUDED.candidate_question_count,
     updated_at = EXCLUDED.updated_at;
 
   RETURN NULL;
@@ -307,6 +341,9 @@ DECLARE
   v_linguistic_count INTEGER;
   v_multimodal_count INTEGER;
   v_total_votes INTEGER;
+  v_total_users INTEGER;
+  v_index_question_count INTEGER;
+  v_candidate_question_count INTEGER;
 BEGIN
   SELECT
     COALESCE(AVG(CASE WHEN vote_count > 0 THEN (achieved_count::NUMERIC / vote_count) * 100 ELSE 0 END), 0),
@@ -330,13 +367,21 @@ BEGIN
     v_overall_rate := 0;
   END IF;
 
-  SELECT COALESCE(SUM(vote_count), 0)
-  INTO v_total_votes
-  FROM questions
-  WHERE is_indexed = true;
+  SELECT COALESCE(SUM(vote_count), 0) INTO v_total_votes FROM questions;
+  SELECT COUNT(DISTINCT user_id) INTO v_total_users FROM votes;
+  SELECT COUNT(*) INTO v_index_question_count FROM questions WHERE is_indexed = true;
+  SELECT COUNT(*) INTO v_candidate_question_count FROM questions WHERE is_indexed = false;
 
-  INSERT INTO agi_stats (id, overall_rate, linguistic_rate, multimodal_rate, linguistic_count, multimodal_count, total_votes, updated_at)
-  VALUES (1, v_overall_rate, v_linguistic_rate, v_multimodal_rate, v_linguistic_count, v_multimodal_count, v_total_votes, NOW())
+  INSERT INTO agi_stats (
+    id, overall_rate, linguistic_rate, multimodal_rate, 
+    linguistic_count, multimodal_count, total_votes, 
+    total_users, index_question_count, candidate_question_count, updated_at
+  )
+  VALUES (
+    1, v_overall_rate, v_linguistic_rate, v_multimodal_rate, 
+    v_linguistic_count, v_multimodal_count, v_total_votes, 
+    v_total_users, v_index_question_count, v_candidate_question_count, NOW()
+  )
   ON CONFLICT (id) DO UPDATE SET
     overall_rate = EXCLUDED.overall_rate,
     linguistic_rate = EXCLUDED.linguistic_rate,
@@ -344,6 +389,9 @@ BEGIN
     linguistic_count = EXCLUDED.linguistic_count,
     multimodal_count = EXCLUDED.multimodal_count,
     total_votes = EXCLUDED.total_votes,
+    total_users = EXCLUDED.total_users,
+    index_question_count = EXCLUDED.index_question_count,
+    candidate_question_count = EXCLUDED.candidate_question_count,
     updated_at = EXCLUDED.updated_at;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
@@ -358,6 +406,57 @@ CREATE TRIGGER trigger_recalculate_agi_stats_on_question
   AFTER INSERT OR UPDATE OF is_indexed, category, vote_count, achieved_count OR DELETE ON questions
   FOR EACH STATEMENT
   EXECUTE FUNCTION recalculate_agi_stats();
+
+-- 9-4. Daily Metrics 동기화 (AGI Stats 변경 시)
+CREATE OR REPLACE FUNCTION sync_daily_metrics()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO daily_metrics (
+    date,
+    overall_rate,
+    linguistic_rate,
+    multimodal_rate,
+    linguistic_count,
+    multimodal_count,
+    total_votes,
+    total_users,
+    index_question_count,
+    candidate_question_count,
+    updated_at
+  )
+  VALUES (
+    CURRENT_DATE,
+    NEW.overall_rate,
+    NEW.linguistic_rate,
+    NEW.multimodal_rate,
+    NEW.linguistic_count,
+    NEW.multimodal_count,
+    NEW.total_votes,
+    NEW.total_users,
+    NEW.index_question_count,
+    NEW.candidate_question_count,
+    NOW()
+  )
+  ON CONFLICT (date) DO UPDATE SET
+    overall_rate = EXCLUDED.overall_rate,
+    linguistic_rate = EXCLUDED.linguistic_rate,
+    multimodal_rate = EXCLUDED.multimodal_rate,
+    linguistic_count = EXCLUDED.linguistic_count,
+    multimodal_count = EXCLUDED.multimodal_count,
+    total_votes = EXCLUDED.total_votes,
+    total_users = EXCLUDED.total_users,
+    index_question_count = EXCLUDED.index_question_count,
+    candidate_question_count = EXCLUDED.candidate_question_count,
+    updated_at = EXCLUDED.updated_at;
+  
+  RETURN NULL;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER trigger_sync_daily_metrics
+  AFTER INSERT OR UPDATE ON agi_stats
+  FOR EACH ROW
+  EXECUTE FUNCTION sync_daily_metrics();
 
 -- ============================================
 -- 10. 초기 데이터
