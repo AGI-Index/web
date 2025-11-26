@@ -52,7 +52,7 @@ export function Footer() {
                         <h3 className="font-semibold mb-4">{t('footer.social')}</h3>
                         <ul className="space-y-3 text-sm text-muted-foreground">
                             <li>
-                                <Link href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors flex items-center gap-2">
+                                <Link href="https://x.com/AgiIndex" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors flex items-center gap-2">
                                     {t('footer.twitter')}
                                 </Link>
                             </li>
