@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /profile
+Disallow: /suggest
+Disallow: /login
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /auth/
+
+Sitemap: https://agiindex.org/sitemap.xml

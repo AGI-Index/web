@@ -12,8 +12,33 @@ import { cn } from "@/lib/utils";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AGI Index",
-  description: "Tracking the arrival of Artificial General Intelligence",
+  title: {
+    default: 'AGI Index - Tracking AGI Progress',
+    template: '%s | AGI Index'
+  },
+  description: 'Track the arrival of Artificial General Intelligence through community-driven milestones and voting.',
+  keywords: ['AGI', 'Artificial General Intelligence', 'AI Progress', 'AI Milestones', 'AI Benchmark'],
+  authors: [{ name: 'AGI Index' }],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://agiindex.org',
+    siteName: 'AGI Index',
+    title: 'AGI Index - Tracking AGI Progress',
+    description: 'Track the arrival of Artificial General Intelligence through community-driven milestones and voting.',
+    images: [{ url: '/logo.svg', width: 512, height: 512 }],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'AGI Index - Tracking AGI Progress',
+    description: 'Track the arrival of Artificial General Intelligence through community-driven milestones and voting.',
+    images: ['/logo.svg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  metadataBase: new URL('https://agiindex.org'),
 };
 
 export default function RootLayout({

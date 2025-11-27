@@ -1,5 +1,11 @@
+import { Metadata } from "next"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+    title: 'Terms of Service',
+    description: 'Terms of Service for AGI Index. Learn about user contributions, open data licensing, and code of conduct.',
+}
 
 export default function TermsPage() {
     return (

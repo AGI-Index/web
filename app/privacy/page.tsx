@@ -1,5 +1,11 @@
+import { Metadata } from "next"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+    title: 'Privacy Policy',
+    description: 'Privacy Policy for AGI Index. Learn how we collect, use, and protect your personal data.',
+}
 
 export default function PrivacyPage() {
     return (
