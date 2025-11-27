@@ -8,6 +8,7 @@ import { I18nProvider } from "@/lib/i18n-context";
 import { BadgeProvider } from "@/lib/badge-context";
 import { GlobalBadgePopup } from "@/components/feature/global-badge-popup";
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -61,6 +62,7 @@ export default function RootLayout({
             </BadgeProvider>
           </I18nProvider>
         </AuthProvider>
+        <Analytics />
       </body>
     </html>
   );
