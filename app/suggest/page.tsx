@@ -11,6 +11,7 @@ import { Progress } from "@/components/ui/progress"
 import { CheckCircle2, Loader2, CircleCheck, MapPin, Search, MessageSquare, Eye, Vote } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
 import { useAuth } from "@/lib/auth-context"
+import { useBadge, BADGE_DEFINITIONS } from "@/lib/badge-context"
 import { supabase } from "@/lib/supabase"
 import { cn } from "@/lib/utils"
 
@@ -19,6 +20,7 @@ const REQUIRED_VOTES = 5
 export default function SuggestPage() {
     const { t, tArray } = useI18n()
     const { user, profile, loading: authLoading } = useAuth()
+    const { showBadge } = useBadge()
     const router = useRouter()
     const [category, setCategory] = useState<"linguistic" | "multimodal" | "">("")
     const [question, setQuestion] = useState<string>("")
@@ -72,6 +74,15 @@ export default function SuggestPage() {
 
             // Immediately show success - review happens in background
             setSubmitted(true)
+
+            // Show first_question badge if this is user's first question
+            if (profile?.total_question_count === 0) {
+                const firstQuestionBadge = BADGE_DEFINITIONS.find(b => b.id === 'first_question')
+                if (firstQuestionBadge) {
+                    showBadge(firstQuestionBadge)
+                }
+            }
+
             setTimeout(() => {
                 setSubmitted(false)
                 setCategory("")
