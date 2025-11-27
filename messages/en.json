@@ -186,9 +186,48 @@
     "profile": {
         "title": "My Profile",
         "sign_out": "Sign Out",
+        "anonymous": "Anonymous User",
+        "nickname_placeholder": "Enter nickname",
         "tabs": {
             "votes": "My Votes",
             "questions": "My Questions"
+        },
+        "stats": {
+            "votes": "Votes",
+            "questions": "Questions",
+            "badges": "Badges"
+        },
+        "badges": {
+            "title": "Badges",
+            "share": "Share",
+            "copied": "Copied to clipboard!",
+            "share_text": "🏆 I earned the \"{title}\" badge on AGI Index!\n\n📊 My contribution: {votes} votes | {questions} questions\n\nJoin us in defining the future of AI 👉",
+            "share_hashtags": "#AGIIndex #AI",
+            "first_vote": {
+                "title": "First Vote, Big Applause!",
+                "description": "Your choice moved the AGI Index one step forward.",
+                "condition": "Cast your first vote"
+            },
+            "five_votes": {
+                "title": "Voting Master!",
+                "description": "You've completed 5 votes. Now you can submit your own questions.",
+                "condition": "Cast 5 votes"
+            },
+            "first_question": {
+                "title": "You Spoke Up!",
+                "description": "First question uploaded! You're making the AGI Index richer.",
+                "condition": "Submit your first question"
+            },
+            "ten_votes": {
+                "title": "Voting Champion!",
+                "description": "10+ votes completed! Thanks for your consistent participation.",
+                "condition": "Cast 10 votes"
+            },
+            "three_questions": {
+                "title": "Questions Pouring In!",
+                "description": "3+ questions approved. You're moving the world.",
+                "condition": "Get 3 questions approved"
+            }
         },
         "empty": {
             "votes": "You haven't voted on any questions yet.",

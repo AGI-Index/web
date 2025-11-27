@@ -186,9 +186,48 @@
     "profile": {
         "title": "Mein Profil",
         "sign_out": "Abmelden",
+        "anonymous": "Anonymer Benutzer",
+        "nickname_placeholder": "Nickname eingeben",
         "tabs": {
             "votes": "Meine Stimmen",
             "questions": "Meine Fragen"
+        },
+        "stats": {
+            "votes": "Stimmen",
+            "questions": "Fragen",
+            "badges": "Abzeichen"
+        },
+        "badges": {
+            "title": "Abzeichen",
+            "share": "Teilen",
+            "copied": "In die Zwischenablage kopiert!",
+            "share_text": "🏆 Ich habe das Abzeichen \"{title}\" bei AGI Index erhalten!\n\n📊 Mein Beitrag: {votes} Stimmen | {questions} Fragen\n\nDefinieren Sie mit uns die Zukunft der KI 👉",
+            "share_hashtags": "#AGIIndex #AI",
+            "first_vote": {
+                "title": "Erste Stimme, großer Applaus!",
+                "description": "Deine Wahl hat den AGI Index einen Schritt vorangebracht.",
+                "condition": "Erste Stimme abgeben"
+            },
+            "five_votes": {
+                "title": "Abstimmungsmeister!",
+                "description": "Du hast 5 Stimmen abgegeben. Jetzt kannst du eigene Fragen einreichen.",
+                "condition": "5 Stimmen abgeben"
+            },
+            "first_question": {
+                "title": "Du hast gesprochen!",
+                "description": "Erste Frage hochgeladen! Du bereicherst den AGI Index.",
+                "condition": "Erste Frage einreichen"
+            },
+            "ten_votes": {
+                "title": "Abstimmungschampion!",
+                "description": "10+ Stimmen abgegeben! Danke für deine konstante Teilnahme.",
+                "condition": "10 Stimmen abgeben"
+            },
+            "three_questions": {
+                "title": "Fragen strömen!",
+                "description": "3+ Fragen genehmigt. Du bewegst die Welt.",
+                "condition": "3 Fragen genehmigt bekommen"
+            }
         },
         "empty": {
             "votes": "Du hast noch keine Fragen bewertet.",

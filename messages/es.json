@@ -186,9 +186,48 @@
     "profile": {
         "title": "Mi perfil",
         "sign_out": "Cerrar sesión",
+        "anonymous": "Usuario anónimo",
+        "nickname_placeholder": "Ingresa un apodo",
         "tabs": {
             "votes": "Mis votos",
             "questions": "Mis preguntas"
+        },
+        "stats": {
+            "votes": "Votos",
+            "questions": "Preguntas",
+            "badges": "Insignias"
+        },
+        "badges": {
+            "title": "Insignias",
+            "share": "Compartir",
+            "copied": "¡Copiado al portapapeles!",
+            "share_text": "🏆 ¡Obtuve la insignia \"{title}\" en AGI Index!\n\n📊 Mi contribución: {votes} votos | {questions} preguntas\n\nÚnete a definir el futuro de la IA 👉",
+            "share_hashtags": "#AGIIndex #AI",
+            "first_vote": {
+                "title": "¡Primer voto, gran aplauso!",
+                "description": "Tu elección movió el AGI Index un paso adelante.",
+                "condition": "Emitir tu primer voto"
+            },
+            "five_votes": {
+                "title": "¡Maestro del voto!",
+                "description": "Completaste 5 votos. Ahora puedes enviar tus propias preguntas.",
+                "condition": "Emitir 5 votos"
+            },
+            "first_question": {
+                "title": "¡Hablaste!",
+                "description": "¡Primera pregunta subida! Estás enriqueciendo el AGI Index.",
+                "condition": "Enviar tu primera pregunta"
+            },
+            "ten_votes": {
+                "title": "¡Campeón del voto!",
+                "description": "¡10+ votos completados! Gracias por tu participación constante.",
+                "condition": "Emitir 10 votos"
+            },
+            "three_questions": {
+                "title": "¡Preguntas a raudales!",
+                "description": "3+ preguntas aprobadas. Estás moviendo el mundo.",
+                "condition": "Tener 3 preguntas aprobadas"
+            }
         },
         "empty": {
             "votes": "Aún no has votado en ninguna pregunta.",

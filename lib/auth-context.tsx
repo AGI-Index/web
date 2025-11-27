@@ -3,11 +3,18 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { User } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase'
+import type { Database } from '@/types/database'
 
 type Profile = {
+    nickname: string | null
     total_vote_count: number
     total_question_count: number
     total_approved_question_count: number
+}
+
+type RefreshProfileResult = {
+    prevProfile: Profile | null
+    newProfile: Profile | null
 }
 
 type AuthContextType = {
@@ -19,7 +26,8 @@ type AuthContextType = {
     signInWithOAuth: (provider: 'google' | 'apple' | 'discord' | 'github') => Promise<void>
     signOut: () => Promise<void>
     resetPassword: (email: string) => Promise<{ error: any }>
-    refreshProfile: () => Promise<void>
+    refreshProfile: () => Promise<RefreshProfileResult>
+    updateNickname: (nickname: string) => Promise<{ error: any }>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -32,7 +40,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const fetchProfile = async (userId: string) => {
         const { data } = await supabase
             .from('profiles')
-            .select('total_vote_count, total_question_count, total_approved_question_count')
+            .select('nickname, total_vote_count, total_question_count, total_approved_question_count')
             .eq('id', userId)
             .single()
 
@@ -41,10 +49,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
     }
 
-    const refreshProfile = async () => {
+    const refreshProfile = async (): Promise<RefreshProfileResult> => {
+        const prevProfile = profile
         if (user) {
-            await fetchProfile(user.id)
+            const { data } = await supabase
+                .from('profiles')
+                .select('nickname, total_vote_count, total_question_count, total_approved_question_count')
+                .eq('id', user.id)
+                .single()
+
+            if (data) {
+                setProfile(data)
+                return { prevProfile, newProfile: data }
+            }
         }
+        return { prevProfile, newProfile: null }
     }
 
     useEffect(() => {
@@ -110,6 +129,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return { error }
     }
 
+    const updateNickname = async (nickname: string) => {
+        if (!user) return { error: new Error('Not logged in') }
+
+        // Using type assertion to work around Supabase client type inference issue
+        const { error } = await (supabase
+            .from('profiles') as any)
+            .update({ nickname })
+            .eq('id', user.id)
+
+        if (!error) {
+            setProfile(prev => prev ? { ...prev, nickname } : null)
+        }
+
+        return { error }
+    }
+
     const value = {
         user,
         profile,
@@ -120,6 +155,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         signOut,
         resetPassword,
         refreshProfile,
+        updateNickname,
     }
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
