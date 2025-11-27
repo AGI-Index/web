@@ -150,7 +150,9 @@ CREATE POLICY "Authenticated users can insert questions" ON questions FOR INSERT
 -- 8-3. Votes 정책
 CREATE POLICY "Votes are viewable by everyone" ON votes FOR SELECT USING (true);
 CREATE POLICY "Authenticated users can vote" ON votes FOR INSERT WITH CHECK ((SELECT auth.role()) = 'authenticated');
-CREATE POLICY "Users can update own vote" ON votes FOR UPDATE USING ((SELECT auth.uid()) = user_id);
+CREATE POLICY "Users can update own vote" ON votes FOR UPDATE
+  USING ((SELECT auth.uid()) = user_id)
+  WITH CHECK ((SELECT auth.uid()) = user_id);
 
 -- 8-4. Question Translations 정책
 CREATE POLICY "Translations are viewable by everyone" ON question_translations FOR SELECT USING (true);
