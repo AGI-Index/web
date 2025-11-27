@@ -186,9 +186,48 @@
     "profile": {
         "title": "Mon profil",
         "sign_out": "Déconnexion",
+        "anonymous": "Utilisateur anonyme",
+        "nickname_placeholder": "Entrez un pseudo",
         "tabs": {
             "votes": "Mes votes",
             "questions": "Mes questions"
+        },
+        "stats": {
+            "votes": "Votes",
+            "questions": "Questions",
+            "badges": "Badges"
+        },
+        "badges": {
+            "title": "Badges",
+            "share": "Partager",
+            "copied": "Copié dans le presse-papiers !",
+            "share_text": "🏆 J'ai obtenu le badge \"{title}\" sur AGI Index !\n\n📊 Ma contribution : {votes} votes | {questions} questions\n\nRejoignez-nous pour définir l'avenir de l'IA 👉",
+            "share_hashtags": "#AGIIndex #AI",
+            "first_vote": {
+                "title": "Premier vote, grands applaudissements !",
+                "description": "Votre choix a fait avancer l'AGI Index d'un pas.",
+                "condition": "Faire votre premier vote"
+            },
+            "five_votes": {
+                "title": "Maître du vote !",
+                "description": "Vous avez complété 5 votes. Vous pouvez maintenant soumettre vos propres questions.",
+                "condition": "Faire 5 votes"
+            },
+            "first_question": {
+                "title": "Vous avez parlé !",
+                "description": "Première question téléchargée ! Vous enrichissez l'AGI Index.",
+                "condition": "Soumettre votre première question"
+            },
+            "ten_votes": {
+                "title": "Champion du vote !",
+                "description": "10+ votes complétés ! Merci pour votre participation constante.",
+                "condition": "Faire 10 votes"
+            },
+            "three_questions": {
+                "title": "Les questions affluent !",
+                "description": "3+ questions approuvées. Vous faites bouger le monde.",
+                "condition": "Avoir 3 questions approuvées"
+            }
         },
         "empty": {
             "votes": "Vous n'avez pas encore voté sur des questions.",

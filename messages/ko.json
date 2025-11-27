@@ -186,9 +186,48 @@
     "profile": {
         "title": "내 프로필",
         "sign_out": "로그아웃",
+        "anonymous": "익명 사용자",
+        "nickname_placeholder": "닉네임 입력",
         "tabs": {
             "votes": "내 투표",
             "questions": "내 질문"
+        },
+        "stats": {
+            "votes": "투표",
+            "questions": "질문",
+            "badges": "배지"
+        },
+        "badges": {
+            "title": "배지",
+            "share": "공유하기",
+            "copied": "클립보드에 복사되었습니다!",
+            "share_text": "🏆 AGI Index에서 \"{title}\" 배지를 획득했습니다!\n\n📊 내 기여: 투표 {votes}회 | 질문 {questions}개\n\nAI의 미래를 함께 정의해보세요 👉",
+            "share_hashtags": "#AGIIndex #AI",
+            "first_vote": {
+                "title": "첫 한 표, 크게 박수!",
+                "description": "당신의 선택이 AGI Index를 한 걸음 움직였어요.",
+                "condition": "첫 투표하기"
+            },
+            "five_votes": {
+                "title": "이 정도면 투표 마스터!",
+                "description": "총 5개의 투표를 완료했습니다. 이제 당신의 질문을 남길 수 있어요.",
+                "condition": "5개 투표하기"
+            },
+            "first_question": {
+                "title": "드디어 입을 열었군요!",
+                "description": "첫 질문 업로드 완료! AGI Index를 더 풍부하게 만들고 있어요.",
+                "condition": "첫 질문 제안하기"
+            },
+            "ten_votes": {
+                "title": "투표 장인 등장!",
+                "description": "10개 이상 투표 완료! 꾸준히 참여해주셔서 감사해요.",
+                "condition": "10개 투표하기"
+            },
+            "three_questions": {
+                "title": "질문이 쏟아지고 있어요!",
+                "description": "3개 이상의 질문이 승인되었어요. 세상이 움직이고 있어요.",
+                "condition": "3개 질문 승인받기"
+            }
         },
         "empty": {
             "votes": "아직 투표한 질문이 없습니다.",

@@ -186,9 +186,48 @@
     "profile": {
         "title": "マイプロフィール",
         "sign_out": "ログアウト",
+        "anonymous": "匿名ユーザー",
+        "nickname_placeholder": "ニックネームを入力",
         "tabs": {
             "votes": "投票履歴",
             "questions": "提案した質問"
+        },
+        "stats": {
+            "votes": "投票",
+            "questions": "質問",
+            "badges": "バッジ"
+        },
+        "badges": {
+            "title": "バッジ",
+            "share": "シェアする",
+            "copied": "クリップボードにコピーしました！",
+            "share_text": "🏆 AGI Indexで「{title}」バッジを獲得しました！\n\n📊 私の貢献: 投票{votes}回 | 質問{questions}件\n\nAIの未来を一緒に定義しましょう 👉",
+            "share_hashtags": "#AGIIndex #AI",
+            "first_vote": {
+                "title": "初投票、大きな拍手！",
+                "description": "あなたの選択がAGI Indexを一歩前進させました。",
+                "condition": "初めて投票する"
+            },
+            "five_votes": {
+                "title": "投票マスター！",
+                "description": "5回の投票を完了しました。質問を投稿できるようになりました。",
+                "condition": "5回投票する"
+            },
+            "first_question": {
+                "title": "ついに声を上げました！",
+                "description": "初質問アップロード完了！AGI Indexをより豊かにしています。",
+                "condition": "初めて質問を提案する"
+            },
+            "ten_votes": {
+                "title": "投票の達人！",
+                "description": "10回以上の投票完了！継続的なご参加ありがとうございます。",
+                "condition": "10回投票する"
+            },
+            "three_questions": {
+                "title": "質問が溢れています！",
+                "description": "3つ以上の質問が承認されました。世界が動いています。",
+                "condition": "3つの質問を承認される"
+            }
         },
         "empty": {
             "votes": "まだ投票した質問がありません。",

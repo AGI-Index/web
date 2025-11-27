@@ -13,6 +13,7 @@ import { supabase } from "@/lib/supabase"
 import { useAuth } from "@/lib/auth-context"
 import { isIndexQuestion } from "@/lib/utils"
 import { useI18n } from "@/lib/i18n-context"
+import { useBadge, BadgeStats } from "@/lib/badge-context"
 
 type Question = Database['public']['Tables']['questions']['Row']
 
@@ -22,8 +23,9 @@ interface QuestionCardProps {
 }
 
 export function QuestionCard({ question, isEditMode = false }: QuestionCardProps) {
-    const { user } = useAuth()
+    const { user, profile, refreshProfile } = useAuth()
     const { t } = useI18n()
+    const { checkNewBadges } = useBadge()
     const router = useRouter()
     const [isEditing, setIsEditing] = useState(isEditMode)
     const [userVote, setUserVote] = useState<any>(null)
@@ -124,6 +126,24 @@ export function QuestionCard({ question, isEditMode = false }: QuestionCardProps
                 console.error('Vote error:', error)
                 alert('Failed to save vote: ' + error.message)
             } else {
+                // Check for new badge unlocks
+                const prevStats: BadgeStats | null = profile ? {
+                    votes: profile.total_vote_count,
+                    questions: profile.total_question_count,
+                    approvedQuestions: profile.total_approved_question_count,
+                } : null
+
+                const { newProfile } = await refreshProfile()
+
+                if (newProfile) {
+                    const newStats: BadgeStats = {
+                        votes: newProfile.total_vote_count,
+                        questions: newProfile.total_question_count,
+                        approvedQuestions: newProfile.total_approved_question_count,
+                    }
+                    checkNewBadges(prevStats, newStats)
+                }
+
                 // Optimistic update: Update local state instead of reloading
                 setUserVote(voteData)
                 setIsEditing(false)
