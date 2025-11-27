@@ -26,7 +26,7 @@ interface Translation {
 }
 
 export default function ProfilePage() {
-    const { user, profile, signOut, updateNickname, refreshProfile } = useAuth()
+    const { user, profile, loading, signOut, updateNickname, refreshProfile } = useAuth()
     const { t, language } = useI18n()
     const router = useRouter()
 
@@ -51,12 +51,13 @@ export default function ProfilePage() {
     const [questionsLoaded, setQuestionsLoaded] = useState(false)
 
     useEffect(() => {
+        if (loading) return
         if (!user) {
             router.push('/login')
             return
         }
         refreshProfile()
-    }, [user, router])
+    }, [user, loading, router])
 
     // Load votes when tab is selected
     useEffect(() => {
