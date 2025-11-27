@@ -184,18 +184,27 @@ export interface Database {
                     id: string
                     nickname: string | null
                     is_admin: boolean
+                    total_vote_count: number
+                    total_question_count: number
+                    total_approved_question_count: number
                     created_at?: string
                 }
                 Insert: {
                     id: string
                     nickname?: string | null
                     is_admin?: boolean
+                    total_vote_count?: number
+                    total_question_count?: number
+                    total_approved_question_count?: number
                     created_at?: string
                 }
                 Update: {
                     id?: string
                     nickname?: string | null
                     is_admin?: boolean
+                    total_vote_count?: number
+                    total_question_count?: number
+                    total_approved_question_count?: number
                     created_at?: string
                 }
             }

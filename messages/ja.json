@@ -307,6 +307,12 @@
             "submitting_button": "提出中...",
             "submitted_button": "提出完了！",
             "success_message": "ありがとうございます！質問はコミュニティで審査されます。"
+        },
+        "vote_required": {
+            "title": "投票への参加が必要です",
+            "description": "質問を提案するには、少なくとも5つの質問に投票する必要があります。",
+            "current": "現在の投票数",
+            "cta": "投票しに行く"
         }
     }
 }

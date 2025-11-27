@@ -307,6 +307,12 @@
             "submitting_button": "제출 중...",
             "submitted_button": "제출 완료!",
             "success_message": "감사합니다! 질문이 커뮤니티에서 검토될 예정입니다."
+        },
+        "vote_required": {
+            "title": "투표 참여가 필요합니다",
+            "description": "질문을 제안하려면 최소 5개의 질문에 투표해야 합니다.",
+            "current": "현재 투표 수",
+            "cta": "투표하러 가기"
         }
     }
 }

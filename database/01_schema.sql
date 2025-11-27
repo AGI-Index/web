@@ -19,6 +19,9 @@ CREATE TABLE profiles (
   id UUID REFERENCES auth.users(id) ON DELETE CASCADE PRIMARY KEY,
   nickname TEXT,
   is_admin BOOLEAN DEFAULT FALSE,
+  total_vote_count INT DEFAULT 0,
+  total_question_count INT DEFAULT 0,
+  total_approved_question_count INT DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
@@ -467,6 +470,58 @@ CREATE TRIGGER trigger_sync_daily_metrics
   AFTER INSERT OR UPDATE ON agi_stats
   FOR EACH ROW
   EXECUTE FUNCTION sync_daily_metrics();
+
+-- 9-5. Profile 통계 자동 업데이트 (투표)
+CREATE OR REPLACE FUNCTION update_profile_vote_count()
+RETURNS TRIGGER AS $$
+DECLARE
+  _user_id UUID;
+BEGIN
+  IF (TG_OP = 'DELETE') THEN
+    _user_id := OLD.user_id;
+  ELSE
+    _user_id := NEW.user_id;
+  END IF;
+
+  UPDATE profiles
+  SET total_vote_count = (SELECT COUNT(*) FROM votes WHERE user_id = _user_id)
+  WHERE id = _user_id;
+
+  RETURN NULL;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
+CREATE TRIGGER on_vote_update_profile
+  AFTER INSERT OR DELETE ON votes
+  FOR EACH ROW EXECUTE PROCEDURE update_profile_vote_count();
+
+-- 9-6. Profile 통계 자동 업데이트 (질문)
+CREATE OR REPLACE FUNCTION update_profile_question_count()
+RETURNS TRIGGER AS $$
+DECLARE
+  _author_id UUID;
+BEGIN
+  IF (TG_OP = 'DELETE') THEN
+    _author_id := OLD.author_id;
+  ELSE
+    _author_id := NEW.author_id;
+  END IF;
+
+  IF _author_id IS NOT NULL THEN
+    UPDATE profiles
+    SET
+      total_question_count = (SELECT COUNT(*) FROM questions WHERE author_id = _author_id),
+      total_approved_question_count = (SELECT COUNT(*) FROM questions WHERE author_id = _author_id AND status = 'approved')
+    WHERE id = _author_id;
+  END IF;
+
+  RETURN NULL;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
+CREATE TRIGGER on_question_update_profile
+  AFTER INSERT OR UPDATE OF status OR DELETE ON questions
+  FOR EACH ROW EXECUTE PROCEDURE update_profile_question_count();
 
 -- ============================================
 -- 10. 초기 데이터

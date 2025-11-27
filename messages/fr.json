@@ -307,6 +307,12 @@
             "submitting_button": "Soumission...",
             "submitted_button": "Question soumise !",
             "success_message": "Merci ! Votre question sera examinée par la communauté."
+        },
+        "vote_required": {
+            "title": "Participation requise",
+            "description": "Vous devez voter sur au moins 5 questions avant d'en proposer une nouvelle.",
+            "current": "Votes actuels",
+            "cta": "Aller voter"
         }
     }
 }

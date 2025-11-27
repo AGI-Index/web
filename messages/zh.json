@@ -307,6 +307,12 @@
             "submitting_button": "提交中...",
             "submitted_button": "提交成功！",
             "success_message": "谢谢！您的问题将由社区审核。"
+        },
+        "vote_required": {
+            "title": "需要参与投票",
+            "description": "提出问题前，您需要至少对5个问题进行投票。",
+            "current": "当前投票数",
+            "cta": "去投票"
         }
     }
 }

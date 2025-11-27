@@ -307,6 +307,12 @@
             "submitting_button": "Wird eingereicht...",
             "submitted_button": "Frage eingereicht!",
             "success_message": "Vielen Dank! Ihre Frage wird von der Community überprüft."
+        },
+        "vote_required": {
+            "title": "Abstimmung erforderlich",
+            "description": "Sie müssen mindestens 5 Fragen abstimmen, bevor Sie eine neue vorschlagen können.",
+            "current": "Aktuelle Stimmen",
+            "cta": "Zur Abstimmung"
         }
     }
 }

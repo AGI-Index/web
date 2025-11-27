@@ -307,6 +307,12 @@
             "submitting_button": "Enviando...",
             "submitted_button": "¡Pregunta enviada!",
             "success_message": "¡Gracias! Tu pregunta será revisada por la comunidad."
+        },
+        "vote_required": {
+            "title": "Se requiere participación",
+            "description": "Necesitas votar en al menos 5 preguntas antes de sugerir una nueva.",
+            "current": "Votos actuales",
+            "cta": "Ir a votar"
         }
     }
 }

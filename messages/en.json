@@ -307,6 +307,12 @@
             "submitting_button": "Submitting...",
             "submitted_button": "Question Submitted!",
             "success_message": "Thank you! Your question will be reviewed by the community."
+        },
+        "vote_required": {
+            "title": "Voting Required",
+            "description": "You need to vote on at least 5 questions before suggesting a new one.",
+            "current": "Current votes",
+            "cta": "Go to Vote"
         }
     }
 }

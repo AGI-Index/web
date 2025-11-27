@@ -2,25 +2,32 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { CheckCircle2, Loader2, CircleCheck, MapPin, Search, MessageSquare, Eye } from "lucide-react"
+import { Progress } from "@/components/ui/progress"
+import { CheckCircle2, Loader2, CircleCheck, MapPin, Search, MessageSquare, Eye, Vote } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
 import { useAuth } from "@/lib/auth-context"
 import { supabase } from "@/lib/supabase"
 import { cn } from "@/lib/utils"
 
+const REQUIRED_VOTES = 5
+
 export default function SuggestPage() {
     const { t, tArray } = useI18n()
-    const { user, loading: authLoading } = useAuth()
+    const { user, profile, loading: authLoading } = useAuth()
     const router = useRouter()
     const [category, setCategory] = useState<"linguistic" | "multimodal" | "">("")
     const [question, setQuestion] = useState<string>("")
     const [submitted, setSubmitted] = useState(false)
     const [submitting, setSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
+
+    const voteCount = profile?.total_vote_count || 0
+    const canSuggest = voteCount >= REQUIRED_VOTES
 
     // Redirect to login if not authenticated
     useEffect(() => {
@@ -82,15 +89,57 @@ export default function SuggestPage() {
     const examples = category ? tArray(`suggest.examples.${category}`) : []
 
     return (
-        <div className="container mx-auto px-4 py-8 max-w-6xl">
-            <div className="mb-8">
-                <h1 className="text-3xl md:text-4xl font-bold mb-3">{t('suggest.title')}</h1>
-                <p className="text-muted-foreground text-lg">
-                    {t('suggest.description')}
-                </p>
-            </div>
+        <div className="relative">
+            {/* Vote Required Overlay Modal */}
+            {!canSuggest && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                    {/* Backdrop */}
+                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
 
-            <div className="grid lg:grid-cols-2 gap-8">
+                    {/* Modal */}
+                    <Card className="relative z-10 w-full max-w-md animate-in fade-in zoom-in-95 duration-300">
+                        <CardContent className="pt-6 text-center space-y-4">
+                            <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+                                <Vote className="w-8 h-8 text-primary" />
+                            </div>
+
+                            <div className="space-y-2">
+                                <h2 className="text-xl font-semibold">{t('suggest.vote_required.title')}</h2>
+                                <p className="text-muted-foreground text-sm">
+                                    {t('suggest.vote_required.description')}
+                                </p>
+                            </div>
+
+                            <div className="space-y-2 pt-2">
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-muted-foreground">{t('suggest.vote_required.current')}</span>
+                                    <span className="font-medium">{voteCount} / {REQUIRED_VOTES}</span>
+                                </div>
+                                <Progress value={(voteCount / REQUIRED_VOTES) * 100} className="h-2" />
+                            </div>
+
+                            <Button asChild className="w-full mt-4">
+                                <Link href="/questions">
+                                    {t('suggest.vote_required.cta')}
+                                </Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+                </div>
+            )}
+
+            <div className={cn(
+                "container mx-auto px-4 py-8 max-w-6xl",
+                !canSuggest && "blur-sm pointer-events-none select-none"
+            )}>
+                <div className="mb-8">
+                    <h1 className="text-3xl md:text-4xl font-bold mb-3">{t('suggest.title')}</h1>
+                    <p className="text-muted-foreground text-lg">
+                        {t('suggest.description')}
+                    </p>
+                </div>
+
+                <div className="grid lg:grid-cols-2 gap-8">
                 {/* Left Panel: Guide */}
                 <Card className="h-fit">
                     <CardHeader>
@@ -284,6 +333,7 @@ export default function SuggestPage() {
                         </form>
                     </CardContent>
                 </Card>
+            </div>
             </div>
         </div>
     )
