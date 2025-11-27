@@ -27,13 +27,13 @@ export const metadata: Metadata = {
     siteName: 'AGI Index',
     title: 'AGI Index - Tracking AGI Progress',
     description: 'Track the arrival of Artificial General Intelligence through community-driven milestones and voting.',
-    images: [{ url: '/logo.svg', width: 512, height: 512 }],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'AGI Index - Tracking AGI Progress',
     description: 'Track the arrival of Artificial General Intelligence through community-driven milestones and voting.',
-    images: ['/logo.svg'],
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
