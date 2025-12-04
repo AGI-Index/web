@@ -129,6 +129,7 @@
         "title_signin": "ログイン",
         "desc_signup": "メールアドレスを入力してアカウントを作成",
         "desc_signin": "メールアドレスを入力してログイン",
+        "privacy_notice": "ご安心ください！ニックネーム以外の個人情報は一切収集・保存いたしません",
         "or_continue": "または",
         "email": "メールアドレス",
         "password": "パスワード",

@@ -129,6 +129,7 @@
         "title_signin": "登录",
         "desc_signup": "输入邮箱创建账户",
         "desc_signin": "输入邮箱登录",
+        "privacy_notice": "请放心！除了昵称，我们不会收集或存储任何个人信息",
         "or_continue": "或者",
         "email": "邮箱",
         "password": "密码",

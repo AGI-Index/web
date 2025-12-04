@@ -129,6 +129,7 @@
         "title_signin": "Connexion",
         "desc_signup": "Entrez votre e-mail pour créer un compte",
         "desc_signin": "Entrez votre e-mail pour vous connecter",
+        "privacy_notice": "Soyez rassuré ! Nous ne collectons ni ne stockons aucune information personnelle sauf votre pseudo",
         "or_continue": "Ou continuer avec",
         "email": "E-mail",
         "password": "Mot de passe",

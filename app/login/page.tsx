@@ -65,6 +65,13 @@ export default function LoginPage() {
                             : t('login.desc_signin')}
                     </CardDescription>
                 </CardHeader>
+                <div className="px-6 pb-2">
+                    <div className="bg-primary/10 border border-primary/20 rounded-lg p-3">
+                        <p className="text-xs text-center text-primary font-medium">
+                            {t('login.privacy_notice')}
+                        </p>
+                    </div>
+                </div>
                 <CardContent className="space-y-4">
                     {/* OAuth Buttons */}
                     <div className="grid grid-cols-2 gap-3">

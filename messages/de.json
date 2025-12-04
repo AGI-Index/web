@@ -129,6 +129,7 @@
         "title_signin": "Anmelden",
         "desc_signup": "Gib deine E-Mail ein, um ein Konto zu erstellen",
         "desc_signin": "Gib deine E-Mail ein, um dich anzumelden",
+        "privacy_notice": "Keine Sorge! Wir sammeln oder speichern keine persönlichen Daten außer deinem Nickname",
         "or_continue": "Oder weiter mit",
         "email": "E-Mail",
         "password": "Passwort",

@@ -129,6 +129,7 @@
         "title_signin": "Iniciar sesión",
         "desc_signup": "Ingresa tu correo para crear una cuenta",
         "desc_signin": "Ingresa tu correo para iniciar sesión",
+        "privacy_notice": "¡Tranquilo! No recopilamos ni almacenamos ninguna información personal excepto tu apodo",
         "or_continue": "O continuar con",
         "email": "Correo electrónico",
         "password": "Contraseña",
